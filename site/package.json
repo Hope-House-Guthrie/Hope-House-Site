@@ -1,0 +1,16 @@
+{
+  "name": "hope-house-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "postinstall": "bun2nix -o bun.nix",
+    "dev": "bun --hot ./dev-server.ts",
+    "build": "bun build ./src/index.html --outdir=dist --sourcemap --target=browser --minify --define:process.env.NODE_ENV='\"production\"' --env='BUN_PUBLIC_*'"
+  },
+  "dependencies": {
+    
+  },
+  "devDependencies": {
+    "@types/bun": "^1.3.14"
+  }
+}
