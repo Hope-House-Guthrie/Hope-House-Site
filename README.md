@@ -9,3 +9,5 @@ This repository contains the public-facing website for Hope House Guthrie.
 2. Run `nix develop` to enter the development shell (required for the next command).
 
 3. Run `cd site && bun dev` to start the development server.
+
+4. View the site locally at http://localhost:4321/
