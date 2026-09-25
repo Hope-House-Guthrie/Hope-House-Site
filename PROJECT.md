@@ -26,5 +26,8 @@
 
 **TJ**
 
-- Integrate GiveButter for payments
+- Integrate GiveButter donations
+- Integrate GiveButter mailing list signup
 - Integrate TinaCMS for visual content management
+- Add Google Analytics tracking
+- Add RSS feed for blog/news
