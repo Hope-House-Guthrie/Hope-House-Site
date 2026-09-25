@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/main.astro';
+---
+
+<Layout title="Donate & Support">
+  <section class="bg-slate-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl mx-auto">
+      <h1 class="text-4xl font-extrabold mb-4">Support Hope House Guthrie</h1>
+      <p class="text-slate-300 text-lg">
+        We are a 501(c)(3) non-profit organization. Your contributions are tax-deductible and directly fund shelter, food, and recovery services in Logan County.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-8">
+      <!-- 300 Club -->
+      <div class="border-2 border-sky-600 rounded-2xl p-8 bg-sky-50/30 flex flex-col justify-between">
+        <div>
+          <span class="bg-sky-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Sustaining Giving</span>
+          <h2 class="text-2xl font-bold text-slate-900 mt-4 mb-2">The 300 Club</h2>
+          <p class="text-slate-600 mb-6">
+            Join our core group of supporters giving at least <strong>$10 per month</strong> to sustain our day-to-day operational needs and hot lunch programs.
+          </p>
+        </div>
+        <a href="#donate-options" class="bg-sky-600 hover:bg-sky-700 text-white text-center font-bold py-3 rounded-lg block">
+          Join the 300 Club
+        </a>
+      </div>
+
+      <!-- Adopt A Room -->
+      <div id="adopt-a-room" class="border-2 border-emerald-600 rounded-2xl p-8 bg-emerald-50/30 flex flex-col justify-between">
+        <div>
+          <span class="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Direct Sponsorship</span>
+          <h2 class="text-2xl font-bold text-slate-900 mt-4 mb-2">Adopt-a-Room Program</h2>
+          <p class="text-slate-600 mb-6">
+            Sponsor a safe client room for a minimum donation of <strong>$40 per month</strong>, ensuring shelter for someone rebuilding their life.
+          </p>
+        </div>
+        <a href="#donate-options" class="bg-emerald-600 hover:bg-emerald-700 text-white text-center font-bold py-3 rounded-lg block">
+          Sponsor a Room
+        </a>
+      </div>
+    </div>
+
+    <!-- How to Give -->
+    <div id="donate-options" class="max-w-3xl mx-auto mt-16 p-8 bg-slate-50 border border-slate-200 rounded-xl">
+      <h3 class="text-xl font-bold text-slate-900 mb-6 text-center">Ways to Send Your Donation</h3>
+      
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="bg-white p-5 rounded-lg border border-slate-200">
+          <h4 class="font-bold text-slate-900 mb-2">Donate Online</h4>
+          <p class="text-sm text-slate-600 mb-4">Secure credit/debit card processing managed directly for NHD / Hope House Guthrie.</p>
+          <button class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded text-sm transition-colors">
+            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=hopehouseguthrie@yahoo.com&item_name=hopehouse%20-%20Guthrie%E2%80%8B&currency_code=USD">
+                Proceed to Online Payment
+            </a>
+          </button>
+        </div>
+
+        <div class="bg-white p-5 rounded-lg border border-slate-200">
+          <h4 class="font-bold text-slate-900 mb-2">Donate by Check</h4>
+          <p class="text-sm text-slate-600">Please make checks payable to:</p>
+          <p class="text-sm font-semibold text-slate-800 my-2">NHD - HOPE HOUSE GUTHRIE</p>
+          <p class="text-xs text-slate-500">Mail to:<br />PO Box 491, Guthrie, OK 73044</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

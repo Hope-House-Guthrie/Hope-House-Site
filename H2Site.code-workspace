@@ -36,6 +36,7 @@
     },
     "extensions": {
         "recommendations": [
+            "astro-build.astro-vscode",
             "jnoortheen.nix-ide",
             "Oven.bun-vscode",
             "esbenp.prettier-vscode"

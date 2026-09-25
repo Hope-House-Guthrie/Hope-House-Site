@@ -1,0 +1,87 @@
+---
+import Layout from '../layouts/main.astro';
+---
+
+<Layout title="Home">
+  <!-- Hero Section -->
+  <section class="bg-slate-900 text-white relative py-20 lg:py-32 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-sky-950/90 to-slate-900/80 z-10"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+      <div class="max-w-3xl">
+        <span class="inline-block bg-sky-900/80 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-4 border border-sky-700">
+          Serving Logan County, Oklahoma
+        </span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+          Choose Today to be Different and Make a Difference.
+        </h1>
+        <p class="text-lg sm:text-xl text-slate-300 mb-8 leading-relaxed">
+          Hope House Guthrie provides shelter for the homeless, daily hot meals for the hungry, clothing for those in need, and recovery resources for individuals rebuilding their lives.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/donate" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-8 py-3.5 rounded-lg text-center shadow-lg transition-all">
+            Support Our Mission
+          </a>
+          <a href="/programs" class="bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-3.5 rounded-lg text-center border border-white/20 transition-all">
+            Explore Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Services Grid -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-3xl font-bold text-slate-900">Serving Hope & Moving Forward</h2>
+        <p class="mt-3 text-slate-600">We advocate for every person who comes through our doors, offering short-term shelter, long-term stabilization, and community care.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-sky-100 text-sky-700 rounded-lg flex items-center justify-center font-bold text-xl mb-4">🍲</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Soup Kitchen & Walk-in Care</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            Serving daily hot lunches from 12:00 PM – 1:00 PM. Walk-in services include showers, clothing, and hygiene toiletries.
+          </p>
+          <a href="/programs#soup-kitchen" class="text-sky-700 text-sm font-semibold hover:underline">Learn More &rarr;</a>
+        </div>
+
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-amber-100 text-amber-700 rounded-lg flex items-center justify-center font-bold text-xl mb-4">🏠</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Transitional Housing</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            35 client/guest rooms with shared baths, commercial kitchen, and structured guidance for up to 60+ individuals in transition.
+          </p>
+          <a href="/programs#housing" class="text-sky-700 text-sm font-semibold hover:underline">Learn More &rarr;</a>
+        </div>
+
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-lg flex items-center justify-center font-bold text-xl mb-4">🌱</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Recovery & Support</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            Home to Logan County's registered Narcotics Anonymous (NA) meetings, job transition, budgeting, and court referrals.
+          </p>
+          <a href="/programs#recovery" class="text-sky-700 text-sm font-semibold hover:underline">Learn More &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Partners -->
+  <section class="py-16 bg-slate-100 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-center text-xs font-semibold uppercase tracking-wider text-slate-500 mb-8">
+        Trusted Community Partners & Supporters
+      </h2>
+      <div class="flex flex-wrap items-center justify-center gap-8 text-slate-500 font-semibold text-sm">
+        <span class="px-4 py-2 bg-white rounded shadow-sm border border-slate-200">United Way of Logan County</span>
+        <span class="px-4 py-2 bg-white rounded shadow-sm border border-slate-200">Logan County Drug Court</span>
+        <span class="px-4 py-2 bg-white rounded shadow-sm border border-slate-200">God's Food Bank</span>
+        <span class="px-4 py-2 bg-white rounded shadow-sm border border-slate-200">AARP & Community Action Agency</span>
+        <span class="px-4 py-2 bg-white rounded shadow-sm border border-slate-200">Logan Community Services (DV Support)</span>
+        <span class="px-4 py-2 bg-white rounded shadow-sm border border-slate-200">Central OK Workforce Programs</span>
+      </div>
+    </div>
+  </section>
+</Layout>
