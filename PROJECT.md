@@ -27,3 +27,4 @@
 **TJ**
 
 - Integrate GiveButter for payments
+- Integrate TinaCMS for visual content management
