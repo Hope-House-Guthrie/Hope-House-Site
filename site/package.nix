@@ -12,7 +12,7 @@ stdenv.mkDerivation {
   inherit version;
 
   pname = "h2site";
-  src = ./src;
+  src = ./.;
 
   nativeBuildInputs = [
     bun2nix.hook
