@@ -14,6 +14,7 @@ pkgs.mkShell {
     bun2nix
     nixd
     nixfmt
+    python3
     starship
   ];
 
