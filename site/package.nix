@@ -1,25 +1,25 @@
 {
-  inputs,
+  pkgs,
   stdenv,
   version,
   ...
 }:
-let
-  system = stdenv.hostPlatform.system;
-  bun2nix = inputs.bun2nix.packages.${system}.default;
-in
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   inherit version;
 
   pname = "h2site";
   src = ./.;
 
   nativeBuildInputs = [
-    bun2nix.hook
+    pkgs.nodejs
+    pkgs.pnpm
+    pkgs.pnpmConfigHook
   ];
 
-  bunDeps = bun2nix.fetchBunDeps {
-    bunNix = ./bun.nix;
+  pnpmDeps = pkgs.fetchPnpmDeps {
+    inherit pname version src;
+    fetcherVersion = 4;
+    hash = "sha256-Dft+VdFyFoL8d37O04Zo5GyNZ8KiL0F4fZeSJfDVigc=";
   };
 
   postUnpack = ''
@@ -27,7 +27,7 @@ stdenv.mkDerivation {
   '';
 
   buildPhase = ''
-    bun run build
+    pnpm build
   '';
 
   installPhase = ''

@@ -3,11 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-26.05";
-
-    bun2nix = {
-      url = "github:nix-community/bun2nix?ref=2.1.2";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -34,6 +29,5 @@
     {
       devShells.${system}.default = shell;
       packages.${system}.default = site;
-
     };
 }

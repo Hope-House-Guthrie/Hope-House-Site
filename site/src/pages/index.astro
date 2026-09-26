@@ -1,11 +1,23 @@
 ---
 import Layout from '../layouts/main.astro';
+import { getImage } from 'astro:assets';
+import aerialImage from '../assets/aerial.jpg';
+
+const optimizedAerialImage = await getImage({
+  src: aerialImage,
+  format: 'webp',
+  quality: 60,
+});
 ---
 
 <Layout title="Home">
-  <!-- Hero Section -->
   <section class="bg-slate-900 text-white relative py-20 lg:py-32 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-r from-sky-950/90 to-slate-900/80 z-10"></div>
+    <div 
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+      style={`background-image: url(${optimizedAerialImage.src});`}></div>
+
+    <div class="absolute inset-0 bg-gradient-to-r from-sky-950/80 to-slate-900/70 z-10"></div>
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
       <div class="max-w-3xl">
         <span class="inline-block bg-sky-900/80 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-4 border border-sky-700">
@@ -21,7 +33,7 @@ import Layout from '../layouts/main.astro';
           <a href="/donate" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-8 py-3.5 rounded-lg text-center shadow-lg transition-all">
             Support Our Mission
           </a>
-          <a href="/programs" class="bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-3.5 rounded-lg text-center border border-white/20 transition-all">
+          <a href="/programs" class="bg-white/30 hover:bg-white/20 text-white font-semibold px-8 py-3.5 rounded-lg text-center border border-white/20 transition-all">
             Explore Services
           </a>
         </div>

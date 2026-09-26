@@ -14,7 +14,6 @@
 **Brent**
 
 - Review existing sites for inspiration
-- Add aerial view photo on main page to replace blue background
 - Add any additional content pages
   - Background Story
   - Success Stories
