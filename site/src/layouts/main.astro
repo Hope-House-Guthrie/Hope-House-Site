@@ -1,5 +1,6 @@
 ---
 import '../styles/main.css';
+import hhgLogo from '../assets/logo.svg';
 
 interface Props {
   title: string;
@@ -14,7 +15,7 @@ const { title, description = "Hope House Guthrie - Providing shelter, food, clot
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={hhgLogo.src} />
     <meta name="description" content={description} />
     <title>{title} | Hope House Guthrie</title>
   </head>
@@ -26,14 +27,23 @@ const { title, description = "Hope House Guthrie - Providing shelter, food, clot
 
     <!-- Main Navigation -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-3 group">
-          <div class="w-10 h-10 bg-sky-700 text-white flex items-center justify-center font-bold rounded-lg text-xl group-hover:bg-sky-800 transition-colors">
-            HH
-          </div>
-          <div>
-            <span class="block font-bold text-lg text-slate-900 leading-tight">HOPE HOUSE</span>
-            <span class="block text-xs font-semibold text-sky-700 tracking-wider">GUTHRIE</span>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+        
+        <a href="/" class="flex items-center gap-4 group">
+          <img src={hhgLogo.src} alt="Hope House Guthrie Logo" class="h-16 w-auto object-contain transition-transform group-hover:scale-105" />
+          <div class="flex flex-col justify-center">
+            <span class="block font-bold text-base sm:text-lg text-slate-900 leading-tight tracking-tight group-hover:text-sky-700 transition-colors">
+              Neighborhood Hope Dealers, Inc.
+            </span>
+            <div class="flex items-center gap-2 mt-0.5">
+              <span class="block text-xs font-bold text-sky-700 tracking-wider uppercase">
+                Hope House Guthrie
+              </span>
+              <span class="inline-block w-1 h-1 rounded-full bg-slate-300"></span>
+              <span class="text-[10px] font-semibold text-slate-500 uppercase tracking-widest">
+                Est. 2020
+              </span>
+            </div>
           </div>
         </a>
 

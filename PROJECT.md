@@ -19,8 +19,6 @@
   - Success Stories
   - Photos and Videos
   - Blog and/or News
-- Update favicon ico/svg files
-- Add logo
 - Adjust color scheme
 
 **TJ**
