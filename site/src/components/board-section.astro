@@ -25,7 +25,9 @@ const {
         <div
           class:list={[
             "bg-white p-6 rounded-lg border border-slate-200 shadow-sm",
-            member.data.name === "TJ Stewart" && "lg:col-start-3", // todo: change this to handle based on number of board members
+
+            // todo: this needs to be refactored
+            member.data.name === "TJ Stewart" && "lg:col-start-3", 
             member.data.group === "advisory" && "lg:col-span-2",
           ]}
         >
