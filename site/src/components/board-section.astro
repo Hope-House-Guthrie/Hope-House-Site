@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import hopeHouseLogo from "../assets/new-updated-logo.png";
+
+interface Props {
+  title: string;
+  members: CollectionEntry<"board">[];
+  gridCols?: string;
+}
+
+const {
+  title,
+  members,
+  gridCols = "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3",
+} = Astro.props;
+---
+
+<div class="mt-12 first:mt-0">
+  <h3 class="text-xl font-bold text-slate-900 mb-5">{title}</h3>
+
+  <div class={`grid gap-6 ${gridCols}`}>
+    {
+      members.map((member) => (
+        <div
+          class:list={[
+            "bg-white p-6 rounded-lg border border-slate-200 shadow-sm",
+            member.data.name === "TJ Stewart" && "lg:col-start-3",
+            member.data.group === "advisory" && "lg:col-span-2",
+          ]}
+        >
+          {member.data.photo ? (
+            <Image
+              src={member.data.photo}
+              alt={member.data.name}
+              class="w-full h-70 object-cover rounded-lg mb-1"
+              style={`object-position: ${member.data.photoPosition ?? "center 25%"};`}
+            />
+          ) : (
+            <div class="w-full h-70 bg-white rounded-lg mb-1 flex items-center justify-center p-8">
+              <Image
+                src={hopeHouseLogo}
+                alt="Hope House Guthrie"
+                class="w-full h-full object-contain"
+              />
+            </div>
+          )}
+
+          <h4 class="font-bold text-slate-900 text-lg">
+            {member.data.name}
+          </h4>
+
+          <span class="text-xs font-semibold text-sky-700 block mb-2">
+            {member.data.role}
+          </span>
+
+          <p class="text-xs text-slate-500">
+            {member.data.desc}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</div>
