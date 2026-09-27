@@ -1,23 +1,109 @@
 ---
-import Layout from '../layouts/main.astro';
+import Layout from "../layouts/main.astro";
 
 const board = [
-  { name: 'Sue DuCharme', role: 'Chairman / CEO', desc: 'Director, Neighborhood Solutions' },
-  { name: 'Donna Hart', role: 'Board Member', desc: 'Volunteer Retired DHS Case Worker' },
-  { name: 'Codi Canning', role: 'Treasurer', desc: 'Logan County Community Services' },
-  { name: 'Steve Gentling', role: 'Vice Chairman', desc: 'Former Mayor of Guthrie; Ret. Colonel, U.S. Air Force' },
-  { name: 'Dena Porter', role: 'Secretary', desc: 'Community Board Leadership and Red Cross Directory of Logan County' },
-  { name: 'Allison Terrill', role: 'Board Member', desc: 'OG&E Community Reach Coordinator' },
-  { name: 'Jody Ahrnsbrak', role: 'Board Member', desc: 'Retired Registered Nurse' },
+  {
+    name: "Sue DuCharme",
+    role: "Chairman / CEO",
+    desc: "Director, Neighborhood Solutions",
+    group: "officer",
+  },
 
-  { name: 'Franke Garcia-Leon', role: 'Non-Voting Advisory Board Member', desc: 'Administrator and proud Graduate of LTP: Streets to Stability 2021' },
-  { name: 'Brent McGalliard', role: 'Non-Voting Advisory Board Member', desc: 'Senior House Administrator and Graduate of LTP: Streets to Stability 2022' },
-  { name: 'Elisha Baker', role: 'Non-Voting Advisory Board Member', desc: 'Senior House Administrator and Graduate of LTP: Streets to Stability 2024' },
-  { name: 'Mike Grenier', role: 'Non-Voting Advisory Board Member', desc: 'Maintenance Manager and Upcoming Graduate of LTP: Streets to Stability 2026' },
-  { name: 'Kenneth Yerton', role: 'Non-Voting Advisory Board Member', desc: 'Kitchen Manager and Graduate of LTP: Streets to Stability 2026' },
-  { name: 'Joe Clift', role: 'Non-Voting Advisory Board Member', desc: 'Transportation Manager and Current Member of LTP: Streets to Stability' },
-  { name: 'TJ Stewart', role: 'Non-Voting Advisory Board Member', desc: 'Director of Technology and Current Member of LTP: Streets to Stability' },
+  {
+    name: "Donna Hart",
+    role: "Board Member",
+    desc: "Volunteer Retired DHS Case Worker",
+    group: "board",
+  },
+
+  {
+    name: "Steve Gentling",
+    role: "Vice Chairman",
+    desc: "Former Mayor of Guthrie; Ret. Colonel, U.S. Air Force",
+    group: "officer",
+  },
+
+  {
+    name: "Codi Canning",
+    role: "Treasurer",
+    desc: "Logan County Community Services",
+    group: "officer",
+  },
+
+  {
+    name: "Dena Porter",
+    role: "Secretary",
+    desc: "Community Board Leadership and Red Cross Directory of Logan County",
+    group: "officer",
+  },
+
+  {
+    name: "Allison Terrill",
+    role: "Board Member",
+    desc: "OG&E Community Reach Coordinator",
+    group: "board",
+  },
+
+  {
+    name: "Jody Ahrnsbrak",
+    role: "Board Member",
+    desc: "Retired Registered Nurse",
+    group: "board",
+  },
+
+  {
+    name: "Franke Garcia-Leon",
+    role: "Non-Voting Advisory Board Member",
+    desc: "Administrator and proud Graduate of LTP: Streets to Stability 2021",
+    group: "advisory",
+  },
+
+  {
+    name: "Brent McGalliard",
+    role: "Non-Voting Advisory Board Member",
+    desc: "Senior House Administrator and Graduate of LTP: Streets to Stability 2022",
+    group: "advisory",
+  },
+
+  {
+    name: "Elisha Baker",
+    role: "Non-Voting Advisory Board Member",
+    desc: "Senior House Administrator and Graduate of LTP: Streets to Stability 2024",
+    group: "advisory",
+  },
+
+  {
+    name: "Mike Grenier",
+    role: "Non-Voting Advisory Board Member",
+    desc: "Maintenance Manager and Upcoming Graduate of LTP: Streets to Stability 2026",
+    group: "advisory",
+  },
+
+  {
+    name: "Kenneth Yerton",
+    role: "Non-Voting Advisory Board Member",
+    desc: "Kitchen Manager and Graduate of LTP: Streets to Stability 2026",
+    group: "advisory",
+  },
+
+  {
+    name: "Joe Clift",
+    role: "Non-Voting Advisory Board Member",
+    desc: "Transportation Manager and Current Member of LTP: Streets to Stability",
+    group: "advisory",
+  },
+
+  {
+    name: "TJ Stewart",
+    role: "Non-Voting Advisory Board Member",
+    desc: "Director of Technology and Current Member of LTP: Streets to Stability",
+    group: "advisory",
+  },
 ];
+
+const officers = board.filter((member) => member.group === "officer");
+const boardMembers = board.filter((member) => member.group === "board");
+const advisoryMembers = board.filter((member) => member.group === "advisory");
 ---
 
 <Layout title="About Us">
@@ -25,30 +111,55 @@ const board = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h1 class="text-4xl font-extrabold mb-4">Our History & Vision</h1>
       <p class="text-slate-300 max-w-2xl text-lg">
-        Founded in 2020 under Neighborhood Hope Dealers (NHD), Hope House Guthrie has grown into a life-transformation center for central Oklahoma.
+        Founded in 2020 under Neighborhood Hope Dealers (NHD), Hope House
+        Guthrie has grown into a life-transformation center for central
+        Oklahoma.
       </p>
     </div>
   </section>
 
   <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+    >
       <div>
-        <h2 class="text-2xl font-bold text-slate-900 mb-4">From Feeding Meals to Complete Care</h2>
+        <h2 class="text-2xl font-bold text-slate-900 mb-4">
+          From Feeding Meals to Complete Care
+        </h2>
         <p class="text-slate-600 mb-4 leading-relaxed">
-          Hope House Guthrie began with a simple mission: feeding the hungry through Neighborhood Hope Dealers. The need quickly expanded, transforming our scope into a full-scale facility accommodating up to 60+ men, women, and children at a time in our Life Transformation Program.
+          Hope House Guthrie began with a simple mission: feeding the hungry
+          through Neighborhood Hope Dealers. The need quickly expanded,
+          transforming our scope into a full-scale facility accommodating up to
+          60+ men, women, and children at a time in our Life Transformation
+          Program.
         </p>
         <p class="text-slate-600 leading-relaxed">
-          Some who enter our doors face short-term crisis due to financial distress. Others arrive trapped in generational poverty or seeking long-term addiction recovery. We advocate for each person without judgment.
+          Some who enter our doors face short-term crisis due to financial
+          distress. Others arrive trapped in generational poverty or seeking
+          long-term addiction recovery. We advocate for each person without
+          judgment.
         </p>
       </div>
 
       <div class="bg-sky-50 border border-sky-100 p-8 rounded-xl">
         <h3 class="text-xl font-bold text-sky-900 mb-4">Facility Overview</h3>
         <ul class="space-y-3 text-slate-700 text-sm">
-          <li class="flex items-start gap-2">✓ <strong>35 Furnished Client Rooms:</strong> Providing secure transitional housing.</li>
-          <li class="flex items-start gap-2">✓ <strong>Commercial Kitchen:</strong> Fully equipped to cook hot meals daily.</li>
-          <li class="flex items-start gap-2">✓ <strong>Meeting & Common Spaces:</strong> Dedicated rooms for NA support groups and counseling.</li>
-          <li class="flex items-start gap-2">✓ <strong>Partner Offices:</strong> On-site space for AARP, Community Action, and Domestic Violence support.</li>
+          <li class="flex items-start gap-2">
+            ✓ <strong>35 Furnished Client Rooms:</strong> Providing secure transitional
+            housing.
+          </li>
+          <li class="flex items-start gap-2">
+            ✓ <strong>Commercial Kitchen:</strong> Fully equipped to cook hot meals
+            daily.
+          </li>
+          <li class="flex items-start gap-2">
+            ✓ <strong>Meeting & Common Spaces:</strong> Dedicated rooms for NA support
+            groups and counseling.
+          </li>
+          <li class="flex items-start gap-2">
+            ✓ <strong>Partner Offices:</strong> On-site space for AARP, Community
+            Action, and Domestic Violence support.
+          </li>
         </ul>
       </div>
     </div>
@@ -57,17 +168,76 @@ const board = [
   <!-- Board of Directors -->
   <section class="py-16 bg-slate-50 border-t border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-slate-900 mb-2 text-center">Board of Directors</h2>
-      <p class="text-center text-slate-600 mb-12">Volunteer-operated guidance under our visionary leadership team.</p>
+      <h2 class="text-3xl font-bold text-slate-900 mb-2 text-center">
+        Board of Directors
+      </h2>
+      <p class="text-center text-slate-600 mb-12">
+        Volunteer-operated guidance under our visionary leadership team.
+      </p>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {board.map((member) => (
-          <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
-            <h3 class="font-bold text-slate-900 text-lg">{member.name}</h3>
-            <span class="text-xs font-semibold text-sky-700 block mb-2">{member.role}</span>
-            <p class="text-xs text-slate-500">{member.desc}</p>
+      <div>
+        <h3 class="text-xl font-bold text-slate-900 mb-5">Board Officers</h3>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {
+            officers.map((member) => (
+              <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
+                <h4 class="font-bold text-slate-900 text-lg">{member.name}</h4>
+                <span class="text-xs font-semibold text-sky-700 block mb-2">
+                  {member.role}
+                </span>
+                <p class="text-xs text-slate-500">{member.desc}</p>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="mt-12">
+          <h3 class="text-xl font-bold text-slate-900 mb-5">Board Members</h3>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {
+              boardMembers.map((member) => (
+                <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
+                  <h4 class="font-bold text-slate-900 text-lg">
+                    {member.name}
+                  </h4>
+                  <span class="text-xs font-semibold text-sky-700 block mb-2">
+                    {member.role}
+                  </span>
+                  <p class="text-xs text-slate-500">{member.desc}</p>
+                </div>
+              ))
+            }
           </div>
-        ))}
+
+          <div class="mt-12">
+            <h3 class="text-xl font-bold text-slate-900 mb-5">
+              Non-Voting Advisory Board
+            </h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6">
+              {
+                advisoryMembers.map((member) => (
+                  <div
+                    class:list={[
+                      "lg:col-span-2 bg-white p-6 rounded-lg border border-slate-200 shadow-sm",
+                      member.name === "TJ Stewart" && "lg:col-start-3",
+                    ]}
+                  >
+                    <h4 class="font-bold text-slate-900 text-lg">
+                      {member.name}
+                    </h4>
+                    <span class="text-xs font-semibold text-sky-700 block mb-2">
+                      {member.role}
+                    </span>
+                    <p class="text-xs text-slate-500">{member.desc}</p>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
