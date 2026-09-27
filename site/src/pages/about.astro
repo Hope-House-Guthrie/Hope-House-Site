@@ -1,5 +1,14 @@
 ---
 import Layout from "../layouts/main.astro";
+import hopeHouseLogo from "../assets/new-updated-logo.png";
+
+const boardPhotos = import.meta.glob("../assets/board/*.{png,jpg,jpeg,webp}", {
+  eager: true,
+  import: "default",
+}) as Record<string, { src: string }>;
+
+const getBoardPhoto = (filename: string) =>
+  boardPhotos[`../assets/board/${filename}`];
 
 const board = [
   {
@@ -7,13 +16,17 @@ const board = [
     role: "Chairman / CEO",
     desc: "Director, Neighborhood Solutions",
     group: "officer",
-  },
+    photo: getBoardPhoto("sue-ducharme.png"),
+    photoPosition: "center 6%",
+  },  
 
   {
     name: "Donna Hart",
     role: "Board Member",
     desc: "Volunteer Retired DHS Case Worker",
     group: "board",
+    photo: getBoardPhoto("donna-hart.png"),
+    photoPosition: "center 6%",
   },
 
   {
@@ -21,6 +34,8 @@ const board = [
     role: "Vice Chairman",
     desc: "Former Mayor of Guthrie; Ret. Colonel, U.S. Air Force",
     group: "officer",
+    photo: getBoardPhoto("steve-gentling.png"),
+    photoPosition: "center 30%",
   },
 
   {
@@ -42,6 +57,8 @@ const board = [
     role: "Board Member",
     desc: "OG&E Community Reach Coordinator",
     group: "board",
+    photo: getBoardPhoto("allison-terrill.png"),
+    photoPosition: "center 6%",
   },
 
   {
@@ -56,6 +73,8 @@ const board = [
     role: "Non-Voting Advisory Board Member",
     desc: "Administrator and proud Graduate of LTP: Streets to Stability 2021",
     group: "advisory",
+    photo: getBoardPhoto("franke-garcia-leon.png"),
+    photoPosition: "center 6%",
   },
 
   {
@@ -63,6 +82,8 @@ const board = [
     role: "Non-Voting Advisory Board Member",
     desc: "Senior House Administrator and Graduate of LTP: Streets to Stability 2022",
     group: "advisory",
+    photo: getBoardPhoto("brent-mcgalliard.png"),
+    photoPosition: "center 9%",
   },
 
   {
@@ -70,6 +91,8 @@ const board = [
     role: "Non-Voting Advisory Board Member",
     desc: "Senior House Administrator and Graduate of LTP: Streets to Stability 2024",
     group: "advisory",
+    photo: getBoardPhoto("elisha-baker.png"),
+    photoPosition: "center 1%",
   },
 
   {
@@ -77,6 +100,8 @@ const board = [
     role: "Non-Voting Advisory Board Member",
     desc: "Maintenance Manager and Upcoming Graduate of LTP: Streets to Stability 2026",
     group: "advisory",
+    photo: getBoardPhoto("mike-grenier.png"),
+    photoPosition: "center 20%",
   },
 
   {
@@ -84,13 +109,17 @@ const board = [
     role: "Non-Voting Advisory Board Member",
     desc: "Kitchen Manager and Graduate of LTP: Streets to Stability 2026",
     group: "advisory",
+    photo: getBoardPhoto("kenneth-yerton.png"),
+    photoPosition: "center 2%",
   },
 
   {
-    name: "Joe Clift",
+    name: "Joseph Clift Jr.",
     role: "Non-Voting Advisory Board Member",
     desc: "Transportation Manager and Current Member of LTP: Streets to Stability",
     group: "advisory",
+    photo: getBoardPhoto("joseph-clift-jr.png"),
+    photoPosition: "center 15%",
   },
 
   {
@@ -178,19 +207,44 @@ const advisoryMembers = board.filter((member) => member.group === "advisory");
       <div>
         <h3 class="text-xl font-bold text-slate-900 mb-5">Board Officers</h3>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {
-            officers.map((member) => (
-              <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
-                <h4 class="font-bold text-slate-900 text-lg">{member.name}</h4>
-                <span class="text-xs font-semibold text-sky-700 block mb-2">
-                  {member.role}
-                </span>
-                <p class="text-xs text-slate-500">{member.desc}</p>
-              </div>
-            ))
-          }
-        </div>
+       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+  {
+    officers.map((member) => (
+      <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
+        {member.photo ? (
+          <img
+            src={member.photo.src}
+            alt={member.name}
+            class="w-full h-70 object-cover rounded-lg mb-1"
+            style={`object-position: ${
+              "photoPosition" in member ? member.photoPosition : "center 25%"
+            };`}
+          />
+        ) : (
+          <div class="w-full h-70 bg-white rounded-lg mb-1 flex items-center justify-center p-8">
+            <img
+              src={hopeHouseLogo.src}
+              alt="Hope House Guthrie"
+              class="w-full h-full object-contain"
+            />
+          </div>
+        )}
+
+        <h4 class="font-bold text-slate-900 text-lg">
+          {member.name}
+        </h4>
+
+        <span class="text-xs font-semibold text-sky-700 block mb-2">
+          {member.role}
+        </span>
+
+        <p class="text-xs text-slate-500">
+          {member.desc}
+        </p>
+      </div>
+    ))
+  }
+</div>
 
         <div class="mt-12">
           <h3 class="text-xl font-bold text-slate-900 mb-5">Board Members</h3>
@@ -198,8 +252,27 @@ const advisoryMembers = board.filter((member) => member.group === "advisory");
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {
               boardMembers.map((member) => (
-                <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
-                  <h4 class="font-bold text-slate-900 text-lg">
+  <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
+   {member.photo ? (
+  <img
+    src={member.photo.src}
+    alt={member.name}
+    class="w-full h-70 object-cover rounded-lg mb-1"
+    style={`object-position: ${
+      "photoPosition" in member ? member.photoPosition : "center 25%"
+    };`}
+  />
+) : (
+  <div class="w-full h-70 bg-white rounded-lg mb-1 flex items-center justify-center p-8">
+    <img
+      src={hopeHouseLogo.src}
+      alt="Hope House Guthrie"
+      class="w-full h-full object-contain"
+    />
+  </div>
+)}
+
+    <h4 class="font-bold text-slate-900 text-lg">
                     {member.name}
                   </h4>
                   <span class="text-xs font-semibold text-sky-700 block mb-2">
@@ -211,32 +284,56 @@ const advisoryMembers = board.filter((member) => member.group === "advisory");
             }
           </div>
 
-          <div class="mt-12">
-            <h3 class="text-xl font-bold text-slate-900 mb-5">
-              Non-Voting Advisory Board
-            </h3>
+           <div class="mt-12">
+  <h3 class="text-xl font-bold text-slate-900 mb-5">
+    Non-Voting Advisory Board
+  </h3>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6">
-              {
-                advisoryMembers.map((member) => (
-                  <div
-                    class:list={[
-                      "lg:col-span-2 bg-white p-6 rounded-lg border border-slate-200 shadow-sm",
-                      member.name === "TJ Stewart" && "lg:col-start-3",
-                    ]}
-                  >
-                    <h4 class="font-bold text-slate-900 text-lg">
-                      {member.name}
-                    </h4>
-                    <span class="text-xs font-semibold text-sky-700 block mb-2">
-                      {member.role}
-                    </span>
-                    <p class="text-xs text-slate-500">{member.desc}</p>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6">
+    {
+      advisoryMembers.map((member) => (
+        <div
+          class:list={[
+            "lg:col-span-2 bg-white p-6 rounded-lg border border-slate-200 shadow-sm",
+            member.name === "TJ Stewart" && "lg:col-start-3",
+          ]}
+        >
+         {member.photo ? (
+  <img
+    src={member.photo.src}
+    alt={member.name}
+    class="w-full h-70 object-cover rounded-lg mb-1"
+    style={`object-position: ${
+      "photoPosition" in member ? member.photoPosition : "center 25%"
+    };`}
+  />
+) : (
+  <div class="w-full h-70 bg-white rounded-lg mb-1 flex items-center justify-center p-8">
+    <img
+      src={hopeHouseLogo.src}
+      alt="Hope House Guthrie"
+      class="w-full h-full object-contain"
+    />
+  </div>
+)}
+
+          <h4 class="font-bold text-slate-900 text-lg">
+            {member.name}
+          </h4>
+
+          <span class="text-xs font-semibold text-sky-700 block mb-2">
+            {member.role}
+          </span>
+
+          <p class="text-xs text-slate-500">
+            {member.desc}
+          </p>
+        </div>
+      ))
+    }
+    </div>
+</div>
+
         </div>
       </div>
     </div>
