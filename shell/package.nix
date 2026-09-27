@@ -6,8 +6,8 @@ pkgs.mkShell {
   buildInputs = with pkgs; [
     nixd
     nixfmt
-    nodejs
-    pnpm
+    nodejs_24
+    pnpm_11
     starship
   ];
 
