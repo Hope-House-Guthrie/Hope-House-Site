@@ -12,7 +12,7 @@ const optimizedAerialImage = await getImage({
 
 <Layout title="Home">
   <section
-    class="bg-slate-900 text-white relative py-20 lg:py-32 overflow-hidden"
+    class="bg-slate-900 text-white relative min-h-[70vh] lg:min-h-[calc(100vh-108px)] flex items-center overflow-hidden"
   >
     <div
       class="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
@@ -26,7 +26,7 @@ const optimizedAerialImage = await getImage({
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-      <div class="max-w-3xl">
+      <div class="max-w-3xl lg:translate-x-15">
         <span
           class="inline-block bg-sky-900/80 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-4 border border-sky-700"
         >
@@ -37,10 +37,9 @@ const optimizedAerialImage = await getImage({
         >
           Hope Starts Here.
         </h1>
-        <p class="text-lg sm:text-xl text-slate-300 mb-8 leading-relaxed">
-          Hope House Guthrie provides shelter, meals, clothing, recovery
-          support, and a path toward stability for people in our community who
-          need a place to begin again.
+        <p class="text-lg sm:text-xl text-slate-200 mb-6 leading-relaxed max-w-xl">
+          Hope House Guthrie provides shelter, meals, clothing, recovery support, and
+          a path towards stability for people from across Oklahoma who need a place to begin again.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a
@@ -61,7 +60,7 @@ const optimizedAerialImage = await getImage({
   </section>
 
   <!-- Key Services Grid -->
-  <section class="py-16 bg-white">
+  <section class="py-24 lg:py-28 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-12">
         <h2 class="text-3xl font-bold text-slate-900">
@@ -83,11 +82,11 @@ const optimizedAerialImage = await getImage({
             🍲
           </div>
           <h3 class="text-xl font-bold text-slate-900 mb-2">
-            Soup Kitchen & Walk-in Care
+            Community Lunch & Walk-In Services
           </h3>
           <p class="text-slate-600 text-sm leading-relaxed mb-4">
-            Serving daily hot lunches from 12:00 PM – 1:00 PM. Walk-in services
-            include showers, clothing, and hygiene toiletries.
+            Serving daily hot lunches from 11:00 PM – 1:00 PM. Walk-in services
+            include showers, clothing, and hygiene toiletries until 5:00 PM.
           </p>
           <a
             href="/programs#soup-kitchen"
@@ -108,8 +107,7 @@ const optimizedAerialImage = await getImage({
             Transitional Housing
           </h3>
           <p class="text-slate-600 text-sm leading-relaxed mb-4">
-            35 client/guest rooms with shared baths, commercial kitchen, and
-            structured guidance for up to 60+ individuals in transition.
+            Transitional housing with structured support to help individuals work toward stability, independence, and their next step forward.
           </p>
           <a
             href="/programs#housing"
@@ -130,8 +128,7 @@ const optimizedAerialImage = await getImage({
             Recovery & Support
           </h3>
           <p class="text-slate-600 text-sm leading-relaxed mb-4">
-            Home to Logan County's registered Narcotics Anonymous (NA) meetings,
-            job transition, budgeting, and court referrals.
+            Narcotics Anonymous (NA) meetings, recovery support, job transition, budgeting, and connections to community resources.
           </p>
           <a
             href="/programs#recovery"
