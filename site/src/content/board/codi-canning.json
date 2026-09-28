@@ -3,5 +3,7 @@
   "role": "Treasurer",
   "desc": "Logan County Community Services",
   "group": "officer",
+  "photo": "../../assets/board/codi-canning.png",
+  "photoPosition": "center 6%",
   "order": 4
 }
