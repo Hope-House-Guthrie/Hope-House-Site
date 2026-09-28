@@ -6,61 +6,104 @@ import hopeHouseLogo from "../assets/new-updated-logo.png";
 interface Props {
   title: string;
   members: CollectionEntry<"board">[];
-  gridCols?: string;
 }
 
-const {
-  title,
-  members,
-  gridCols = "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3",
-} = Astro.props;
+const { title, members } = Astro.props;
+const count = members.length;
+
+/**
+ * Determine grid layout and member span based strictly on member count:
+ * - 1 member: Single centered card (max-w-md)
+ * - 2 members: 2-column grid (spans 3 cols each on a 6-col desktop grid)
+ * - 3 members: 3-column grid
+ * - 4 members: 4-column grid
+ * - 5+ members: 6-column base desktop grid for flexible math (3 per row = span 2, 2 per row = span 3)
+ */
+let gridColsClass = "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
+let itemSpanClass = "";
+
+if (count === 1) {
+  gridColsClass = "grid-cols-1 max-w-md mx-auto";
+} else if (count === 2) {
+  gridColsClass = "grid-cols-1 sm:grid-cols-2 lg:grid-cols-6";
+  itemSpanClass = "lg:col-span-3";
+} else if (count === 4) {
+  gridColsClass = "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4";
+} else if (count >= 5) {
+  gridColsClass = "grid-cols-1 sm:grid-cols-2 lg:grid-cols-6";
+  itemSpanClass = "lg:col-span-2";
+}
+
+/**
+ * Calculates start column for the first element on the last row to center incomplete rows.
+ * Applies to 6-column desktop grids when count % 3 !== 0.
+ */
+function getStartColumnClass(index: number, total: number): string {
+  if (total < 5) return "";
+  
+  const remainder = total % 3;
+  const isLastRowFirstItem = index === total - remainder;
+
+  if (!isLastRowFirstItem) return "";
+
+  // If 1 item remains on the last row, offset by 2 cols (centered)
+  if (remainder === 1) return "lg:col-start-3";
+  // If 2 items remain on the last row, offset by 1 col (centered)
+  if (remainder === 2) return "lg:col-start-2";
+
+  return "";
+}
 ---
 
-<div class="mt-12 first:mt-0">
-  <h3 class="text-xl font-bold text-slate-900 mb-5">{title}</h3>
+{
+  count > 0 && (
+    <div class="mt-12 first:mt-0">
+      <h3 class="text-xl font-bold text-slate-900 mb-5">{title}</h3>
 
-  <div class={`grid gap-6 ${gridCols}`}>
-    {
-      members.map((member) => (
-        <div
-          class:list={[
-            "bg-white p-6 rounded-lg border border-slate-200 shadow-sm",
+      <div class={`grid gap-6 ${gridColsClass}`}>
+        {members.map((member, index) => {
+          const colStartClass = getStartColumnClass(index, count);
 
-            // todo: this needs to be refactored
-            member.data.name === "TJ Stewart" && "lg:col-start-3", 
-            member.data.group === "advisory" && "lg:col-span-2",
-          ]}
-        >
-          {member.data.photo ? (
-            <Image
-              src={member.data.photo}
-              alt={member.data.name}
-              class="w-full h-70 object-cover rounded-lg mb-1"
-              style={`object-position: ${member.data.photoPosition ?? "center 25%"};`}
-            />
-          ) : (
-            <div class="w-full h-70 bg-white rounded-lg mb-1 flex items-center justify-center p-8">
-              <Image
-                src={hopeHouseLogo}
-                alt="Hope House Guthrie"
-                class="w-full h-full object-contain"
-              />
+          return (
+            <div
+              class:list={[
+                "bg-white p-6 rounded-lg border border-slate-200 shadow-sm flex flex-col",
+                itemSpanClass,
+                colStartClass,
+              ]}
+            >
+              {member.data.photo ? (
+                <Image
+                  src={member.data.photo}
+                  alt={member.data.name}
+                  class="w-full h-70 object-cover rounded-lg mb-4"
+                  style={`object-position: ${member.data.photoPosition ?? "center 25%"};`}
+                />
+              ) : (
+                <div class="w-full h-70 bg-white border border-slate-100 rounded-lg mb-4 flex items-center justify-center p-8">
+                  <Image
+                    src={hopeHouseLogo}
+                    alt="Hope House Guthrie"
+                    class="w-full h-full object-contain"
+                  />
+                </div>
+              )}
+
+              <h4 class="font-bold text-slate-900 text-lg">
+                {member.data.name}
+              </h4>
+
+              <span class="text-xs font-semibold text-sky-700 block mb-2">
+                {member.data.role}
+              </span>
+
+              <p class="text-xs text-slate-500 leading-relaxed">
+                {member.data.desc}
+              </p>
             </div>
-          )}
-
-          <h4 class="font-bold text-slate-900 text-lg">
-            {member.data.name}
-          </h4>
-
-          <span class="text-xs font-semibold text-sky-700 block mb-2">
-            {member.data.role}
-          </span>
-
-          <p class="text-xs text-slate-500">
-            {member.data.desc}
-          </p>
-        </div>
-      ))
-    }
-  </div>
-</div>
+          );
+        })}
+      </div>
+    </div>
+  )
+}

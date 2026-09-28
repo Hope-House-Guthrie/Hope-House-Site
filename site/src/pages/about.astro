@@ -84,23 +84,9 @@ const advisoryMembers = sortedMembers.filter((item) => item.data.group === "advi
       </p>
 
       <div>
-        <BoardSection
-          title="Board Officers"
-          members={officers}
-          gridCols="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
-        />
-
-        <BoardSection
-          title="Board Members"
-          members={boardMembers}
-          gridCols="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-        />
-
-        <BoardSection
-          title="Non-Voting Advisory Board"
-          members={advisoryMembers}
-          gridCols="grid-cols-1 sm:grid-cols-2 lg:grid-cols-6"
-        />
+        <BoardSection title="Board Officers" members={officers} />
+        <BoardSection title="Board Members" members={boardMembers} />
+        <BoardSection title="Non-Voting Advisory Board" members={advisoryMembers} />
       </div>
     </div>
   </section>
