@@ -3,5 +3,7 @@
   "role": "Secretary",
   "desc": "Community Board Leadership and Red Cross Directory of Logan County",
   "group": "officer",
+  "photo": "../../assets/board/dena-porter.png",
+  "photoPosition": "center 1%",
   "order": 5
 }
