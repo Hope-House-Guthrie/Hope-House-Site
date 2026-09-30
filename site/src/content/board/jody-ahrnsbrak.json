@@ -3,5 +3,7 @@
   "role": "Board Member",
   "desc": "Retired Registered Nurse",
   "group": "board",
+  "photo": "../../assets/board/jody-ahrnsbrak.png",
+  "photoPosition": "center 2%",
   "order": 7
 }
