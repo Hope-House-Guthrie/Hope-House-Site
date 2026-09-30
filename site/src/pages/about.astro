@@ -2,23 +2,28 @@
 import { getCollection } from "astro:content";
 import Layout from "../layouts/main.astro";
 import BoardSection from "../components/board-section.astro";
+import hopeHouseSign from "../assets/hope-house-sign.png";
 
 const allMembers = await getCollection("board");
 
 const sortedMembers = allMembers.sort(
-  (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0)
+  (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0),
 );
 
 const officers = sortedMembers.filter((item) => item.data.group === "officer");
-const boardMembers = sortedMembers.filter((item) => item.data.group === "board");
-const advisoryMembers = sortedMembers.filter((item) => item.data.group === "advisory");
+const boardMembers = sortedMembers.filter(
+  (item) => item.data.group === "board",
+);
+const advisoryMembers = sortedMembers.filter(
+  (item) => item.data.group === "advisory",
+);
 ---
 
 <Layout title="About Us">
-  <section class="bg-slate-900 text-white py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="bg-sky-800 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h1 class="text-4xl font-extrabold mb-4">Our History & Vision</h1>
-      <p class="text-slate-300 max-w-2xl text-lg">
+      <p class="text-slate-300 max-w-2xl mx-auto text-lg">
         Founded in 2020 under Neighborhood Hope Dealers (NHD), Hope House
         Guthrie has grown into a life-transformation center for central
         Oklahoma.
@@ -26,67 +31,168 @@ const advisoryMembers = sortedMembers.filter((item) => item.data.group === "advi
     </div>
   </section>
 
+  <!-- Our Story -->
   <section class="py-16 bg-white">
     <div
-      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center"
     >
       <div>
-        <h2 class="text-2xl font-bold text-slate-900 mb-4">
-          From Feeding Meals to Complete Care
-        </h2>
-        <p class="text-slate-600 mb-4 leading-relaxed">
-          Hope House Guthrie began with a simple mission: feeding the hungry
-          through Neighborhood Hope Dealers. The need quickly expanded,
-          transforming our scope into a full-scale facility accommodating up to
-          60+ men, women, and children at a time in our Life Transformation
-          Program.
+        <h2 class="text-3xl font-bold text-sky-700 mb-6">Our Story</h2>
+
+        <p class="text-slate-800 mb-4 leading-relaxed">
+          Hope House Guthrie began in 2020 with just $80 and a commitment to
+          serve hot meals to people experiencing homelessness on the west side
+          of Guthrie. Through Neighborhood Hope Dealers, Inc., that simple act
+          of service grew into a broader effort to provide safety, support, and
+          opportunities for a fresh start.
         </p>
-        <p class="text-slate-600 leading-relaxed">
-          Some who enter our doors face short-term crisis due to financial
-          distress. Others arrive trapped in generational poverty or seeking
-          long-term addiction recovery. We advocate for each person without
-          judgment.
+
+        <p class="text-slate-800 mb-4 leading-relaxed">
+          Despite the challenges of the COVID-19 pandemic, the organization
+          continued to grow. In 2022, a USDA grant helped purchase an
+          18,000-square-foot building, creating space to expand shelter,
+          residential programs, walk-in services, and community support.
+        </p>
+
+        <p class="text-slate-800 mb-4 leading-relaxed">
+          Today, Hope House Guthrie helps individuals and families facing
+          homelessness, addiction, domestic violence, and other challenges.
+          Through meals, shelter, recovery support, counseling, life skills, and
+          employment readiness, we help people build a path toward stability and
+          independence.
+        </p>
+
+        <p class="text-slate-800 leading-relaxed">
+          Many of our staff members are graduates of the programs they now help
+          lead. Their lived experience brings understanding, trust, and
+          practical encouragement to our work and shows that recovery and
+          transformation are possible.
         </p>
       </div>
 
-      <div class="bg-sky-50 border border-sky-100 p-8 rounded-xl">
-        <h3 class="text-xl font-bold text-sky-900 mb-4">Facility Overview</h3>
-        <ul class="space-y-3 text-slate-700 text-sm">
-          <li class="flex items-start gap-2">
-            ✓ <strong>35 Furnished Client Rooms:</strong> Providing secure transitional
-            housing.
-          </li>
-          <li class="flex items-start gap-2">
-            ✓ <strong>Commercial Kitchen:</strong> Fully equipped to cook hot meals
-            daily.
-          </li>
-          <li class="flex items-start gap-2">
-            ✓ <strong>Meeting & Common Spaces:</strong> Dedicated rooms for NA support
-            groups and counseling.
-          </li>
-          <li class="flex items-start gap-2">
-            ✓ <strong>Partner Offices:</strong> On-site space for AARP, Community
-            Action, and Domestic Violence support.
-          </li>
-        </ul>
+      <figure>
+        <img
+          src={hopeHouseSign.src}
+          alt="Hope House Guthrie sign at the parking lot entrance"
+          width={hopeHouseSign.width}
+          height={hopeHouseSign.height}
+          loading="lazy"
+          class="w-full h-auto rounded-xl shadow-md"
+        />
+        <figcaption class="mt-3 text-center text-sm text-slate-800">
+          A sign of hope at the entrance to Hope House Guthrie.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Mission and Vision -->
+  <section class="py-16 bg-sky-50 border-y border-sky-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl sm:text-4xl font-bold text-sky-700 tracking-tight">
+          Serving Hope &amp; Moving Forward
+        </h2>
+        <div
+          class="w-100 sm:w-145 h-1 bg-sky-700 rounded-full mx-auto mt-5"
+          aria-hidden="true"
+        >
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div
+          class="overflow-hidden rounded-xl border border-sky-200 bg-white shadow-md"
+        >
+          <div class="bg-sky-700 px-6 py-3 sm:px-8">
+            <h3 class="text-2xl font-bold text-white">Our Mission</h3>
+          </div>
+
+          <div class="p-6 sm:p-8">
+            <p class="text-slate-800 leading-relaxed">
+              We serve the most needful in our community; we feed the hungry,
+              shelter the homeless, and provide safety for the hurt and the
+              neglected. We advocate for each person who comes through our door.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="overflow-hidden rounded-xl border border-sky-200 bg-white shadow-md"
+        >
+          <div class="bg-sky-700 px-6 py-3 sm:px-8">
+            <h3 class="text-2xl font-bold text-white">Our Vision</h3>
+          </div>
+
+          <div class="p-6 sm:p-8">
+            <p class="text-slate-800 leading-relaxed">
+              To create a safe place that empowers individuals and families to
+              achieve their full potential and contribute to a thriving
+              community.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-sky-700 mb-3 text-center">
+        Our Core Values
+      </h2>
+      <p class="text-slate-800 text-center mb-10">
+        The principles that guide how we serve our community.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="rounded-xl border border-slate-200 p-6">
+          <h3 class="text-xl font-bold text-sky-800 mb-3">Integrity</h3>
+          <p class="text-slate-800 leading-relaxed">
+            We build our decisions, programs, and relationships on openness,
+            honesty, accountability, and fairness.
+          </p>
+        </div>
+
+        <div class="rounded-xl border border-slate-200 p-6">
+          <h3 class="text-xl font-bold text-sky-800 mb-3">Service</h3>
+          <p class="text-slate-800 leading-relaxed">
+            We serve with hospitality, responsiveness, respect, and inclusion.
+            We strive for excellence in our programs and responsible stewardship
+            of the resources entrusted to us.
+          </p>
+        </div>
+
+        <div class="rounded-xl border border-slate-200 p-6">
+          <h3 class="text-xl font-bold text-sky-800 mb-3">Quality of Life</h3>
+          <p class="text-slate-800 leading-relaxed">
+            We work to strengthen our community through a safe haven, accessible
+            services, and leadership that helps individuals and families build a
+            better quality of life.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Board of Directors -->
-  <section class="py-16 bg-slate-50 border-t border-slate-200">
+  <section class="py-16 bg-sky-50 border-t border-sky-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-slate-900 mb-2 text-center">
+      <h2 class="text-3xl font-bold text-sky-700 mb-2 text-center">
         Board of Directors
       </h2>
-      <p class="text-center text-slate-600 mb-12">
+      <p class="text-center text-slate-800 mb-12">
         Volunteer-operated guidance under our visionary leadership team.
       </p>
 
       <div>
         <BoardSection title="Board Officers" members={officers} />
         <BoardSection title="Board Members" members={boardMembers} />
-        <BoardSection title="Non-Voting Advisory Board" members={advisoryMembers} />
+        <BoardSection
+          title="Non-Voting Advisory Board"
+          members={advisoryMembers}
+        />
       </div>
     </div>
   </section>
