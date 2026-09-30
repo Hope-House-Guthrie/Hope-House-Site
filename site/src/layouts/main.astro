@@ -171,25 +171,28 @@ const {
   <div
     class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-[1.7fr_1fr_1fr_1fr] gap-x-12 gap-y-8 pb-12 border-b border-sky-600"
   >
+    <!-- Branding -->
     <div>
-      <div class="flex items-center gap-3 mb-4">
+      <div class="flex items-center gap-2 sm:gap-3 mb-4">
         <img
           src={hhgLogo.src}
           alt="Hope House Guthrie"
           width={hhgLogo.width}
           height={hhgLogo.height}
           loading="lazy"
-          class="h-14 w-auto shrink-0 object-contain"
+          class="h-10 sm:h-14 w-auto shrink-0 object-contain"
         />
 
-        <div class="h-14 min-w-0 flex flex-col justify-center">
+        <div class="h-10 sm:h-14 min-w-0 flex flex-col justify-center">
           <div
-            class="text-white font-bold text-lg leading-tight whitespace-nowrap"
+            class="text-white font-bold text-[13px] sm:text-lg leading-tight md:whitespace-nowrap"
           >
             Neighborhood Hope Dealers, Inc.
           </div>
 
-          <div class="mt-1 text-xs tracking-wide whitespace-nowrap">
+          <div
+            class="mt-1 text-[10px] sm:text-xs tracking-wide whitespace-nowrap"
+          >
             <span class="font-bold text-white"> HOPE HOUSE GUTHRIE </span>
 
             <span class="text-sky-300 mx-1">•</span>
@@ -209,72 +212,93 @@ const {
       </p>
     </div>
 
+    <!-- Quick Links -->
     <div>
       <h3
         class="text-white text-sm font-semibold mb-4 uppercase tracking-wider"
       >
         Quick Links
       </h3>
+
       <ul class="space-y-2 text-sm">
         <li>
-          <a href="/about" class="hover:text-white transition-colors"
-            >Our History & Vision</a
-          >
+          <a href="/about" class="hover:text-white transition-colors">
+            Our History & Vision
+          </a>
         </li>
+
         <li>
-          <a href="/programs" class="hover:text-white transition-colors"
-            >Transitional Housing</a
-          >
+          <a href="/programs" class="hover:text-white transition-colors">
+            Transitional Housing
+          </a>
         </li>
+
         <li>
           <a
             href="/programs#recovery"
-            class="hover:text-white transition-colors">NA Recovery Meetings</a
+            class="hover:text-white transition-colors"
           >
+            NA Recovery Meetings
+          </a>
         </li>
+
         <li>
-          <a href="/donate" class="hover:text-white transition-colors"
-            >Join the 300 Club</a
-          >
+          <a href="/donate" class="hover:text-white transition-colors">
+            Join the 300 Club
+          </a>
         </li>
+
         <li>
           <a
             href="/donate#adopt-a-room"
-            class="hover:text-white transition-colors">Adopt-a-Room</a
+            class="hover:text-white transition-colors"
           >
+            Adopt-a-Room
+          </a>
         </li>
       </ul>
     </div>
 
+    <!-- Direct Support -->
     <div>
       <h3
         class="text-white text-sm font-semibold mb-4 uppercase tracking-wider"
       >
         Direct Support
       </h3>
+
       <p class="text-sm text-sky-100 mb-2">
-        <strong>Physical Facility:</strong><br />1916 E Perkins, Guthrie, OK
-        73044
+        <strong>Physical Facility:</strong><br />
+        1916 E Perkins, Guthrie, OK 73044
       </p>
+
       <p class="text-sm text-sky-100 mb-2">
-        <strong>Mailing Address:</strong><br />PO Box 491, Guthrie, OK 73044
+        <strong>Mailing Address:</strong><br />
+        PO Box 491, Guthrie, OK 73044
       </p>
+
       <p class="text-sm text-sky-100">
-        <strong>Phone:</strong><br /><a
-          href="tel:4058569058"
-          class="hover:text-white">405-856-9058</a
-        > / <a href="tel:4058870288" class="hover:text-white">405-887-0288</a>
+        <strong>Phone:</strong><br />
+
+        <a href="tel:4058569058" class="hover:text-white"> 405-856-9058 </a>
+
+        <span> / </span>
+
+        <a href="tel:4058870288" class="hover:text-white"> 405-887-0288 </a>
       </p>
     </div>
 
-    <div class="md:ml-6">
+    <!-- Follow Us -->
+    <div class="md:ml-6 text-center md:text-left">
       <h3
         class="text-white text-sm font-semibold mb-4 uppercase tracking-wider"
       >
         Follow Us
       </h3>
 
-      <div class="flex items-center justify-center gap-3">
+      <!-- Social Icons -->
+      <div class="flex items-center justify-center md:justify-start gap-3">
+        <!-- YouTube -->
         <a
           href="https://www.youtube.com/@HopeHouseGuthrie"
           target="_blank"
@@ -293,7 +317,20 @@ const {
           </svg>
         </a>
 
-        <div class="relative group">
+        <!-- Mobile Facebook Button -->
+        <button
+          type="button"
+          id="mobile-facebook-toggle"
+          aria-label="Facebook pages"
+          aria-expanded="false"
+          title="Facebook"
+          class="md:hidden w-10 h-10 rounded-full border border-sky-500 flex items-center justify-center text-sky-100 hover:text-white hover:border-sky-400 hover:bg-sky-600 transition-colors"
+        >
+          <span class="text-xl font-bold leading-none">f</span>
+        </button>
+
+        <!-- Desktop Facebook Menu -->
+        <div class="hidden md:block relative group">
           <button
             type="button"
             aria-label="Facebook pages"
@@ -326,6 +363,7 @@ const {
           </div>
         </div>
 
+        <!-- Instagram -->
         <a
           href="https://www.instagram.com/hopehouseguthrie2020/"
           target="_blank"
@@ -349,38 +387,80 @@ const {
           </svg>
         </a>
 
+        <!-- X -->
         <a
           href="https://x.com/HopeHouseGuth"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Hope House Guthrie on X"
           title="X"
-          class="w-10 h-10 rounded-full border border-sky-500 flex items-center justify-center text-sky-100 hover:text-white hover:text-white hover:border-sky-400 hover:bg-sky-600 transition-colors"
+          class="w-10 h-10 rounded-full border border-sky-500 flex items-center justify-center text-sky-100 hover:text-white hover:border-sky-400 hover:bg-sky-600 transition-colors"
         >
           <span class="text-lg font-semibold leading-none">𝕏</span>
         </a>
       </div>
 
-      <p class="mt-4 text-xs text-sky-100 leading-relaxed max-w-56 mx-auto">
+      <!-- Mobile Facebook Choices -->
+      <div
+        id="mobile-facebook-menu"
+        class="hidden md:hidden mt-4 mb-2 w-52 mx-auto rounded-lg border border-sky-600 bg-sky-800 overflow-hidden shadow-sm"
+      >
+        <a
+          href="https://www.facebook.com/profile.php?id=100083818248069"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block px-4 py-2.5 text-left text-sm text-sky-100 hover:bg-sky-600 hover:text-white transition-colors"
+        >
+          Hope House Guthrie
+        </a>
+
+        <a
+          href="https://www.facebook.com/hopehouseguthrie.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block px-4 py-2.5 text-left text-sm text-sky-100 hover:bg-sky-600 hover:text-white border-t border-sky-600 transition-colors"
+        >
+          Neighborhood Hope Dealers, Inc.
+        </a>
+      </div>
+
+      <p
+        class="mt-6 text-xs text-sky-100 leading-relaxed max-w-56 mx-auto md:mx-0"
+      >
         Follow Hope House Guthrie for community updates, upcoming events,
         volunteer opportunities, and stories from Hope House.
       </p>
     </div>
   </div>
 
+  <!-- Footer Bottom -->
   <div
     class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-sky-200"
   >
-    <p>
+    <p class="text-center md:text-left">
       &copy; {new Date().getFullYear()} Neighborhood Hope Dealers / Hope House Guthrie.
       All rights reserved. 501(c)(3) Tax-Deductible.
     </p>
-    <p class="mt-2 md:mt-0">
+
+    <p class="mt-2 md:mt-0 text-center md:text-right">
       Operated by staff and volunteers under the direction of the Board of
       Directors.
     </p>
   </div>
 </footer>
+
+<script>
+  const facebookToggle = document.getElementById("mobile-facebook-toggle");
+  const facebookMenu = document.getElementById("mobile-facebook-menu");
+
+  facebookToggle?.addEventListener("click", () => {
+    const isHidden = facebookMenu?.classList.contains("hidden");
+
+    facebookMenu?.classList.toggle("hidden");
+
+    facebookToggle.setAttribute("aria-expanded", isHidden ? "true" : "false");
+  });
+</script>
 
 <script
   async
