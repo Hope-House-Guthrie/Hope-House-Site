@@ -1,0 +1,344 @@
+---
+import Layout from "../layouts/main.astro";
+
+const opportunities = [
+  {
+    icon: "🍲",
+    title: "Meals & Food Assistance",
+    description:
+      "Interested in helping with meal preparation, serving, food boxes, or kitchen cleanup? Let us know how you would like to support our community food services.",
+  },
+  {
+    icon: "📦",
+    title: "Clothing & Essential Supplies",
+    description:
+      "Help make everyday easier to access through donation sorting, clothing organization, and preparation of hygiene supplies.",
+  },
+  {
+    icon: "🌱",
+    title: "Facility & Grounds Projects",
+    description:
+      "Share your interest in cleaning, gardening, painting, repairs, or other projects that help create a welcoming place for our community.",
+  },
+  {
+    icon: "🤝",
+    title: "Group Volunteer Projects",
+    description:
+      "Connect your workplace, church, school, or community group with a service project. Our team can discuss a project that fits current needs.",
+  },
+];
+---
+
+<Layout title="Volunteer">
+  <section class="bg-sky-700 text-white py-12 sm:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="text-xs font-bold uppercase tracking-wider text-sky-100">
+        Give Your Time. SHare Your Skills.
+      </span>
+      <h1 class="mt-3 text-4xl sm:text-5xl font-extrabold">
+        Volunteer at Hope House Guthrie
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg leading-relaxed textr-sky-100">
+        Help us serve hope and move forward. YOur time, care, and skills can
+        suppor people working toward stability and independence.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-white py-12 sm:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div
+        class="grid grid-cols-1 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] gap-8 lg:gap-10"
+      >
+        <!--Volunteer Opportunities -->
+        <div class="min-w-0">
+          <h2 class="text-3xl font-bold text-sky-700">Ways to Get Involved</h2>
+          <div
+            class="mt-4 mb-5 h-1 w-20 rounded-full bg-sky-500"
+            aria-hidden="true"
+          >
+          </div>
+          <p class="mb-8 text-slate-600 leading-relaxed">
+            Explore areas where you would like to help. Projects and assignments
+            are coordinated with our team based on current needs.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {
+              opportunities.map((opportunity) => (
+                <article class="flex flex-col rounded-xl border border-sky-200 bg-sky-50 p-6 shadow-sm">
+                  <div
+                    class="mb-5 flex h-16 w-16 items-center justify-center rounded-xl bg-white text-3xl"
+                    aria-hidden="true"
+                  >
+                    {opportunity.icon}
+                  </div>
+
+                  <h3 class="mb-3 text-xl font-bold text-slate-900">
+                    {opportunity.title}
+                  </h3>
+
+                  <p class="mb-6 text-sm leading-relaxed text-slate-700">
+                    {opportunity.description}
+                  </p>
+
+                  <a
+                    href="#volunteer-interest"
+                    class="mt-auto self-start font-semibold text-sm text-sky-700 hover:underline"
+                  >
+                    Express Interest &rarr;
+                  </a>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Sticky Panel: stops at the end of this section -->
+        <aside
+          class="self-start rounded-xl border border-sky-200 bg-sky-50 p-6 sm:p-8 shadow-sm lg:sticky lg:top-28"
+          aria-labelledby="volunteer-panel-title"
+        >
+          <span class="text-xs font-bold uppercase tracking-wider text-sky-700">
+            Make a Difference
+          </span>
+          <h2
+            id="volunteer-panel-title"
+            class="mt-2 text-2xl font-bold text-slate-900"
+          >
+            Interested in Volunteering?
+          </h2>
+          <p class="mt-4 leading-relaxed text-slate-700">
+            Whether you are volunteering on your own or bringing a group, we
+            would like to learn about your interests and availability.
+          </p>
+          <a
+            href="#volunteer-interest"
+            class="mt-6 block rounded-lg bg-emerald-600 px-5 py-3.5 text-center font-bold text-white transition-colors hover:bg-emerald-700"
+          >
+            Volunteer Interest Form
+          </a>
+          <p class="mt-5 text-sm leading-relaxed text-slate-600">
+            Questions? Call us to discuss current opportunities.
+          </p>
+          <a
+            href="tel:4058569058"
+            class="mt-2 block text-lg font-bold text-sky-700 hover:underline"
+          >
+            (405) 856-9058
+          </a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Volunteer Interest Form -->
+  <section
+    id="volunteer-interest"
+    class="scroll-mt-56 lg:scroll-mt-28 bg-sky-50 py-12 sm:py-16"
+  >
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-sky-700">Volunteer Interest Form</h2>
+      <p class="mt-3 mb-8 text-slate-700 leading-relaxed">
+        Tell us a little about yourself and how you would like to help.
+      </p>
+
+      <form
+        class="rounded-xl border border-sky-200 bg-white p-5 sm:p-8 shadow-sm"
+        onsubmit="event.preventDefault()"
+      >
+        <p
+          id="volunteer-status"
+          class="mb-6 rounded-lg border border-sky-200 bg-sky-50 p-4 text-sm leading-relaxed text-slate-700"
+        >
+          Online volunteer inquiries are coming soon. This form does not send
+          information yet. To discuss volunteering, call:
+          <a
+            href="tel:4058569058"
+            class="mt-2 block font-semibold text-sky-700 hover:underline"
+          >
+            (405) 856-9058
+          </a>
+        </p>
+
+        <p class="mb-6 text-sm text-slate-600">
+          Fields marked with * are required.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label
+              for="volunteer-first-name"
+              class="mb-2 block font-semibold text-slate-900"
+            >
+              First Name *
+            </label>
+            <input
+              id="volunteer-first-name"
+              name="firstName"
+              type="text"
+              autocomplete="given-name"
+              required
+              maxlength="100"
+              class="w-full min-w-0 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500"
+            />
+          </div>
+
+          <div>
+            <label
+              for="volunteer-last-name"
+              class="mb-2 block font-semibold text-slate-900"
+            >
+              Last Name *
+            </label>
+            <input
+              id="volunteer-last-name"
+              name="lastName"
+              type="text"
+              autocomplete="family-name"
+              required
+              maxlength="100"
+              class="w-full min-w-0 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500"
+            />
+          </div>
+
+          <div>
+            <label
+              for="volunteer-email"
+              class="mb-2 block font-semibold text-slate-900"
+            >
+              Email Address *
+            </label>
+            <input
+              id="volunteer-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+              class="w-full min-w-0 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500"
+            />
+          </div>
+
+          <div>
+            <label
+              for="volunteer-phone"
+              class="mb-2 block font-semibold text-slate-900"
+            >
+              Phone Number
+            </label>
+            <input
+              id="volunteer-phone"
+              name="phone"
+              type="tel"
+              autocomplete="tel"
+              inputmode="tel"
+              class="w-full min-w-0 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500"
+            />
+          </div>
+
+          <div class="sm:col-span-2">
+            <label
+              for="volunteer-type"
+              class="mb-2 block font-semibold text-slate-900"
+            >
+              Volunteering As *
+            </label>
+            <select
+              id="volunteer-type"
+              name="volunteerType"
+              required
+              class="w-full min-w-0 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500"
+            >
+              <option value="">Select an option</option>
+              <option value="individual">Individual</option>
+              <option value="group">Group or organization</option>
+            </select>
+          </div>
+
+          <div class="sm:col-span-2">
+            <label
+              for="volunteer-group"
+              class="mb-2 block font-semibold text-slate-900"
+            >
+              Group or Organization Name
+            </label>
+            <input
+              id="volunteer-group"
+              name="organization"
+              type="text"
+              autocomplete="organization"
+              maxlength="150"
+              class="w-full min-w-0 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500"
+            />
+          </div>
+        </div>
+
+        <fieldset class="mt-7">
+          <legend class="font-semibold text-slate-900">
+            Areas of Interest
+          </legend>
+          <p class="mt-1 mb-3 text-sm text-slate-600">Check all that apply.</p>
+          <div class="space-y-2">
+            {
+              opportunities.map((opportunity) => (
+                <label class="flex cursor-pointer items-start gap-3 rounded-lg border border-slate-200 px-3 py-3">
+                  <input
+                    type="checkbox"
+                    name="interests"
+                    value={opportunity.title}
+                    class="mt-0.5 h-5 w-5 shrink-0 accent-sky-700"
+                  />
+                  <span class="text-base text-slate-700">
+                    {opportunity.title}
+                  </span>
+                </label>
+              ))
+            }
+          </div>
+        </fieldset>
+
+        <div class="mt-6">
+          <label
+            for="volunteer-availability"
+            class="mb-2 block font-semibold text-slate-900"
+          >
+            Availability
+          </label>
+          <textarea
+            id="volunteer-availability"
+            name="availability"
+            rows="3"
+            maxlength="1000"
+            placeholder="Days, times, or how often you would like to help"
+            class="w-full min-w-0 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500"
+          ></textarea>
+        </div>
+
+        <div class="mt-6">
+          <label
+            for="volunteer-message"
+            class="mb-2 block font-semibold text-slate-900"
+          >
+            Skills, Group Size, or Questions
+          </label>
+          <textarea
+            id="volunteer-message"
+            name="message"
+            rows="4"
+            maxlength="2000"
+            class="w-full min-w-0 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          disabled
+          aria-describedby="volunteer-status"
+          class="mt-6 w-full cursor-not-allowed rounded-lg bg-emerald-600 px-5 py-3.5 font-bold text-white opacity-50"
+        >
+          Submit Volunteer Interest — Coming Soon
+        </button>
+      </form>
+    </div>
+  </section>
+</Layout>

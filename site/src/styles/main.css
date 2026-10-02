@@ -1,2 +1,16 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+select {
+  color-scheme: light;
+}
+
+select option {
+  background-color: #ffffff;
+  color: #0f172a;
+}
+
+select option:checked {
+  background-color: #0369a1;
+  color: #ffffff;
+}

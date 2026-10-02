@@ -55,7 +55,7 @@ const {
               >
                 Neighborhood Hope Dealers, Inc.
               </span>
-
+            
               <div class="flex flex-wrap items-center gap-x-2 gap-y-0.5 mt-1">
                 <span
                   class="text-[10px] sm:text-xs font-bold text-sky-700 tracking-wider uppercase"
@@ -178,6 +178,30 @@ const {
           </a>
         </div>
       </div>
+
+         <!-- Home Page Volunteer Tab -->
+      {
+        Astro.url.pathname === "/" && (
+          <a
+            id="home-volunteer-tab"
+            href="/volunteer#volunteer-interest"
+            class="absolute right-0 top-[30vh] inline-flex items-center gap-2 sm:gap-3 rounded-l-xl border border-r-0 border-sky-500 bg-sky-700 px-3 py-2 text-white shadow-lg transition-colors hover:bg-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700 sm:px-5 sm:py-4"
+          >
+            <span class="text-lg sm:text-2xl" aria-hidden="true">
+              🤝
+            </span>
+
+            <span class="flex flex-col">
+              <span class="hidden text-base font-bold sm:block">
+                Be Someone’s Hope
+              </span>
+              <span class="text-xs sm:text-sm font-semibold">
+                Volunteer With Us →
+              </span>
+            </span>
+          </a>
+        )
+      }
     </header>
 
     <!-- Page Content -->
@@ -188,7 +212,7 @@ const {
     <!-- Footer -->
     <footer class="bg-sky-700 text-sky-100 pt-12 pb-8 border-t border-sky-600">
       <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-[1.7fr_1fr_1fr_1fr] gap-x-12 gap-y-8 pb-12 border-b border-sky-600"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[1.7fr_1fr_1fr_1fr] gap-x-12 gap-y-8 pb-12 border-b border-sky-600"
       >
         <!-- Branding -->
         <div>
@@ -282,6 +306,12 @@ const {
                 class="hover:text-white transition-colors"
               >
                 Adopt-a-Room
+              </a>
+            </li>
+
+            <li>
+              <a href="/volunteer" class="hover:text-white transition-colors">
+                Volunteer With Us
               </a>
             </li>
           </ul>
@@ -465,7 +495,7 @@ const {
 
       <!-- Footer Bottom -->
       <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-sky-200"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col xl:flex-row gap-3 items-center justify-between text-xs text-sky-200"
       >
         <p class="text-center md:text-left">
           &copy; {new Date().getFullYear()} Neighborhood Hope Dealers / Hope House
@@ -499,5 +529,40 @@ const {
       async
       src="https://widgets.givebutter.com/latest.umd.cjs?acct=Qbp6xqDwfEboHdnU&p=other"
     ></script>
+
+    <script>
+      const volunteerTab = document.getElementById("home-volunteer-tab");
+      const header = volunteerTab?.closest("header");
+
+      if (volunteerTab && header) {
+        let framePending = false;
+
+        const positionVolunteerTab = () => {
+          const headerBounds = header.getBoundingClientRect();
+
+          const isMobile = window.innerWidth < 640;
+
+          const screenTop = isMobile
+            ? headerBounds.bottom + 6
+            : Math.max(
+                headerBounds.bottom + 12,
+                window.innerHeight * 0.3 - window.scrollY,
+              );
+
+          volunteerTab.style.top = `${screenTop - headerBounds.top}px`;
+          framePending = false;
+        };
+
+        const schedulePosition = () => {
+          if (framePending) return;
+          framePending = true;
+          requestAnimationFrame(positionVolunteerTab);
+        };
+
+        window.addEventListener("scroll", schedulePosition, { passive: true });
+        window.addEventListener("resize", schedulePosition);
+        positionVolunteerTab();
+      }
+    </script>
   </body>
 </html>
