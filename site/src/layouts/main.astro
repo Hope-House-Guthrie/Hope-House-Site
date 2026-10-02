@@ -1,6 +1,8 @@
 ---
 import "../styles/main.css";
+import { Image } from "astro:assets";
 import hhgLogo from "../assets/logo.svg";
+import unitedWayLogo from "../assets/partners/united-way-logo-HHG.jpg";
 
 interface Props {
   title: string;
@@ -227,6 +229,15 @@ const {
           <p class="text-xs text-sky-200">
             Proud Partner of United Way of Logan County.
           </p>
+
+          <Image
+            src={unitedWayLogo}
+            alt="United Way of Logan County"
+            width={240}
+            format="webp"
+            class="mt-4 h-auto w-60 max-w-full"
+            loading="lazy"
+          />
         </div>
 
         <!-- Quick Links -->
@@ -237,7 +248,7 @@ const {
             Quick Links
           </h3>
 
-          <ul class="space-y-2 text-sm">
+          <ul class="space-y-2 md:space-y-5 text-sm">
             <li>
               <a href="/about" class="hover:text-white transition-colors">
                 Our History & Vision
@@ -284,12 +295,12 @@ const {
             Direct Support
           </h3>
 
-          <p class="text-sm text-sky-100 mb-2">
+          <p class="text-sm text-sky-100 mb-2 md:mb-7">
             <strong>Physical Facility:</strong><br />
             1916 E Perkins, Guthrie, OK 73044
           </p>
 
-          <p class="text-sm text-sky-100 mb-2">
+          <p class="text-sm text-sky-100 mb-2 md:mb-7">
             <strong>Mailing Address:</strong><br />
             PO Box 491, Guthrie, OK 73044
           </p>
@@ -445,9 +456,7 @@ const {
             </a>
           </div>
 
-          <p
-            class="mt-6 text-xs text-sky-100 leading-relaxed max-w-56 mx-auto md:mx-0"
-          >
+          <p class="mt-6 md:mt-12 text-xs text-sky-100 leading-relaxed">
             Follow Hope House Guthrie for community updates, upcoming events,
             volunteer opportunities, and stories from Hope House.
           </p>
