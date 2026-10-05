@@ -14,3 +14,67 @@ select option:checked {
   background-color: #0369a1;
   color: #ffffff;
 }
+
+/* Shared raised frame for cards and boxes */
+.hope-frame {
+  border: 1px solid #bae6fd;
+  border-radius: 1rem;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 80%),
+    0 2px 0 #c3dfed,
+    0 6px 0 -3px #e0edf5,
+    0 8px 12px -5px rgb(15 23 42 / 28%),
+    0 18px 30px -12px rgb(12 74 110 / 32%);
+}
+
+/* Optional blue accent along the top */
+.hope-frame-accent {
+  border-top: 4px solid #0ea5e9;
+}
+
+.hope-social {
+  border: 1px solid #38bdf8;
+  background: linear-gradient(to bottom, #0284c7, #0369a1);
+  color: #ffffff;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 30%),
+    0 3px 0 #075985,
+    0 7px 12px rgb(8 47 73 / 35%);
+}
+
+.hope-social:hover {
+  background: linear-gradient(to bottom, #0ea5e9, #0284c7);
+}
+
+.hope-social:active {
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 25%),
+    0 1px 0 #075985,
+    0 3px 6px rgb(8 47 73 / 25%);
+}
+
+.hope-social:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 5px;
+}
+
+.hope-logo-depth {
+  filter: drop-shadow(0 2px 1px rgb(8 47 73 / 25%))
+    drop-shadow(0 6px 8px rgb(8 47 73 / 35%));
+}
+
+.hope-action {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 30%),
+    0 3px 0 rgb(8 47 73 / 35%),
+    0 7px 12px rgb(8 47 73 / 20%);
+}
+
+.hope-action:active {
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 25%),
+    0 1px 0 rgb(8 47 73 / 35%),
+    0 3px 6px rgb(8 47 73 / 15%);
+}

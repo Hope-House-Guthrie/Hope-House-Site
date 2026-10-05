@@ -1,0 +1,412 @@
+---
+import { Image } from "astro:assets";
+
+import wishlist from "../assets/spotlight/amazone-wishlist.jpeg";
+import partnership from "../assets/spotlight/community-partnership.jpeg";
+import shoutout from "../assets/spotlight/partner-shoutout.jpeg";
+import reasors from "../assets/spotlight/reesers.jpeg";
+import floats from "../assets/spotlight/root-beer-float.jpeg";
+import thanks from "../assets/spotlight/thank-you.jpeg";
+
+const spotlights = [
+  { image: wishlist, title: "Support Our Amazon Wishlist" },
+  { image: partnership, title: "Community Partnership in Action" },
+  { image: shoutout, title: "Partner Shout-Out" },
+  { image: reasors, title: "Thank You to Our Food Partners" },
+  { image: floats, title: "Popcorn & Root Beer Float Night" },
+  { image: thanks, title: "Thank You for Your Support" },
+];
+---
+
+<section
+  class="bg-gradient-to-br from-sky-100 via-sky-50 to-white py-12 sm:py-16"
+  aria-labelledby="spotlight-title"
+>
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+    <div class="mb-8 text-center">
+      <h2 id="spotlight-title" class="text-3xl font-bold text-sky-700">
+        Hope House Spotlight
+      </h2>
+
+      <div
+        class="mx-auto mt-4 h-1 w-20 rounded-full bg-sky-500"
+        aria-hidden="true"
+      >
+      </div>
+
+      <p class="mt-4 text-slate-600">
+        Celebrating our community, our partners, and hope in action.
+      </p>
+    </div>
+
+    <div
+      id="hope-spotlight"
+      class="overflow-hidden rounded-2xl border border-sky-200 border-t-4 border-t-sky-500 bg-white shadow-xl shadow-sky-900/10"
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Hope House community spotlights"
+    >
+      <div data-slides class="p-3 sm:p-6">
+        {
+          spotlights.map((item, index) => (
+            <article
+              data-slide
+              hidden={index !== 0}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${index + 1} of ${spotlights.length}: ${item.title}`}
+            >
+              <button
+                type="button"
+                data-enlarge
+                class="block w-full rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700"
+                aria-label={`Enlarge flyer: ${item.title}`}
+              >
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={1000}
+                  format="webp"
+                  quality={85}
+                  loading="lazy"
+                  class="mx-auto h-[360px] w-full object-contain sm:h-[520px]"
+                />
+              </button>
+
+              <h3 class="mt-5 text-center text-lg font-bold text-slate-900">
+                {item.title}
+              </h3>
+
+              <p class="mt-1 text-center text-sm text-slate-500">
+                Tap or click the flyer to enlarge
+              </p>
+            </article>
+          ))
+        }
+      </div>
+
+      <div
+        class="flex flex-col items-center gap-2 border-t border-sky-100 bg-sky-50 px-4 py-4"
+      >
+        <span
+          data-counter
+          class="text-center text-xs font-semibold tracking-wider text-slate-500"
+        >
+          1 / {spotlights.length}
+        </span>
+
+        <div class="flex items-center justify-center gap-3">
+          <button
+            type="button"
+            data-previous
+            aria-label="Previous spotlight"
+            class="flex h-11 w-11 items-center justify-center rounded-full bg-sky-700 text-white shadow-md transition hover:bg-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700"
+          >
+            <svg
+              class="h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M19 12H5m7 7-7-7 7-7"></path>
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            data-play
+            aria-label="Pause spotlight rotation"
+            class="flex h-11 w-11 items-center justify-center rounded-full text-sky-700 transition hover:bg-sky-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700"
+          >
+            <svg
+              data-pause-icon
+              class="h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M6 5h4v14H6zm8 0h4v14h-4z"></path>
+            </svg>
+
+            <svg
+              data-play-icon
+              hidden
+              class="h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="m8 5 11 7-11 7z"></path>
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            data-next
+            aria-label="Next spotlight"
+            class="flex h-11 w-11 items-center justify-center rounded-full bg-sky-700 text-white shadow-md transition hover:bg-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700"
+          >
+            <svg
+              class="h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14m-7-7 7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <p data-announcement class="sr-only" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <dialog
+    id="spotlight-enlarged"
+    aria-label="Enlarged spotlight flyer"
+    class="m-auto max-h-[92dvh] w-[92vw] max-w-4xl overflow-y-auto rounded-xl bg-white p-3 shadow-xl backdrop:bg-slate-900/70 sm:p-5"
+  >
+    <form method="dialog" class="mb-3 flex justify-end">
+      <button
+        type="submit"
+        autofocus
+        class="min-h-11 rounded-lg bg-sky-700 px-5 py-2 font-semibold text-white hover:bg-sky-800"
+      >
+        Close ✕
+      </button>
+    </form>
+
+    <img data-full-image alt="" class="h-auto w-full" />
+  </dialog>
+</section>
+
+<style>
+  [data-slide][hidden],
+  [data-pause-icon][hidden],
+  [data-play-icon][hidden] {
+    display: none !important;
+  }
+
+  /* Raised outer frame */
+  #hope-spotlight {
+    border: 1px solid #bae6fd;
+    border-top: 4px solid #0ea5e9;
+    background: #ffffff;
+    box-shadow:
+      0 2px 0 #7dd3fc,
+      0 8px 0 -3px #d0e8f5,
+      0 22px 40px -12px rgb(12 74 110 / 30%),
+      inset 0 1px 0 rgb(255 255 255 / 90%);
+  }
+
+  /* Soft lighting behind the flyer */
+  #hope-spotlight [data-slides] {
+    background: radial-gradient(
+      ellipse at top,
+      #ffffff 20%,
+      #f0f9ff 75%,
+      #e0f2fe 100%
+    );
+  }
+
+  /* Shadow follows the flyer's actual edges */
+  #hope-spotlight [data-enlarge] img {
+    filter: drop-shadow(0 10px 12px rgb(15 23 42 / 20%));
+    transition:
+      transform 220ms ease,
+      filter 220ms ease;
+  }
+
+  /* Slight lift when using a mouse */
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    #hope-spotlight [data-enlarge]:hover img {
+      transform: translateY(-3px);
+      filter: drop-shadow(0 15px 16px rgb(15 23 42 / 25%));
+    }
+  }
+
+  /* Raised arrow buttons */
+  #hope-spotlight [data-previous],
+  #hope-spotlight [data-next] {
+    background: linear-gradient(to bottom, #0284c7, #0369a1);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 30%),
+      0 3px 0 #075985,
+      0 5px 8px rgb(12 74 110 / 20%);
+  }
+
+  #hope-spotlight [data-previous]:active,
+  #hope-spotlight [data-next]:active {
+    transform: translateY(2px);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 20%),
+      0 1px 0 #075985;
+  }
+</style>
+
+<script>
+  const carousel = document.getElementById("hope-spotlight");
+  const dialog = document.querySelector<HTMLDialogElement>(
+    "#spotlight-enlarged",
+  );
+
+  if (carousel && dialog) {
+    const slides = Array.from(
+      carousel.querySelectorAll<HTMLElement>("[data-slide]"),
+    );
+
+    const counter = carousel.querySelector<HTMLElement>("[data-counter]");
+
+    const play = carousel.querySelector<HTMLButtonElement>("[data-play]");
+
+    const pauseIcon = play?.querySelector<SVGElement>("[data-pause-icon]");
+
+    const playIcon = play?.querySelector<SVGElement>("[data-play-icon]");
+
+    const announcement = carousel.querySelector<HTMLElement>(
+      "[data-announcement]",
+    );
+
+    const fullImage =
+      dialog.querySelector<HTMLImageElement>("[data-full-image]");
+
+    let current = 0;
+    let paused = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    let hovering = false;
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    const updatePlayLabel = () => {
+      if (!play) return;
+
+      pauseIcon?.toggleAttribute("hidden", paused);
+      playIcon?.toggleAttribute("hidden", !paused);
+
+      const label = paused
+        ? "Play spotlight rotation"
+        : "Pause spotlight rotation";
+
+      play.setAttribute("aria-label", label);
+      play.title = label;
+    };
+
+    const showSlide = (index: number, manual = false) => {
+      if (!slides.length) return;
+
+      current = (index + slides.length) % slides.length;
+
+      slides.forEach((slide, i) => {
+        slide.hidden = i !== current;
+      });
+
+      if (counter) {
+        counter.textContent = `${current + 1} / ${slides.length}`;
+      }
+
+      if (manual) {
+        paused = true;
+        updatePlayLabel();
+
+        if (announcement) {
+          announcement.textContent =
+            slides[current].getAttribute("aria-label") ?? "";
+        }
+      }
+    };
+
+    carousel.querySelector("[data-previous]")?.addEventListener("click", () => {
+      showSlide(current - 1, true);
+    });
+
+    carousel.querySelector("[data-next]")?.addEventListener("click", () => {
+      showSlide(current + 1, true);
+    });
+
+    play?.addEventListener("click", () => {
+      paused = !paused;
+      updatePlayLabel();
+    });
+
+    carousel.addEventListener("mouseenter", () => {
+      hovering = true;
+    });
+
+    carousel.addEventListener("mouseleave", () => {
+      hovering = false;
+    });
+
+    carousel.addEventListener("focusin", (event) => {
+      if (event.target === play) return;
+
+      paused = true;
+      updatePlayLabel();
+    });
+
+    const slideArea = carousel.querySelector<HTMLElement>("[data-slides]");
+
+    slideArea?.addEventListener(
+      "touchstart",
+      (event) => {
+        const touch = event.changedTouches[0];
+        if (!touch) return;
+
+        touchStartX = touch.clientX;
+        touchStartY = touch.clientY;
+      },
+      { passive: true },
+    );
+
+    slideArea?.addEventListener(
+      "touchend",
+      (event) => {
+        const touch = event.changedTouches[0];
+        if (!touch) return;
+
+        const distanceX = touch.clientX - touchStartX;
+        const distanceY = touch.clientY - touchStartY;
+
+        if (
+          Math.abs(distanceX) > 60 &&
+          Math.abs(distanceX) > Math.abs(distanceY)
+        ) {
+          showSlide(current + (distanceX < 0 ? 1 : -1), true);
+        }
+      },
+      { passive: true },
+    );
+
+    carousel.querySelectorAll("[data-enlarge]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const image = button.querySelector("img");
+
+        if (image && fullImage) {
+          paused = true;
+          updatePlayLabel();
+
+          fullImage.src = image.currentSrc || image.src;
+          fullImage.alt = image.alt;
+
+          dialog.showModal();
+        }
+      });
+    });
+
+    updatePlayLabel();
+
+    window.setInterval(() => {
+      if (!paused && !hovering && !dialog.open && !document.hidden) {
+        showSlide(current + 1);
+      }
+    }, 10000);
+  }
+</script>
