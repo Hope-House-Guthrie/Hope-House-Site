@@ -4,3 +4,4 @@ node_modules
 .env
 .astro
 dist
+*.qcow2

@@ -7,7 +7,7 @@
 stdenv.mkDerivation rec {
   inherit version;
 
-  pname = "h2site";
+  pname = "h2-site";
   src = ./.;
 
   nativeBuildInputs = [

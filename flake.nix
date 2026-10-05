@@ -7,6 +7,7 @@
 
   outputs =
     {
+      self,
       ...
     }@inputs:
     let
@@ -14,20 +15,42 @@
 
       pkgs = import inputs.nixpkgs {
         inherit system;
+        overlays = [ self.overlays.default ];
       };
 
       shell = pkgs.callPackage ./shell/package.nix {
         inherit inputs;
       };
 
-      site = pkgs.callPackage ./site/package.nix {
-        inherit inputs;
-
-        version = "0.1.0";
-      };
+      module = ./site/module.nix;
     in
     {
       devShells.${system}.default = shell;
-      packages.${system}.default = site;
+
+      nixosConfigurations.test-vm = inputs.nixpkgs.lib.nixosSystem {
+        inherit system;
+
+        modules = [
+          ./site/test-vm
+          {
+            nixpkgs.overlays = [ self.overlays.default ];
+          }
+        ];
+      };
+
+      nixosModules = {
+        h2-site = module;
+        default = module;
+      };
+
+      overlays.default = final: prev: {
+        h2-site = final.callPackage ./site/package.nix {
+          inherit inputs;
+
+          version = "0.1.0";
+        };
+      };
+
+      packages.${system}.default = pkgs.h2-site;
     };
 }
