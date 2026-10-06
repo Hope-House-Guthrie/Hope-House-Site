@@ -7,8 +7,9 @@
 
 let
   inherit (lib)
+    concatMapAttrs
     filterAttrs
-    mapAttrs'
+    listToAttrs
     mkEnableOption
     mkIf
     mkOption
@@ -25,9 +26,10 @@ let
       options = {
         enable = mkEnableOption "H2 Site instance: ${name}";
 
-        domain = mkOption {
-          type = types.str;
-          description = "Public URL for the application.";
+        domains = mkOption {
+          type = types.listOf types.str;
+          default = [ ];
+          description = "Public domain names for the application.";
         };
 
         package = mkOption {
@@ -50,26 +52,27 @@ in
     services.caddy = {
       enable = true;
 
-      virtualHosts = mapAttrs' (
-        name: inst:
+      virtualHosts = concatMapAttrs (
+        _: inst:
         let
           package = if inst.package != null then inst.package else pkgs.h2-site;
+          vhostConfig = {
+            extraConfig = ''
+              root * "${package}/bin"
+              encode gzip zstd
+
+              handle {
+                try_files {path} {path}/ /index.html
+                file_server
+              }
+
+              log {
+                output file /var/log/caddy/access.log
+              }
+            '';
+          };
         in
-        nameValuePair inst.domain {
-          extraConfig = ''
-            root * "${package}/bin"
-            encode gzip zstd
-
-            handle {
-              try_files {path} {path}/ /index.html
-              file_server
-            }
-
-            log {
-              output file /var/log/caddy/access.log
-            }
-          '';
-        }
+        listToAttrs (map (domain: nameValuePair domain vhostConfig) inst.domains)
       ) enabledInstances;
     };
   };

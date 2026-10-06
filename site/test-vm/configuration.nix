@@ -10,6 +10,8 @@
 
   services.h2-site.test = {
     enable = true;
-    domain = "localhost";
+    domains = [
+      "localhost"
+    ];
   };
 }
