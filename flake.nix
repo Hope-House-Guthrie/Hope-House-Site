@@ -3,6 +3,11 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-26.05";
+
+    h3 = {
+      url = "github:Hope-House-Guthrie/HopeHouseHub/develop";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -32,8 +37,12 @@
 
         modules = [
           ./site/test-vm
+          inputs.h3.nixosModules.h3-forms
           {
-            nixpkgs.overlays = [ self.overlays.default ];
+            nixpkgs.overlays = [
+              self.overlays.default
+              inputs.h3.overlays.default
+            ];
           }
         ];
       };

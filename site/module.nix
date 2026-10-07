@@ -10,6 +10,8 @@ let
     concatMapAttrs
     filterAttrs
     listToAttrs
+    mapAttrs'
+    mapAttrsToList
     mkEnableOption
     mkIf
     mkOption
@@ -49,17 +51,33 @@ in
   };
 
   config = mkIf (enabledInstances != { }) {
+    services.h3-forms = mapAttrs' (
+      name: inst:
+      nameValuePair name {
+        enable = true;
+      }
+    ) enabledInstances;
+
+    users.users.caddy.extraGroups = mapAttrsToList (
+      name: _: config.services.h3-forms.${name}.group
+    ) enabledInstances;
+
     services.caddy = {
       enable = true;
 
       virtualHosts = concatMapAttrs (
-        _: inst:
+        name: inst:
         let
           package = if inst.package != null then inst.package else pkgs.h2-site;
+
           vhostConfig = {
             extraConfig = ''
-              root * "${package}/bin"
+              root * "${package}/share/h2-site"
               encode gzip zstd
+
+              handle /_form/* {
+                reverse_proxy unix/${config.services.h3-forms.${name}.socketPath}
+              }
 
               handle {
                 try_files {path} {path}/ /index.html
