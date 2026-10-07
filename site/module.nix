@@ -80,8 +80,20 @@ in
               }
 
               handle {
-                try_files {path} {path}/ /index.html
+                try_files {path} {path}/ {path}.html
                 file_server
+              }
+
+              handle_path /* {
+                error 404
+              }
+
+              handle_errors {
+                @404 expression `{err.status_code} == 404`
+                handle @404 {
+                  rewrite * /not-found
+                  file_server
+                }
               }
 
               log {
