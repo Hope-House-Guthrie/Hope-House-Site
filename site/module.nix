@@ -80,12 +80,12 @@ in
               }
 
               handle {
-                try_files {path} {path}/ /index.html
-                file_server
-              }
+                @notfound {
+                  not file {path} {path}/ {path}/index.html
+                }
+                error @notfound 404
 
-              handle_path /* {
-                error 404
+                file_server
               }
 
               handle_errors {
