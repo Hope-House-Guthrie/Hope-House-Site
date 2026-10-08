@@ -31,6 +31,15 @@ community impact, and ways to support our work.
 
 ## Roadmap
 
+### Issues
+
+- Volunteer form: phone number doesn't auto format
+- Programs and Services: needs content update
+- volunteer-inqury-success.astro: needs content
+- client-inqury-success.astro: needs content
+- not-found.astro: needs content
+- Volunteer and Client inquiry forms: submit button appears greyed out due to css settings (but is enabled)
+
 ### Brent
 
 - Continue reviewing existing sites for inspiration.
@@ -44,11 +53,7 @@ community impact, and ways to support our work.
 
 ### TJ
 
-- Integrate GiveButter donations.
-- Integrate GiveButter mailing list signup.
-- Integrate TinaCMS for visual content management.
 - Add Google Analytics tracking.
-- Add an RSS feed for blog/news once that section is available.
 
 ### Future: Hope House Hub Integration
 
