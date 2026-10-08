@@ -73,8 +73,69 @@ import Layout from "../layouts/main.astro";
     </div>
   </section>
 
+  <!-- Meeting Questions -->
+  <section
+    id="meeting-inquiries"
+    class="scroll-mt-64 bg-white pb-16 md:scroll-mt-40"
+    aria-labelledby="meeting-inquiries-title"
+  >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="hope-frame hope-frame-accent bg-sky-50 p-6 sm:p-8">
+        <div class="flex flex-col gap-5 sm:flex-row sm:items-start">
+          <span
+            class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-sky-100 text-3xl"
+            aria-hidden="true"
+          >
+            🤝
+          </span>
+
+          <div class="min-w-0 flex-1">
+            <p class="text-xs font-bold uppercase tracking-wider text-sky-700">
+              Recovery &amp; Connection
+            </p>
+
+            <h2
+              id="meeting-inquiries-title"
+              class="mt-2 text-2xl font-bold text-slate-900"
+            >
+              Meeting &amp; Support Group Questions
+            </h2>
+
+            <p class="mt-3 max-w-3xl leading-relaxed text-slate-700">
+              Interested in attending a Narcotics Anonymous meeting or learning
+              about our support groups? Contact our team for meeting times,
+              attendance details, and information about which groups are
+              available to you.
+            </p>
+
+            <div
+              class="mt-5 flex flex-col items-start gap-4 sm:flex-row sm:items-center"
+            >
+              <a
+                href="tel:4058569058"
+                class="hope-action inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-sky-700 px-5 py-3 text-center text-sm font-bold text-white transition-colors hover:bg-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700 sm:w-auto"
+              >
+                Call (405) 856-9058
+              </a>
+
+              <a
+                href="mailto:intake@hopehouseguthrie.org?subject=Meeting%20and%20Support%20Group%20Question"
+                class="inline-flex min-h-11 items-center rounded-lg px-2 font-semibold text-sky-700 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700"
+              >
+                Email About Meetings →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- New Client Inquiry -->
-  <section id="client-inquiry" class="py-16 bg-sky-50 scroll-mt-32">
+  <section
+    id="new-client-inquiry"
+    class="scroll-mt-64 bg-sky-50 py-16 md:scroll-mt-40"
+  >
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-8">
         <h2 class="text-3xl font-bold text-sky-700">New Client Inquiry</h2>
@@ -123,7 +184,9 @@ import Layout from "../layouts/main.astro";
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div class="sm:col-span-2">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_140px] gap-4">
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_140px] gap-4"
+            >
               <div>
                 <label
                   for="inquiry-first-name"

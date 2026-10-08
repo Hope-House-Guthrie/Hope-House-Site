@@ -1,107 +1,662 @@
 ---
 import Layout from "../layouts/main.astro";
+
+const walkInServices = [
+  {
+    icon: "📦",
+    title: "Food Boxes",
+    description:
+      "Each account may receive one food box per week. This limit applies to both individuals and families, regardless of household size. Stop at the front desk to request yours.",
+  },
+  {
+    icon: "🧺",
+    title: "Laundry",
+    description:
+      "Each account may do two loads of laundry per week. This limit also applies to family accounts, regardless of household size. Please start by 3:00 PM and finish washing and drying by 5:00 PM.",
+  },
+  {
+    icon: "🧼",
+    title: "Hygiene Essentials",
+    description:
+      "Personal care items to help with everyday needs. Stop at the front desk to ask about available toiletries and hygiene supplies.",
+  },
+  {
+    icon: "🚿",
+    title: "Showers",
+    description:
+      "One shower per person, per visit, with a 15-minute time limit. Towels and washcloths are provided; please return them afterward.",
+  },
+  {
+    icon: "🍼",
+    title: "Baby Items",
+    description:
+      "Support for your little ones, including formula, diapers, baby clothing, toys, and other essentials. Items depend on current supplies—ask at the front desk about what’s available.",
+  },
+  {
+    icon: "👕",
+    title: "Clothing",
+    description:
+      "Visit once every two weeks to select up to three outfits and one pair of shoes. Please keep your shopping visit to 15 minutes.",
+  },
+];
+
+const residentialPrograms = [
+  {
+    icon: "🌙",
+    label: "OVN · Up to Two Nights",
+    title: "Overnight Program",
+    description:
+      "A short-term place to stay for someone who needs immediate shelter, subject to availability.",
+    expectations: [
+      "Stays of up to two nights.",
+      "Guests complete an OVN intake packet.",
+      "Needs are reviewed during the stay. Moving into another Hope House program may be considered but is not guaranteed.",
+    ],
+  },
+  {
+    icon: "🏠",
+    label: "TEMP · 90-Day Program",
+    title: "Emergency Shelter Program",
+    description:
+      "Shelter, meals, and supportive services while participants work toward greater stability and their next steps.",
+    expectations: [
+      "A 90-day program focused on immediate needs and stability.",
+      "Help connecting with employment, benefits, healthcare, and community resources.",
+      "Required classes and roll calls when work permits, along with assigned volunteer duties.",
+    ],
+  },
+  {
+    icon: "🌱",
+    label: "LTP · 12–18 Months",
+    title: "Life Transformation Program",
+    description:
+      "“Streets to Stability” is a residential recovery program supporting lasting change, personal growth, and independence.",
+    expectations: [
+      "A 12–18-month program with a structured 30-day orientation.",
+      "Individual goals, peer support, accountability, and coordination of supportive services.",
+      "Participation in required classes, roll calls, and assigned volunteer duties, with applicable work exceptions.",
+      "Preparation for long-term stability and independence.",
+    ],
+  },
+];
 ---
 
 <Layout title="Programs & Services">
-  <section class="bg-slate-900 text-white py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="text-4xl font-extrabold mb-4">Programs & Services</h1>
-      <p class="text-slate-300 max-w-2xl text-lg">
+  <!-- Page Header -->
+  <section class="bg-sky-700 py-12 text-white sm:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-5 w-fit max-w-full">
+        <h1 class="text-3xl font-extrabold sm:text-4xl">
+          Programs &amp; Services
+        </h1>
+
+        <div class="mt-4 h-1 w-full rounded-full bg-sky-300" aria-hidden="true">
+        </div>
+      </div>
+
+      <p class="max-w-2xl text-lg leading-relaxed text-sky-100">
         Providing direct relief and long-term support to break cycles of crisis
         and addiction.
       </p>
     </div>
   </section>
 
+  <!-- Community Lunch -->
   <section
-    class="py-16 bg-white space-y-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+    id="soup-kitchen"
+    class="scroll-mt-64 bg-white py-12 sm:py-16 md:scroll-mt-40"
+    aria-labelledby="lunch-title"
   >
-    <!-- Soup Kitchen -->
-    <div
-      id="soup-kitchen"
-      class="grid md:grid-cols-3 gap-8 items-start scroll-mt-24"
-    >
-      <div class="md:col-span-1">
-        <span class="text-xs font-bold text-amber-600 uppercase tracking-wide"
-          >Direct Food Relief</span
-        >
-        <h2 class="text-2xl font-bold text-slate-900 mt-1">
-          Daily Community Lunch
-        </h2>
-      </div>
-      <div class="md:col-span-2 text-slate-600 space-y-4">
-        <p>
-          Hope House serves lunch <strong
-            >seven days a week from 11:00 AM–1:00 PM</strong
-          >
-          at our facility at 1916 E. Perkins Ave. Community members in need are welcome.
-        </p>
-        <p>
-          Our food program is supported through community partnerships and
-          regular food pickups, including God's Food Bank, the Regional Food
-          Bank, and Reasor's, helping us provide meals and food assistance to
-          people in our community.
-        </p>
-      </div>
-    </div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid items-start gap-6 md:grid-cols-3 md:gap-12">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wide text-sky-700">
+            Direct Food Relief
+          </span>
 
-    <hr class="border-slate-200" />
+          <div class="w-fit max-w-full">
+            <h2 id="lunch-title" class="mt-2 text-2xl font-bold text-slate-900">
+              Daily Community Lunch
+            </h2>
 
-    <!-- Housing & Basic Needs -->
-    <div
-      id="housing"
-      class="grid md:grid-cols-3 gap-8 items-start scroll-mt-24"
-    >
-      <div class="md:col-span-1">
-        <span class="text-xs font-bold text-sky-600 uppercase tracking-wide"
-          >Transitional Shelter</span
-        >
-        <h2 class="text-2xl font-bold text-slate-900 mt-1">
-          Housing & Walk-in Services
-        </h2>
-      </div>
-      <div class="md:col-span-2 text-slate-600 space-y-4">
-        <p>
-          Hope House provides safe, structured transitional housing for
-          individuals working toward greater stability and independence.
-        </p>
-        <p>
-          <strong>Walk-In Support:</strong> Community members who are not residing
-          at Hope House Guthrie can access services including showers, clothing, and
-          essential hygiene items <strong
-            >seven days a week until 5:00 PM</strong
-          >.
-        </p>
-      </div>
-    </div>
+            <div
+              class="mt-3 h-1 w-full rounded-full bg-sky-500"
+              aria-hidden="true"
+            >
+            </div>
+          </div>
+        </div>
 
-    <hr class="border-slate-200" />
+        <div class="space-y-4 leading-relaxed text-slate-600 md:col-span-2">
+          <p>
+            Hope House serves lunch{" "}
+            <strong class="text-slate-900">
+              seven days a week from 11:00 AM–1:00 PM
+            </strong>{" "}
+            at our facility at 1916 E. Perkins Ave. Community members in need are
+            welcome.
+          </p>
 
-    <!-- Recovery Meetings -->
-    <div
-      id="recovery"
-      class="grid md:grid-cols-3 gap-8 items-start scroll-mt-24"
-    >
-      <div class="md:col-span-1">
-        <span class="text-xs font-bold text-emerald-600 uppercase tracking-wide"
-          >Recovery & Peer Support</span
-        >
-        <h2 class="text-2xl font-bold text-slate-900 mt-1">
-          Narcotics Anonymous (NA)
-        </h2>
-      </div>
-      <div class="md:col-span-2 text-slate-600 space-y-4">
-        <p>
-          Hope House Guthrie is home to <strong>The Living Room</strong>, a
-          Narcotics Anonymous (NA) group providing a welcoming place for
-          recovery, fellowship, and peer support.
-        </p>
-        <p>
-          Hope House also works with individuals participating in Logan County
-          Drug Court, including providing housing and access to a supportive
-          recovery-focused environment.
-        </p>
+          <p>
+            Our food program is supported through community partnerships and
+            regular food pickups, including God's Food Bank, the Regional Food
+            Bank, and Reasor's, helping us provide meals and food assistance to
+            people in our community.
+          </p>
+
+          <div class="hope-frame hope-frame-accent bg-sky-50 p-6 sm:p-8">
+            <div
+              class="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-7"
+            >
+              <div
+                class="flex h-28 w-28 shrink-0 items-center justify-center self-center rounded-full bg-sky-100"
+                aria-hidden="true"
+              >
+                <svg viewBox="0 0 120 120" class="h-24 w-24" fill="none">
+                  <path
+                    class="lunch-steam"
+                    d="M43 43C33 33 51 28 43 17"
+                    stroke="#0284c7"
+                    stroke-width="4"
+                    stroke-linecap="round"></path>
+
+                  <path
+                    class="lunch-steam lunch-steam-two"
+                    d="M60 40C50 30 68 25 60 14"
+                    stroke="#0284c7"
+                    stroke-width="4"
+                    stroke-linecap="round"></path>
+
+                  <path
+                    class="lunch-steam lunch-steam-three"
+                    d="M77 43C67 33 85 28 77 17"
+                    stroke="#0284c7"
+                    stroke-width="4"
+                    stroke-linecap="round"></path>
+
+                  <ellipse cx="60" cy="98" rx="38" ry="5" fill="#bae6fd"
+                  ></ellipse>
+
+                  <path
+                    d="M24 59H96C93 81 80 94 60 94S27 81 24 59Z"
+                    fill="#0369a1"></path>
+
+                  <path
+                    d="M32 67C35 78 41 84 49 87"
+                    stroke="#38bdf8"
+                    stroke-width="4"
+                    stroke-linecap="round"></path>
+
+                  <ellipse cx="60" cy="59" rx="37" ry="10" fill="#7dd3fc"
+                  ></ellipse>
+
+                  <ellipse cx="60" cy="58" rx="30" ry="6" fill="#fbbf24"
+                  ></ellipse>
+
+                  <path
+                    d="M44 57L49 59M62 55L67 57M74 59L78 57"
+                    stroke="#d97706"
+                    stroke-width="3"
+                    stroke-linecap="round"></path>
+                </svg>
+              </div>
+
+              <div class="min-w-0 flex-1">
+                <p
+                  class="text-xs font-bold uppercase tracking-wider text-sky-700"
+                >
+                  Join Us for Lunch
+                </p>
+
+                <h3
+                  class="mt-2 text-2xl font-bold leading-tight text-slate-900"
+                >
+                  There’s a Seat at Our Table.
+                </h3>
+
+                <p class="mt-3 text-slate-700">
+                  Join us for a hot lunch, friendly faces, and community. We’d
+                  love to welcome you.
+                </p>
+
+                <div class="mt-5 space-y-2 text-sm text-slate-700">
+                  <p>
+                    <span class="font-bold text-sky-800">Every day</span>
+                    · 11:00 AM–1:00 PM
+                  </p>
+                  <p>1916 E. Perkins Ave., Guthrie, OK</p>
+                </div>
+
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=1916+E+Perkins+Ave+Guthrie+OK"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hope-action mt-5 inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-sky-700 px-5 py-3 text-center text-sm font-bold text-white transition-colors hover:bg-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700 sm:w-auto"
+                >
+                  Get Directions →
+                  <span class="sr-only"> (opens in a new tab)</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- Walk-In Services -->
+  <section
+    id="walk-in-services"
+    class="scroll-mt-64 bg-sky-50 py-12 sm:py-16 md:scroll-mt-40"
+    aria-labelledby="walk-in-title"
+  >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-8">
+        <p class="text-xs font-bold uppercase tracking-wide text-sky-700">
+          Everyday Support
+        </p>
+
+        <div class="w-fit max-w-full">
+          <h2 id="walk-in-title" class="mt-2 text-3xl font-bold text-slate-900">
+            Walk-In Services
+          </h2>
+
+          <div
+            class="mt-3 h-1 w-full rounded-full bg-sky-500"
+            aria-hidden="true"
+          >
+          </div>
+        </div>
+
+        <p class="mt-5 max-w-2xl leading-relaxed text-slate-700">
+          Support for everyday needs, with a welcoming team ready to help.
+          Walk-in services are available seven days a week until 5:00 PM.
+        </p>
+      </div>
+
+      <div class="hope-frame hope-frame-accent mb-8 bg-white p-6 sm:p-8">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-start">
+          <span
+            class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-sky-100 text-3xl"
+            aria-hidden="true"
+          >
+            📋
+          </span>
+
+          <div>
+            <h3 class="text-xl font-bold text-sky-800">Your First Visit</h3>
+
+            <p class="mt-2 max-w-3xl leading-relaxed text-slate-700">
+              Stop at the front desk to complete an application and receive your
+              barcode key tag. Bring your key tag with you for future visits.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          walkInServices.map((service) => (
+            <article class="service-card hope-frame hope-frame-accent bg-white p-6">
+              <span
+                class="service-icon mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-100 text-3xl"
+                aria-hidden="true"
+              >
+                {service.icon}
+              </span>
+
+              <h3 class="text-xl font-bold text-slate-900">{service.title}</h3>
+
+              <p class="mt-3 text-sm leading-relaxed text-slate-600">
+                {service.description}
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Shelter & Residential Programs -->
+  <section
+    id="housing"
+    class="scroll-mt-64 bg-white py-12 sm:py-16 md:scroll-mt-40"
+    aria-labelledby="housing-title"
+  >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-8">
+        <p class="text-xs font-bold uppercase tracking-wide text-sky-700">
+          A Place to Begin Again
+        </p>
+
+        <div class="w-fit max-w-full">
+          <h2 id="housing-title" class="mt-2 text-3xl font-bold text-slate-900">
+            Shelter &amp; Residential Programs
+          </h2>
+
+          <div
+            class="mt-3 h-1 w-full rounded-full bg-sky-500"
+            aria-hidden="true"
+          >
+          </div>
+        </div>
+
+        <p class="mt-5 max-w-3xl leading-relaxed text-slate-700">
+          From a short-term place to stay to a longer journey toward stability,
+          our programs offer shelter, support, and opportunities to move
+          forward.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        {
+          residentialPrograms.map((program) => (
+            <article class="service-card hope-frame hope-frame-accent flex flex-col bg-sky-50 p-6">
+              <span
+                class="service-icon mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-100 text-3xl"
+                aria-hidden="true"
+              >
+                {program.icon}
+              </span>
+
+              <p class="text-xs font-bold uppercase tracking-wider text-sky-700">
+                {program.label}
+              </p>
+
+              <h3 class="mt-2 text-2xl font-bold text-slate-900">
+                {program.title}
+              </h3>
+
+              <p class="mt-3 text-sm leading-relaxed text-slate-700">
+                {program.description}
+              </p>
+
+              <div class="mt-5 border-t border-sky-200 pt-5">
+                <h4 class="font-bold text-sky-800">What to Expect</h4>
+
+                <ul class="mt-3 list-disc space-y-3 pl-5 text-sm leading-relaxed text-slate-700">
+                  {program.expectations.map((expectation) => (
+                    <li>{expectation}</li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      <!-- Housing Inquiry -->
+      <div class="hope-frame hope-frame-accent mt-8 bg-sky-50 p-6 sm:p-8">
+        <div class="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-7">
+          <div
+            class="flex h-28 w-28 shrink-0 items-center justify-center self-center rounded-full bg-sky-100"
+            aria-hidden="true"
+          >
+            <svg viewBox="0 0 120 120" class="h-24 w-24" fill="none">
+              <ellipse cx="60" cy="101" rx="37" ry="5" fill="#bae6fd"></ellipse>
+
+              <path
+                d="M31 52H89V94C89 97 87 99 84 99H36C33 99 31 97 31 94V52Z"
+                fill="#7dd3fc"></path>
+
+              <path d="M79 36V24H88V44" fill="#0369a1"></path>
+
+              <path
+                d="M22 54L60 22L98 54"
+                stroke="#0369a1"
+                stroke-width="9"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+
+              <rect x="49" y="68" width="23" height="31" rx="3" fill="#0369a1"
+              ></rect>
+
+              <circle cx="66" cy="84" r="2" fill="#fbbf24"></circle>
+
+              <rect x="36" y="60" width="10" height="13" rx="2" fill="#ffffff"
+              ></rect>
+
+              <rect x="77" y="60" width="10" height="13" rx="2" fill="#ffffff"
+              ></rect>
+
+              <path
+                class="housing-heart"
+                d="M60 58L51 49C45 43 53 35 60 42C67 35 75 43 69 49L60 58Z"
+                fill="#f59e0b"></path>
+            </svg>
+          </div>
+
+          <div class="min-w-0 flex-1">
+            <p class="text-xs font-bold uppercase tracking-wider text-sky-700">
+              Interested in a Bed?
+            </p>
+
+            <h3 class="mt-2 text-2xl font-bold text-slate-900">
+              Your Next Step Starts Here.
+            </h3>
+
+            <p class="mt-3 max-w-3xl leading-relaxed text-slate-700">
+              Call, complete our website inquiry form, or visit the front desk
+              to ask about availability. Our intake team can discuss your needs
+              and help you understand the next steps.
+            </p>
+
+            <a
+              href="/contact#new-client-inquiry"
+              class="hope-action mt-5 inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-sky-700 px-5 py-3 text-center text-sm font-bold text-white transition-colors hover:bg-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700 sm:w-auto"
+            >
+              Ask About a Bed →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recovery & Peer Support -->
+  <section
+    id="recovery"
+    class="scroll-mt-64 bg-sky-50 py-12 sm:py-16 md:scroll-mt-40"
+    aria-labelledby="recovery-title"
+  >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-8">
+        <p class="text-xs font-bold uppercase tracking-wide text-sky-700">
+          Connection &amp; Encouragement
+        </p>
+
+        <div class="w-fit max-w-full">
+          <h2
+            id="recovery-title"
+            class="mt-2 text-3xl font-bold text-slate-900"
+          >
+            Recovery &amp; Peer Support
+          </h2>
+
+          <div
+            class="mt-3 h-1 w-full rounded-full bg-sky-500"
+            aria-hidden="true"
+          >
+          </div>
+        </div>
+
+        <p class="mt-5 max-w-3xl leading-relaxed text-slate-700">
+          Moving forward takes support. Our meetings and groups provide
+          opportunities to connect, share experiences, and build skills for
+          recovery and everyday life.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <!-- NA Meetings -->
+        <article class="service-card hope-frame hope-frame-accent bg-white p-6">
+          <span
+            class="service-icon mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-100 text-3xl"
+            aria-hidden="true"
+          >
+            🤝
+          </span>
+
+          <p class="text-xs font-bold uppercase tracking-wider text-sky-700">
+            Recovery &amp; Fellowship
+          </p>
+
+          <h3 class="mt-2 text-2xl font-bold text-slate-900">
+            Narcotics Anonymous
+          </h3>
+
+          <p class="mt-3 text-sm leading-relaxed text-slate-700">
+            Hope House hosts Blessed in Recovery, a Narcotics Anonymous group
+            offering connection, shared experience, and support in recovery.
+          </p>
+
+          <div class="mt-5 border-t border-sky-200 pt-5">
+            <h4 class="font-bold text-sky-800">Learn More</h4>
+
+            <p class="mt-3 text-sm leading-relaxed text-slate-700">
+              Contact our team for meeting times and details about attending.
+            </p>
+
+            <a
+              href="/contact#meeting-inquiries"
+              class="hope-action mt-5 inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-sky-700 px-5 py-3 text-center text-sm font-bold text-white transition-colors hover:bg-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700 sm:w-auto"
+            >
+              Ask About Meetings →
+            </a>
+          </div>
+        </article>
+
+        <!-- Support Groups -->
+        <article class="service-card hope-frame hope-frame-accent bg-white p-6">
+          <span
+            class="service-icon mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-100 text-3xl"
+            aria-hidden="true"
+          >
+            💬
+          </span>
+
+          <p class="text-xs font-bold uppercase tracking-wider text-sky-700">
+            Wellness &amp; Personal Growth
+          </p>
+
+          <h3 class="mt-2 text-2xl font-bold text-slate-900">
+            Support Groups &amp; Life Skills
+          </h3>
+
+          <p class="mt-3 text-sm leading-relaxed text-slate-700">
+            Hope House participants build connections and practical skills
+            through support groups, wellness activities, and learning
+            opportunities.
+          </p>
+
+          <div class="mt-5 border-t border-sky-200 pt-5">
+            <h4 class="font-bold text-sky-800">Program Activities</h4>
+
+            <ul
+              class="mt-3 list-disc space-y-3 pl-5 text-sm leading-relaxed text-slate-700"
+            >
+              <li>DBSA support and wellness groups.</li>
+              <li>I Matter journaling.</li>
+              <li>Tech Quest.</li>
+              <li>Serving Health, Serving Hope.</li>
+              <li>Peace at Home, Peace in Community.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    </Layout>
+
+<style>
+  /* Animated steam above the lunch bowl */
+  .lunch-steam {
+      animation: lunch-steam-rise 3.6s ease-in-out infinite;
+    }
+
+    .lunch-steam-two {
+      animation-delay: -1.2s;
+    }
+
+    .lunch-steam-three {
+      animation-delay: -2.4s;
+    }
+
+    @keyframes lunch-steam-rise {
+      0%,
+      100% {
+        opacity: 0.35;
+        transform: translateY(3px);
+      }
+
+      50% {
+        opacity: 0.85;
+        transform: translateY(-5px);
+      }
+    }
+
+    /* Icons bounce when a service or program card is hovered or pressed */
+    .service-card:hover .service-icon,
+    .service-card:active .service-icon {
+      animation: service-icon-bounce 650ms ease-in-out;
+    }
+
+    @keyframes service-icon-bounce {
+      0%,
+      100% {
+        transform: translateY(0) rotate(0);
+      }
+
+      30% {
+        transform: translateY(-7px) rotate(-6deg);
+      }
+
+      60% {
+        transform: translateY(-3px) rotate(5deg);
+      }
+    }
+
+    /* Automatic double heartbeat */
+    .housing-heart {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: housing-heartbeat 2s ease-in-out infinite;
+    }
+
+    @keyframes housing-heartbeat {
+      0%,
+      40%,
+      100% {
+        transform: scale(1);
+      }
+
+      12% {
+        transform: scale(1.35);
+      }
+
+      22% {
+        transform: scale(1);
+      }
+
+      32% {
+        transform: scale(1.22);
+      }
+    }
+
+    /* Respect visitors' reduced-motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      .lunch-steam,
+      .housing-heart,
+      .service-card:hover .service-icon,
+      .service-card:active .service-icon {
+        animation: none;
+      }
+
+      .lunch-steam {
+        opacity: 0.65;
+      }
+    }
+  </style>
 </Layout>
