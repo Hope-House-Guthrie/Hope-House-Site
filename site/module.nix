@@ -80,7 +80,7 @@ in
               }
 
               handle {
-                try_files {path} {path}/ {path}.html
+                try_files {path} {path}/ /index.html
                 file_server
               }
 
