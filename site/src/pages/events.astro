@@ -1,0 +1,249 @@
+---
+import Layout from "../layouts/main.astro";
+
+const upcomingEvents = [
+    {
+        title: "Hope House Guthrie Fall Festival",
+        category: "Hope House Guthrie",
+        description:
+            "A day to gather, connect, and celebrate with our community.",
+        location: "Hope House Guthrie",
+        detail: "Date and activities coming soon",
+        icon: "🍂"
+    },
+    {
+        title: "Community Event Spotlight",
+        category: "Community",
+        description:
+            "Discover local gatherings and opportunities to connect around Guthrie.",
+        location: "Guthrie and surrounding communities",
+        detail: "Event listings coming soon",
+        icon: "🏘️",
+    },
+    {
+        title: "Volunteer Together",
+        category: "Get Involved",
+        description:
+            "Help make Hope House Guthrie events welcoming and memorable by sharing your time and talents.",
+        location: "Hope House Guthrie",
+        detail: "Volunteer opportunities coming soon",
+        icon: "🤝",
+    },
+];
+---
+
+<Layout title="Events">
+    <!-- Page Header -->
+     <section class="bg-sky-700 py-12 text-white sm:py-16">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <p class="mb-3 text-sm font-semibold uppercase tracking-wider text-sky-200">
+                Hope House &amp; Our Community
+            </p>
+
+            <h1 class="mb-4 text-3xl font-extrabold sm:text-4xl">
+                Gather, Connect &amp; Find Hope
+            </h1>
+
+            <div
+                class="mb-5 h-1 w-20 rounded-full bg-sky-300"
+                aria-hidden="true"
+            ></div>
+
+            <p class="max-w-2xl text-lg leading-relaxed text-sky-100">
+                Explore events at Hope House Guthrie and opportunities to connect
+                with the community around us.
+            </p>
+        </div>
+       </section>
+
+       <!--Featured Event -->
+        <section class="bg-white py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="mb-4 text-2xl font-bold text-sky-700 sm:text-3xl">
+        Something to Look Forward To
+      </h2>
+
+      <div
+        class="mb-8 h-1 w-20 rounded-full bg-sky-300"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="hope-frame overflow-hidden bg-sky-50 lg:grid lg:grid-cols-2"
+      >
+        <div
+          class="flex min-h-64 flex-col items-center justify-center bg-amber-50 p-8 text-center sm:min-h-80"
+        >
+          <span class="mb-4 text-7xl" aria-hidden="true">🍂</span>
+          <p class="text-2xl font-extrabold text-amber-900 sm:text-3xl">
+            Fall, Friends &amp; Community
+          </p>
+          <p class="mt-3 text-sm text-amber-800">
+            Event photo or flyer coming soon
+          </p>
+        </div>
+
+        <div class="p-6 sm:p-8 lg:p-10">
+          <span
+            class="mb-4 inline-block rounded-full border border-sky-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wider text-sky-700"
+          >
+            Featured Hope House Event
+          </span>
+
+          <h3 class="mb-4 text-2xl font-bold text-sky-700 sm:text-3xl">
+            Hope House Guthrie Fall Festival
+          </h3>
+
+          <p class="mb-6 leading-relaxed text-slate-700">
+            We’re preparing a chance to come together, enjoy the season,
+            and celebrate our community. Check back for confirmed event
+            details and ways to participate.
+          </p>
+
+          <dl class="space-y-4">
+            <div>
+              <dt class="font-semibold text-slate-900">When</dt>
+              <dd class="text-slate-600">Confirmed date and time coming soon</dd>
+            </div>
+
+            <div>
+              <dt class="font-semibold text-slate-900">Where</dt>
+              <dd class="text-slate-600">Hope House Guthrie</dd>
+            </div>
+
+            <div>
+              <dt class="font-semibold text-slate-900">What’s planned</dt>
+              <dd class="text-slate-600">
+                Activities and participation details coming soon
+              </dd>
+            </div>
+          </dl>
+
+          <a
+            href="/volunteer"
+            class="mt-8 inline-block rounded-lg bg-emerald-600 px-6 py-3 text-center font-bold text-white transition-colors hover:bg-emerald-700"
+          >
+            Ask About Volunteering
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Events -->
+  <section class="bg-sky-50 py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="mb-4 text-2xl font-bold text-sky-700 sm:text-3xl">
+        Coming Together
+      </h2>
+
+      <div
+        class="mb-5 h-1 w-20 rounded-full bg-sky-300"
+        aria-hidden="true"
+      ></div>
+
+      <p class="mb-8 max-w-2xl leading-relaxed text-slate-700">
+        We’re building this space for Hope House gatherings, community
+        events, and opportunities to lend a hand. Listings below are
+        previews while details are being gathered.
+      </p>
+
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+        {
+          upcomingEvents.map((event) => (
+            <article class="hope-frame hope-frame-accent flex flex-col bg-white p-6">
+              <span class="mb-4 text-4xl" aria-hidden="true">
+                {event.icon}
+              </span>
+
+              <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-sky-700">
+                {event.category}
+              </p>
+
+              <h3 class="mb-3 text-xl font-bold text-sky-700">
+                {event.title}
+              </h3>
+
+              <p class="mb-6 leading-relaxed text-slate-700">
+                {event.description}
+              </p>
+
+              <div class="mt-auto border-t border-sky-100 pt-4">
+                <p class="text-sm font-semibold text-slate-800">
+                  {event.location}
+                </p>
+                <p class="mt-2 text-sm text-slate-600">
+                  {event.detail}
+                </p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Calendar Placeholder -->
+  <section id="calendar" class="bg-white py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="mb-4 text-2xl font-bold text-sky-700 sm:text-3xl">
+        Community Calendar
+      </h2>
+
+      <div
+        class="mb-5 h-1 w-20 rounded-full bg-sky-300"
+        aria-hidden="true"
+      ></div>
+
+      <p class="mb-8 max-w-2xl leading-relaxed text-slate-700">
+        A place to see public Hope House events and selected gatherings
+        from around our community.
+      </p>
+
+      <!-- TJ: Replace this placeholder with the public Google Calendar. -->
+      <div
+        class="hope-frame flex min-h-80 flex-col items-center justify-center bg-sky-50 px-6 py-12 text-center"
+      >
+        <span class="mb-4 text-5xl" aria-hidden="true">📅</span>
+
+        <h3 class="mb-3 text-2xl font-bold text-sky-700">
+          Our Calendar Is Coming Soon
+        </h3>
+
+        <p class="max-w-lg leading-relaxed text-slate-700">
+          We’re getting this space ready. Check back for event dates,
+          times, locations, and details to help you plan your visit.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Suggest an Event -->
+  <section class="bg-sky-50 py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="hope-frame bg-white p-6 sm:p-10">
+        <h2 class="mb-4 text-2xl font-bold text-sky-700 sm:text-3xl">
+          Have Something to Share?
+        </h2>
+
+        <div
+          class="mb-5 h-1 w-20 rounded-full bg-sky-300"
+          aria-hidden="true"
+        ></div>
+
+        <p class="mb-6 max-w-2xl leading-relaxed text-slate-700">
+          Know of a community event that could benefit our neighbors?
+          Contact us with the details so our team can consider it for
+          the calendar.
+        </p>
+
+        <a
+          href="/contact"
+          class="inline-block rounded-lg bg-sky-700 px-6 py-3 text-center font-semibold text-white transition-colors hover:bg-sky-800"
+        >
+          Contact Our Team
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
