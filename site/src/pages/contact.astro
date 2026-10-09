@@ -156,15 +156,12 @@ import Layout from "../layouts/main.astro";
         </p>
       </div>
 
-      <!--
-      TJ: Connect this form to a submission handler.
-      Deliver inquiries to intake@hopehouseguthrie.org.
-      Enable submission after delivery and error handling are tested.
-       -->
       <form
         class="hope-frame hope-frame-accent bg-white p-6 sm:p-8"
-        onsubmit="event.preventDefault()"
+        action="/_form/client-inquiry"
+        method="POST"
       >
+        <input type="hidden" name="success_url" value="/client-inquiry-success" />
         <div
           class="mb-6 rounded-lg border border-sky-200 bg-white p-4 sm:p-5 text-sm sm:text-base leading-relaxed text-slate-700"
         >
@@ -478,34 +475,12 @@ import Layout from "../layouts/main.astro";
           </div>
         </div>
 
-        <div
-          id="inquiry-status"
-          class="mt-6 rounded-lg border border-sky-200 bg-sky-50 p-5 text-base leading-relaxed text-slate-700"
-        >
-          <p>Online inquiries are coming soon. For now, contact our team:</p>
-
-          <a
-            href="tel:4058569058"
-            class="block mt-3 font-semibold text-sky-700 hover:underline"
-          >
-            (405) 856-9058
-          </a>
-
-          <a
-            href="mailto:intake@hopehouseguthrie.org"
-            class="block mt-2 break-words font-semibold text-sky-700 hover:underline"
-          >
-            intake@hopehouseguthrie.org
-          </a>
-        </div>
-
         <button
           type="submit"
-          disabled
           aria-describedby="inquiry-status"
-          class="mt-6 w-full rounded-lg bg-emerald-600 px-6 py-3.5 font-bold text-white opacity-50 cursor-not-allowed"
+          class="mt-6 w-full rounded-lg bg-emerald-600 px-6 py-3.5 font-bold text-white opacity-50"
         >
-          Submit Inquiry — Coming Soon
+          Submit Inquiry
         </button>
       </form>
 

@@ -7,7 +7,7 @@
 stdenv.mkDerivation rec {
   inherit version;
 
-  pname = "h2site";
+  pname = "h2-site";
   src = ./.;
 
   nativeBuildInputs = [
@@ -31,7 +31,7 @@ stdenv.mkDerivation rec {
   '';
 
   installPhase = ''
-    mkdir -p $out/bin
-    cp -R ./dist/* $out/bin
+    mkdir -p $out/share/h2-site
+    cp -R ./dist/* $out/share/h2-site
   '';
 }

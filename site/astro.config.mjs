@@ -8,5 +8,12 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      proxy: {
+        "/_form": {
+          target: "http://localhost:4002",
+        },
+      },
+    },
   },
 });

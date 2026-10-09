@@ -145,8 +145,11 @@ const opportunities = [
 
       <form
         class="rounded-xl border border-sky-200 bg-white p-5 sm:p-8 shadow-sm"
-        onsubmit="event.preventDefault()"
+        action="/_form/volunteer-inquiry"
+        method="POST"
       >
+        <input type="hidden" name="success_url" value="/volunteer-inquiry-success" />
+
         <p
           id="volunteer-status"
           class="mb-6 rounded-lg border border-sky-200 bg-sky-50 p-4 text-sm leading-relaxed text-slate-700"
@@ -332,11 +335,10 @@ const opportunities = [
 
         <button
           type="submit"
-          disabled
           aria-describedby="volunteer-status"
-          class="mt-6 w-full cursor-not-allowed rounded-lg bg-emerald-600 px-5 py-3.5 font-bold text-white opacity-50"
+          class="mt-6 w-full rounded-lg bg-emerald-600 px-5 py-3.5 font-bold text-white opacity-50"
         >
-          Submit Volunteer Interest — Coming Soon
+          Submit Volunteer Interest
         </button>
       </form>
     </div>
