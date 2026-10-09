@@ -50,7 +50,7 @@ as Hope House Guthrie.
 
 ## In Progress: Events Page
 
-- Create a dedicated Events page at `/events`.
+- Finish the dedicated Events page at `/events`.
 - Add Events to the desktop and mobile header navigation.
 - Include:
   - A featured event.
@@ -66,6 +66,25 @@ as Hope House Guthrie.
   with the calendar.
 
 ## Roadmap
+
+### Issues — Before Launch
+
+This section tracks work required before going live on the primary
+domain. Add items as needed and remove them after they are completed
+and verified.
+
+- Brent: Fix automatic phone-number formatting on the volunteer form.
+- Brent: Add content to `volunteer-inquiry-success.astro`.
+- Brent: Add content to `client-inquiry-success.astro`.
+- Brent: Add content to `not-found.astro`.
+- Brent: Fix the Volunteer and Client inquiry submit-button styling;
+  the buttons appear disabled even though they are enabled.
+- TJ: Save Volunteer and Client inquiry submissions in the Hub database.
+- TJ: Add a way to view those submissions in the Hub.
+- Brent and TJ: Verify both forms submit, save the information, and
+  redirect to the correct success page.
+- Brent: Update the forms' “coming soon” notices once submissions
+  are being saved successfully.
 
 ### Brent
 
