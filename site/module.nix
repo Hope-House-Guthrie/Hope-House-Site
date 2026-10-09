@@ -51,13 +51,6 @@ in
   };
 
   config = mkIf (enabledInstances != { }) {
-    services.h3-forms = mapAttrs' (
-      name: inst:
-      nameValuePair name {
-        enable = true;
-      }
-    ) enabledInstances;
-
     users.users.caddy.extraGroups = mapAttrsToList (
       name: _: config.services.h3-forms.${name}.group
     ) enabledInstances;
