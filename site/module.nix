@@ -91,7 +91,7 @@ in
               handle_errors {
                 @404 expression `{err.status_code} == 404`
                 handle @404 {
-                  rewrite * /not-found
+                  rewrite * /404
                   file_server
                 }
               }

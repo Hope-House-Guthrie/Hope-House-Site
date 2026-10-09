@@ -85,6 +85,12 @@ and verified.
   redirect to the correct success page.
 - Brent: Update the forms' “coming soon” notices once submissions
   are being saved successfully.
+- Volunteer form: phone number doesn't auto format
+- Programs and Services: needs content update
+- volunteer-inqury-success.astro: needs content
+- client-inqury-success.astro: needs content
+- 404.astro: needs content
+- Volunteer and Client inquiry forms: submit button appears greyed out due to css settings (but is enabled)
 
 ### Brent
 
