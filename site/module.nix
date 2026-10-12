@@ -51,13 +51,6 @@ in
   };
 
   config = mkIf (enabledInstances != { }) {
-    services.h3-forms = mapAttrs' (
-      name: inst:
-      nameValuePair name {
-        enable = true;
-      }
-    ) enabledInstances;
-
     users.users.caddy.extraGroups = mapAttrsToList (
       name: _: config.services.h3-forms.${name}.group
     ) enabledInstances;
@@ -91,7 +84,7 @@ in
               handle_errors {
                 @404 expression `{err.status_code} == 404`
                 handle @404 {
-                  rewrite * /not-found
+                  rewrite * /404
                   file_server
                 }
               }
