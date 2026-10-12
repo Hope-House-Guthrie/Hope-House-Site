@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/main.astro";
+import PageHeader from "../components/PageHeader.astro";
 
 const opportunities = [
   {
@@ -30,20 +31,10 @@ const opportunities = [
 ---
 
 <Layout title="Volunteer">
-  <section class="bg-sky-700 text-white py-12 sm:py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <span class="text-xs font-bold uppercase tracking-wider text-sky-100">
-        Give Your Time. SHare Your Skills.
-      </span>
-      <h1 class="mt-3 text-4xl sm:text-5xl font-extrabold">
-        Volunteer at Hope House Guthrie
-      </h1>
-      <p class="mt-5 max-w-2xl text-lg leading-relaxed textr-sky-100">
-        Help us serve hope and move forward. YOur time, care, and skills can
-        suppor people working toward stability and independence.
-      </p>
-    </div>
-  </section>
+  <PageHeader
+    title="Volunteer at Hope House Guthrie"
+    description="Help us serve hope and move forward. Your time, care, and skills can support people working toward stability and independence."
+  />
 
   <section class="bg-white py-12 sm:py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,7 +45,7 @@ const opportunities = [
         <div class="min-w-0">
           <h2 class="text-3xl font-bold text-sky-700">Ways to Get Involved</h2>
           <div
-            class="mt-4 mb-5 h-1 w-20 rounded-full bg-sky-500"
+            class="mt-4 mb-5 h-1 w-full rounded-full bg-sky-700"
             aria-hidden="true"
           >
           </div>

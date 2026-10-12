@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/main.astro";
+import PageHeader from "../components/PageHeader.astro";
 
 const walkInServices = [
   {
@@ -82,24 +83,10 @@ const residentialPrograms = [
 ---
 
 <Layout title="Programs & Services">
-  <!-- Page Header -->
-  <section class="bg-sky-700 py-12 text-white sm:py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mb-5 w-fit max-w-full">
-        <h1 class="text-3xl font-extrabold sm:text-4xl">
-          Programs &amp; Services
-        </h1>
-
-        <div class="mt-4 h-1 w-full rounded-full bg-sky-300" aria-hidden="true">
-        </div>
-      </div>
-
-      <p class="max-w-2xl text-lg leading-relaxed text-sky-100">
-        Providing direct relief and long-term support to break cycles of crisis
-        and addiction.
-      </p>
-    </div>
-  </section>
+  <PageHeader
+    title="Programs & Services"
+    description="Providing direct relief and long-term support to break cycles of crisis and addiction."
+  />
 
   <!-- Community Lunch -->
   <section
@@ -114,16 +101,14 @@ const residentialPrograms = [
             Direct Food Relief
           </span>
 
-          <div class="w-fit max-w-full">
-            <h2 id="lunch-title" class="mt-2 text-2xl font-bold text-slate-900">
-              Daily Community Lunch
-            </h2>
+          <h2 id="lunch-title" class="mt-2 text-2xl font-bold text-slate-900">
+            Lou’s — Lunch on Us
+          </h2>
 
-            <div
-              class="mt-3 h-1 w-full rounded-full bg-sky-500"
-              aria-hidden="true"
-            >
-            </div>
+          <div
+            class="mt-3 h-1 w-full rounded-full bg-sky-700"
+            aria-hidden="true"
+          >
           </div>
         </div>
 
@@ -221,7 +206,7 @@ const residentialPrograms = [
 
                 <div class="mt-5 space-y-2 text-sm text-slate-700">
                   <p>
-                    <span class="font-bold text-sky-800">Every day</span>
+                    <span class="font-bold text-sky-700">Every day</span>
                     · 11:00 AM–1:00 PM
                   </p>
                   <p>1916 E. Perkins Ave., Guthrie, OK</p>
@@ -256,16 +241,11 @@ const residentialPrograms = [
           Everyday Support
         </p>
 
-        <div class="w-fit max-w-full">
-          <h2 id="walk-in-title" class="mt-2 text-3xl font-bold text-slate-900">
-            Walk-In Services
-          </h2>
+        <h2 id="walk-in-title" class="mt-2 text-3xl font-bold text-slate-900">
+          Walk-In Services
+        </h2>
 
-          <div
-            class="mt-3 h-1 w-full rounded-full bg-sky-500"
-            aria-hidden="true"
-          >
-          </div>
+        <div class="mt-3 h-1 w-full rounded-full bg-sky-700" aria-hidden="true">
         </div>
 
         <p class="mt-5 max-w-2xl leading-relaxed text-slate-700">
@@ -284,7 +264,7 @@ const residentialPrograms = [
           </span>
 
           <div>
-            <h3 class="text-xl font-bold text-sky-800">Your First Visit</h3>
+            <h3 class="text-xl font-bold text-sky-700">Your First Visit</h3>
 
             <p class="mt-2 max-w-3xl leading-relaxed text-slate-700">
               Stop at the front desk to complete an application and receive your
@@ -329,16 +309,11 @@ const residentialPrograms = [
           A Place to Begin Again
         </p>
 
-        <div class="w-fit max-w-full">
-          <h2 id="housing-title" class="mt-2 text-3xl font-bold text-slate-900">
-            Shelter &amp; Residential Programs
-          </h2>
+        <h2 id="housing-title" class="mt-2 text-3xl font-bold text-slate-900">
+          Emergency &amp; Transitional Shelter Programs
+        </h2>
 
-          <div
-            class="mt-3 h-1 w-full rounded-full bg-sky-500"
-            aria-hidden="true"
-          >
-          </div>
+        <div class="mt-3 h-1 w-full rounded-full bg-sky-700" aria-hidden="true">
         </div>
 
         <p class="mt-5 max-w-3xl leading-relaxed text-slate-700">
@@ -372,7 +347,7 @@ const residentialPrograms = [
               </p>
 
               <div class="mt-5 border-t border-sky-200 pt-5">
-                <h4 class="font-bold text-sky-800">What to Expect</h4>
+                <h4 class="font-bold text-sky-700">What to Expect</h4>
 
                 <ul class="mt-3 list-disc space-y-3 pl-5 text-sm leading-relaxed text-slate-700">
                   {program.expectations.map((expectation) => (
@@ -465,19 +440,11 @@ const residentialPrograms = [
           Connection &amp; Encouragement
         </p>
 
-        <div class="w-fit max-w-full">
-          <h2
-            id="recovery-title"
-            class="mt-2 text-3xl font-bold text-slate-900"
-          >
-            Recovery &amp; Peer Support
-          </h2>
+        <h2 id="recovery-title" class="mt-2 text-3xl font-bold text-slate-900">
+          Recovery &amp; Peer Support
+        </h2>
 
-          <div
-            class="mt-3 h-1 w-full rounded-full bg-sky-500"
-            aria-hidden="true"
-          >
-          </div>
+        <div class="mt-3 h-1 w-full rounded-full bg-sky-700" aria-hidden="true">
         </div>
 
         <p class="mt-5 max-w-3xl leading-relaxed text-slate-700">
@@ -511,7 +478,7 @@ const residentialPrograms = [
           </p>
 
           <div class="mt-5 border-t border-sky-200 pt-5">
-            <h4 class="font-bold text-sky-800">Learn More</h4>
+            <h4 class="font-bold text-sky-700">Learn More</h4>
 
             <p class="mt-3 text-sm leading-relaxed text-slate-700">
               Contact our team for meeting times and details about attending.
@@ -550,113 +517,149 @@ const residentialPrograms = [
           </p>
 
           <div class="mt-5 border-t border-sky-200 pt-5">
-            <h4 class="font-bold text-sky-800">Program Activities</h4>
+            <h4 class="font-bold text-sky-700">Program Activities</h4>
 
             <ul
-              class="mt-3 list-disc space-y-3 pl-5 text-sm leading-relaxed text-slate-700"
+              class="mt-3 list-disc space-y-4 pl-5 text-sm leading-relaxed text-slate-700"
             >
-              <li>DBSA support and wellness groups.</li>
-              <li>I Matter journaling.</li>
-              <li>Tech Quest.</li>
-              <li>Serving Health, Serving Hope.</li>
-              <li>Peace at Home, Peace in Community.</li>
+              <li>
+                <strong class="mr-1 text-sky-700"
+                  >DBSA Support &amp; Wellness Groups:</strong
+                >
+                Peer connection and conversations about emotional wellness and everyday
+                coping skills.
+              </li>
+
+              <li>
+                <strong class="mr-1 text-sky-700">I Matter Journaling:</strong>
+                Guided journaling that encourages self-reflection, personal growth,
+                and recognizing your own worth.
+              </li>
+
+              <li>
+                <strong class="mr-1 text-sky-700">Tech Quest:</strong>
+                Practical technology lessons that build confidence using computers
+                and digital tools.
+              </li>
+
+              <li>
+                <strong class="mr-1 text-sky-700"
+                  >Serving Health, Serving Hope:</strong
+                >
+                Learning opportunities focused on healthy habits and everyday wellness.
+              </li>
+
+              <li>
+                <strong class="mr-1 text-sky-700">
+                  Peace at Home, Peace in Community:
+                </strong>
+                Conversations about respectful communication, managing conflict, and
+                building healthier relationships.
+              </li>
+
+              <li>
+                <strong class="mr-1 text-sky-700">
+                  Hope House Guthrie Smiles:
+                </strong>
+                A class exploring dental hygiene and addiction recovery, helping clients
+                build healthy habits that support a successful sober life. Clients
+                who cannot afford needed dental care can also apply for assistance
+                with dentures, dental surgery, and other dental needs.
+              </li>
             </ul>
           </div>
         </article>
       </div>
     </div>
   </section>
-
-  <style>
-    </Layout>
+</Layout>
 
 <style>
   /* Animated steam above the lunch bowl */
   .lunch-steam {
-      animation: lunch-steam-rise 3.6s ease-in-out infinite;
+    animation: lunch-steam-rise 3.6s ease-in-out infinite;
+  }
+
+  .lunch-steam-two {
+    animation-delay: -1.2s;
+  }
+
+  .lunch-steam-three {
+    animation-delay: -2.4s;
+  }
+
+  @keyframes lunch-steam-rise {
+    0%,
+    100% {
+      opacity: 0.35;
+      transform: translateY(3px);
     }
 
-    .lunch-steam-two {
-      animation-delay: -1.2s;
+    50% {
+      opacity: 0.85;
+      transform: translateY(-5px);
+    }
+  }
+
+  /* Icons bounce when a service or program card is hovered or pressed */
+  .service-card:hover .service-icon,
+  .service-card:active .service-icon {
+    animation: service-icon-bounce 650ms ease-in-out;
+  }
+
+  @keyframes service-icon-bounce {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0);
     }
 
-    .lunch-steam-three {
-      animation-delay: -2.4s;
+    30% {
+      transform: translateY(-7px) rotate(-6deg);
     }
 
-    @keyframes lunch-steam-rise {
-      0%,
-      100% {
-        opacity: 0.35;
-        transform: translateY(3px);
-      }
+    60% {
+      transform: translateY(-3px) rotate(5deg);
+    }
+  }
 
-      50% {
-        opacity: 0.85;
-        transform: translateY(-5px);
-      }
+  /* Automatic double heartbeat */
+  .housing-heart {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: housing-heartbeat 2s ease-in-out infinite;
+  }
+
+  @keyframes housing-heartbeat {
+    0%,
+    40%,
+    100% {
+      transform: scale(1);
     }
 
-    /* Icons bounce when a service or program card is hovered or pressed */
+    12% {
+      transform: scale(1.35);
+    }
+
+    22% {
+      transform: scale(1);
+    }
+
+    32% {
+      transform: scale(1.22);
+    }
+  }
+
+  /* Respect visitors' reduced-motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .lunch-steam,
+    .housing-heart,
     .service-card:hover .service-icon,
     .service-card:active .service-icon {
-      animation: service-icon-bounce 650ms ease-in-out;
+      animation: none;
     }
 
-    @keyframes service-icon-bounce {
-      0%,
-      100% {
-        transform: translateY(0) rotate(0);
-      }
-
-      30% {
-        transform: translateY(-7px) rotate(-6deg);
-      }
-
-      60% {
-        transform: translateY(-3px) rotate(5deg);
-      }
+    .lunch-steam {
+      opacity: 0.65;
     }
-
-    /* Automatic double heartbeat */
-    .housing-heart {
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: housing-heartbeat 2s ease-in-out infinite;
-    }
-
-    @keyframes housing-heartbeat {
-      0%,
-      40%,
-      100% {
-        transform: scale(1);
-      }
-
-      12% {
-        transform: scale(1.35);
-      }
-
-      22% {
-        transform: scale(1);
-      }
-
-      32% {
-        transform: scale(1.22);
-      }
-    }
-
-    /* Respect visitors' reduced-motion preference */
-    @media (prefers-reduced-motion: reduce) {
-      .lunch-steam,
-      .housing-heart,
-      .service-card:hover .service-icon,
-      .service-card:active .service-icon {
-        animation: none;
-      }
-
-      .lunch-steam {
-        opacity: 0.65;
-      }
-    }
-  </style>
-</Layout>
+  }
+</style>
