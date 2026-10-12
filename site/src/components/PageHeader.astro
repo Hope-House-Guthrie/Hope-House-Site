@@ -1,0 +1,25 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+{
+  /*
+    Interior page title banner — matches About Us “Our History & Vision”.
+    Extra mobile top padding clears the floating volunteer tab.
+  */
+}
+<section class="bg-sky-800 text-white pt-28 pb-16 sm:py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h1 class="text-4xl font-extrabold mb-4 no-underline">
+      {title}
+    </h1>
+    <p class="text-slate-300 max-w-2xl mx-auto text-lg">
+      {description}
+    </p>
+  </div>
+</section>

@@ -32,26 +32,40 @@ const {
       class="bg-sky-700 text-white text-sm font-medium py-1.5 px-4 text-center"
     >
       <span
-        >Serving lunch daily 11:00 AM – 1:00 PM at 1916 E Perkins, Guthrie, OK</span
+        >Serving lunch daily 11:00 AM – 1:00 PM @ 1916 E Perkins Ave, Guthrie,
+        OK 73044</span
       >
     </div>
 
     <!-- Main Navigation -->
     <header
+      id="site-header"
       class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200"
+      data-nav-mode="compact"
     >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 md:py-4">
-        <div class="flex items-center justify-between gap-3">
-          <a href="/" class="flex items-center gap-2 sm:gap-4 group min-w-0">
+      <!--
+        Full-bleed header row (not max-w-7xl) so branding + full nav + CTAs
+        can fit on common desktop widths; body sections stay max-w-7xl.
+      -->
+      <div class="mx-auto w-full max-w-7xl px-3 sm:px-4 lg:px-6 py-3 md:py-4">
+        <div
+          id="header-bar"
+          class="flex items-center justify-between gap-2 sm:gap-3 min-w-0"
+        >
+          <a
+            id="header-brand"
+            href="/"
+            class="flex items-center gap-2 sm:gap-3 group min-w-0 shrink"
+          >
             <Image
               src={hhgLogo}
               alt="Hope House Guthrie Logo"
-              class="h-12 sm:h-16 w-auto shrink-0 object-contain transition-transform group-hover:scale-105"
+              class="h-11 sm:h-14 w-auto shrink-0 object-contain transition-transform group-hover:scale-105"
             />
 
             <div class="min-w-0 flex flex-col justify-center">
               <span
-                class="block font-bold text-sm sm:text-lg text-slate-900 leading-tight tracking-tight group-hover:text-sky-700 transition-colors"
+                class="block font-bold text-sm sm:text-base text-slate-900 leading-tight tracking-tight group-hover:text-sky-700 transition-colors"
               >
                 Neighborhood Hope Dealers, Inc.
               </span>
@@ -74,45 +88,76 @@ const {
             </div>
           </a>
 
-          <!-- Desktop Navigation -->
-          <nav
-            aria-label="Main navigation"
-            class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600"
+          <!--
+            Full desktop cluster (nav + CTAs). Shown only when the complete
+            row fits; otherwise hamburger + compact action row is used.
+          -->
+          <div
+            id="desktop-header-cluster"
+            class="hidden items-center justify-end gap-2 xl:gap-3 shrink-0"
+            aria-hidden="true"
           >
-            <a href="/" class="hover:text-sky-700 transition-colors">Home</a>
-            <a href="/about" class="hover:text-sky-700 transition-colors">
-              About Us
-            </a>
-            <a href="/programs" class="hover:text-sky-700 transition-colors">
-              Programs &amp; Services
-            </a>
-            <a href="/events" class="hover:text-sky-700 transition-colors">
-              Events
-            </a>
-            <a href="/contact" class="hover:text-sky-700 transition-colors">
-              Contact
-            </a>
-          </nav>
-
-          <!-- Desktop Quick Actions -->
-          <div class="hidden md:flex items-center gap-3 shrink-0">
-            <a
-              href="/contact#client-inquiry"
-              class="hope-action inline-flex items-center justify-center bg-sky-700 hover:bg-sky-800 text-white font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap"
+            <nav
+              aria-label="Main navigation"
+              class="flex items-center gap-2.5 xl:gap-3.5 text-sm font-medium text-slate-600"
             >
-              Ask About a Bed
-            </a>
+              <a
+                href="/"
+                class="hover:text-sky-700 transition-colors whitespace-nowrap"
+              >
+                Home
+              </a>
+              <a
+                href="/about"
+                class="hover:text-sky-700 transition-colors whitespace-nowrap"
+              >
+                About Us
+              </a>
+              <a
+                href="/programs"
+                class="hover:text-sky-700 transition-colors whitespace-nowrap"
+              >
+                Programs &amp; Services
+              </a>
+              <a
+                href="/events"
+                class="hover:text-sky-700 transition-colors whitespace-nowrap"
+              >
+                Events
+              </a>
+              <a
+                href="/partners"
+                class="hover:text-sky-700 transition-colors whitespace-nowrap"
+              >
+                Partners &amp; Supporters
+              </a>
+              <a
+                href="/contact"
+                class="hover:text-sky-700 transition-colors whitespace-nowrap"
+              >
+                Contact
+              </a>
+            </nav>
 
-            <a
-              href="/donate"
-              class="hope-action inline-flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap"
-            >
-              Donate Now
-            </a>
+            <div class="flex items-center gap-2 shrink-0">
+              <a
+                href="/contact#client-inquiry"
+                class="hope-action inline-flex items-center justify-center bg-sky-700 hover:bg-sky-800 text-white font-semibold text-sm px-3 py-2 rounded-lg transition-colors whitespace-nowrap"
+              >
+                Ask About a Bed
+              </a>
+
+              <a
+                href="/donate"
+                class="hope-action inline-flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm px-3 py-2 rounded-lg transition-colors whitespace-nowrap"
+              >
+                Donate Now
+              </a>
+            </div>
           </div>
 
-          <!-- Mobile Navigation -->
-          <details class="relative shrink-0 md:hidden">
+          <!-- Compact / hamburger navigation -->
+          <details id="compact-nav" class="relative shrink-0">
             <summary
               aria-label="Navigation menu"
               class="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-100 [&::-webkit-details-marker]:hidden"
@@ -133,45 +178,54 @@ const {
             </summary>
 
             <nav
-                aria-label="Mobile navigation"
-                class="absolute right-0 top-full z-50 mt-2 w-60 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-lg"
+              aria-label="Mobile navigation"
+              class="absolute right-0 top-full z-50 mt-2 w-60 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-lg"
+            >
+              <a
+                href="/"
+                class="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-700"
               >
-                <a
-                  href="/"
-                  class="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-700"
-                >
-                  Home
-                </a>
-                <a
-                  href="/about"
-                  class="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-700"
-                >
-                  About Us
-                </a>
-                <a
-                  href="/programs"
-                  class="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-700"
-                >
-                  Programs &amp; Services
-                </a>
-                <a
-                  href="/events"
-                  class="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-700"
-                >
-                  Events
-                </a>
-                <a
-                  href="/contact"
-                  class="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-700"
-                >
-                  Contact
-                </a>
-              </nav>
-            </details>
+                Home
+              </a>
+              <a
+                href="/about"
+                class="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-700"
+              >
+                About Us
+              </a>
+              <a
+                href="/programs"
+                class="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-700"
+              >
+                Programs &amp; Services
+              </a>
+              <a
+                href="/events"
+                class="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-700"
+              >
+                Events
+              </a>
+              <a
+                href="/partners"
+                class="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-700"
+              >
+                Partners &amp; Supporters
+              </a>
+              <a
+                href="/contact"
+                class="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-700"
+              >
+                Contact
+              </a>
+            </nav>
+          </details>
         </div>
 
-        <!-- Mobile Quick Actions -->
-        <div class="mt-3 grid grid-cols-2 gap-3 md:hidden">
+        <!-- Compact Quick Actions (shown with hamburger mode) -->
+        <div
+          id="compact-header-actions"
+          class="mt-3 grid grid-cols-2 gap-3"
+        >
           <a
             href="/contact#client-inquiry"
             class="hope-action inline-flex items-center justify-center bg-sky-700 hover:bg-sky-800 text-white font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap"
@@ -328,24 +382,28 @@ const {
             Direct Support
           </h3>
 
-          <p class="text-sm text-sky-100 mb-2 md:mb-7">
-            <strong>Physical Facility:</strong><br />
-            1916 E Perkins, Guthrie, OK 73044
+          <p class="mb-2 text-sm text-sky-100 md:mb-7">
+            <strong>Street Address:</strong><br />
+            1916 E. Perkins Ave., Guthrie, OK 73044
           </p>
 
-          <p class="text-sm text-sky-100 mb-2 md:mb-7">
-            <strong>Mailing Address:</strong><br />
+          <p class="mb-2 text-sm text-sky-100 md:mb-7">
+            <strong>PO Box:</strong><br />
             PO Box 491, Guthrie, OK 73044
           </p>
 
+          <p class="mb-2 text-sm text-sky-100">
+            <strong>Help Desk:</strong><br />
+            <a href="tel:4058569058" class="hover:text-white">
+              (405) 856-9058
+            </a>
+          </p>
+
           <p class="text-sm text-sky-100">
-            <strong>Phone:</strong><br />
-
-            <a href="tel:4058569058" class="hover:text-white"> 405-856-9058 </a>
-
-            <span> / </span>
-
-            <a href="tel:4058870288" class="hover:text-white"> 405-887-0288 </a>
+            <strong>Admin:</strong><br />
+            <a href="tel:4058870288" class="hover:text-white">
+              (405) 887-0288
+            </a>
           </p>
         </div>
 
@@ -547,6 +605,101 @@ const {
           isHidden ? "true" : "false",
         );
       });
+
+      // Switch to hamburger when branding + full nav + CTAs no longer fit.
+      const siteHeader = document.getElementById("site-header");
+      const headerBar = document.getElementById("header-bar");
+      const headerBrand = document.getElementById("header-brand");
+      const desktopCluster = document.getElementById("desktop-header-cluster");
+      const compactNav = document.getElementById("compact-nav");
+      const compactActions = document.getElementById("compact-header-actions");
+
+      const setNavMode = (mode: "expanded" | "compact") => {
+        if (!siteHeader || !desktopCluster || !compactNav || !compactActions) {
+          return;
+        }
+
+        const expanded = mode === "expanded";
+        siteHeader.dataset.navMode = mode;
+
+        desktopCluster.classList.toggle("hidden", !expanded);
+        desktopCluster.classList.toggle("flex", expanded);
+        desktopCluster.setAttribute("aria-hidden", expanded ? "false" : "true");
+
+        compactNav.classList.toggle("hidden", expanded);
+        compactActions.classList.toggle("hidden", expanded);
+
+        if (expanded && compactNav instanceof HTMLDetailsElement) {
+          compactNav.open = false;
+        }
+      };
+
+      const updateHeaderNav = () => {
+        if (!headerBar || !headerBrand || !desktopCluster || !compactNav) {
+          return;
+        }
+
+        // Measure full desktop cluster off-layout so links never clip.
+        // Hide hamburger during measure so brand width is unconstrained.
+        const previousHidden = desktopCluster.classList.contains("hidden");
+        const previousFlex = desktopCluster.classList.contains("flex");
+        const previousCompactHidden = compactNav.classList.contains("hidden");
+        const previousVisibility = desktopCluster.style.visibility;
+        const previousPosition = desktopCluster.style.position;
+        const previousPointerEvents = desktopCluster.style.pointerEvents;
+        const previousTop = desktopCluster.style.top;
+        const previousLeft = desktopCluster.style.left;
+        const previousBrandFlex = headerBrand.style.flex;
+        const previousBrandWidth = headerBrand.style.width;
+
+        compactNav.classList.add("hidden");
+        desktopCluster.classList.remove("hidden");
+        desktopCluster.classList.add("flex");
+        desktopCluster.style.visibility = "hidden";
+        desktopCluster.style.position = "absolute";
+        desktopCluster.style.pointerEvents = "none";
+        desktopCluster.style.top = "0";
+        desktopCluster.style.left = "0";
+        headerBrand.style.flex = "0 0 auto";
+        headerBrand.style.width = "auto";
+
+        const brandWidth = headerBrand.getBoundingClientRect().width;
+        const clusterWidth = Math.ceil(desktopCluster.scrollWidth);
+        const styles = getComputedStyle(headerBar);
+        const gap =
+          parseFloat(styles.columnGap || styles.gap || "0") || 12;
+        const available = headerBar.clientWidth;
+        const needed = brandWidth + clusterWidth + gap;
+        // Small hysteresis buffer avoids flicker at the threshold.
+        const fits = needed <= available - 8;
+
+        desktopCluster.style.visibility = previousVisibility;
+        desktopCluster.style.position = previousPosition;
+        desktopCluster.style.pointerEvents = previousPointerEvents;
+        desktopCluster.style.top = previousTop;
+        desktopCluster.style.left = previousLeft;
+        headerBrand.style.flex = previousBrandFlex;
+        headerBrand.style.width = previousBrandWidth;
+        desktopCluster.classList.toggle("hidden", previousHidden);
+        desktopCluster.classList.toggle("flex", previousFlex);
+        compactNav.classList.toggle("hidden", previousCompactHidden);
+
+        setNavMode(fits ? "expanded" : "compact");
+      };
+
+      let navRaf = 0;
+      const scheduleHeaderNavUpdate = () => {
+        cancelAnimationFrame(navRaf);
+        navRaf = requestAnimationFrame(updateHeaderNav);
+      };
+
+      updateHeaderNav();
+      window.addEventListener("resize", scheduleHeaderNavUpdate);
+      window.addEventListener("load", scheduleHeaderNavUpdate);
+
+      if (typeof ResizeObserver !== "undefined" && headerBar) {
+        new ResizeObserver(scheduleHeaderNavUpdate).observe(headerBar);
+      }
     </script>
 
     <script

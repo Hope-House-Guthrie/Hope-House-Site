@@ -20,7 +20,7 @@ const optimizedAerialImage = await getImage({
 
 <Layout title="Home">
   <!-- Homepage Hero -->
-  <section class="relative overflow-hidden bg-[#d6d0c7]">
+  <section class="relative overflow-hidden bg-sky-50">
     <img
       src={optimizedAerialImage.src}
       width={optimizedAerialImage.attributes.width}
@@ -84,18 +84,18 @@ const optimizedAerialImage = await getImage({
   <!-- Key Services Grid -->
   <section class="py-16 lg:py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-10">
+      <div class="mb-10 text-center">
         <h2 class="text-3xl font-bold text-sky-700">
           Serving Hope &amp; Moving Forward
         </h2>
 
         <div
-          class="w-full h-1 bg-sky-500 rounded-full mx-auto mt-4 mb-5"
+          class="mx-auto mt-4 mb-5 h-1 w-full rounded-full bg-sky-700"
           aria-hidden="true"
         >
         </div>
 
-        <p class="text-slate-900 leading-relaxed">
+        <p class="mx-auto max-w-2xl text-slate-900 leading-relaxed">
           We advocate for every person who comes through our doors, offering
           short-term shelter, long-term stabilization, and community care.
         </p>
@@ -185,16 +185,16 @@ const optimizedAerialImage = await getImage({
   <!-- Our Impact -->
   <section class="py-12 lg:py-14 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-8">
+      <div class="mb-8 text-center">
         <h2 class="text-3xl font-bold text-sky-700">Our Impact</h2>
 
         <div
-          class="w-full h-1 bg-sky-500 rounded-full mx-auto mt-4 mb-4"
+          class="mx-auto mt-4 mb-4 h-1 w-full rounded-full bg-sky-700"
           aria-hidden="true"
         >
         </div>
 
-        <p class="text-slate-600">
+        <p class="mx-auto max-w-2xl text-slate-600">
           Meals, essential resources, and hope for our community.
         </p>
       </div>
@@ -228,75 +228,23 @@ const optimizedAerialImage = await getImage({
   </section>
 
   <!-- Community Partners -->
-  <section class="py-7 bg-sky-50 border-t border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2
-        class="text-center text-xs font-semibold uppercase tracking-wider text-slate-500 mb-8"
-      >
-        Trusted Community Partners &amp; Supporters
+  <section class="border-t border-sky-200 bg-sky-50 py-10">
+    <div class="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-sky-700">
+        Hope Grows Through Community
       </h2>
 
-      <div
-        class="flex flex-wrap items-center justify-center gap-x-8 gap-y-6 max-w-5xl mx-auto"
-      >
-        {
-          [
-            {
-              name: "United Way of Logan County",
-              logo: unitedWayPartnerLogo,
-              href: "https://unitedwayokc.org/partnerships/united-way-of-logan-county/partner-agencies/",
-            },
-            {
-              name: "Logan County Drug Court",
-              logo: drugCourtLogo,
-              href: "https://logancodrugcourt.org/",
-            },
-            {
-              name: "God's Food Bank",
-              logo: godsFoodBankLogo,
-              href: "https://www.godsfoodbank.org/",
-            },
-            {
-              name: "Community Action Agency",
-              logo: communityActionLogo,
-              href: "https://cocaa.org/logan-county/",
-            },
-            {
-              name: "AARP",
-              logo: aarpLogo,
-              href: "https://www.aarp.org/",
-            },
-            {
-              name: "Logan Community Services",
-              logo: loganCommunityLogo,
-              href: "https://www.servinglogan.com/",
-            },
-          ].map((partner) => (
-            <a
-              href={partner.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="hope-frame group flex h-28 w-full max-w-64 items-center justify-center bg-white p-3 sm:w-[calc((100%-2rem)/2)] lg:w-[calc((100%-4rem)/3)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700"
-            >
-              <Image
-                src={partner.logo}
-                alt={partner.name}
-                width={320}
-                format={partner.logo.format === "svg" ? undefined : "webp"}
-                loading="lazy"
-                class="max-h-24 h-auto w-auto max-w-full object-contain transition-transform duration-200 group-hover:scale-105 motion-reduce:transform-none"
-              />
-              <span class="sr-only">(opens in a new tab)</span>
-            </a>
-          ))
-        }
+      <p class="mx-auto mt-3 max-w-2xl leading-relaxed text-slate-700">
+        Thank you to the partners and supporters who help us serve hope and move
+        forward.
+      </p>
 
-        <div
-          class="flex min-h-20 w-full max-w-64 items-center justify-center px-3 text-center text-sm font-semibold text-slate-600"
-        >
-          Central OK Workforce Programs
-        </div>
-      </div>
+      <a
+        href="/partners"
+        class="hope-action mt-5 inline-flex min-h-11 items-center justify-center rounded-lg bg-sky-700 px-6 py-3 font-semibold text-white hover:bg-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700"
+      >
+        Meet Our Partners &amp; Supporters →
+      </a>
     </div>
   </section>
 </Layout>

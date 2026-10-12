@@ -1,29 +1,26 @@
 ---
 import Layout from '../layouts/main.astro';
+import PageHeader from "../components/PageHeader.astro";
 ---
 
 <Layout title="Donate & Support">
-  <section class="bg-slate-900 text-white py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl mx-auto">
-      <h1 class="text-4xl font-extrabold mb-4">Support Hope House Guthrie</h1>
-      <p class="text-slate-300 text-lg">
-        We are a 501(c)(3) non-profit organization. Your contributions are tax-deductible and directly fund shelter, food, and recovery services in Logan County.
-      </p>
-    </div>
-  </section>
+  <PageHeader
+    title="Support Hope House Guthrie"
+    description="We are a 501(c)(3) non-profit organization. Your contributions are tax-deductible and directly fund shelter, food, and recovery services in Logan County."
+  />
 
   <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-8">
       <!-- 300 Club -->
-      <div class="border-2 border-sky-600 rounded-2xl p-8 bg-sky-50/30 flex flex-col justify-between">
+      <div class="border-2 border-sky-700 rounded-2xl p-8 bg-sky-50 flex flex-col justify-between">
         <div>
-          <span class="bg-sky-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Sustaining Giving</span>
+          <span class="bg-sky-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Sustaining Giving</span>
           <h2 class="text-2xl font-bold text-slate-900 mt-4 mb-2">The 300 Club</h2>
           <p class="text-slate-600 mb-6">
             Join our core group of supporters giving at least <strong>$10 per month</strong> to sustain our day-to-day operational needs and hot lunch programs.
           </p>
         </div>
-        <a href="#donate-options" class="bg-sky-600 hover:bg-sky-700 text-white text-center font-bold py-3 rounded-lg block">
+        <a href="#donate-options" class="hope-action bg-sky-700 hover:bg-sky-800 text-white text-center font-bold py-3 rounded-lg block transition-colors">
           Join the 300 Club
         </a>
       </div>

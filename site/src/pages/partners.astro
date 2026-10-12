@@ -1,0 +1,231 @@
+---
+import Layout from "../layouts/main.astro";
+import PageHeader from "../components/PageHeader.astro";
+import { Image } from "astro:assets";
+
+import unitedWayLogo from "../assets/partners/united-way-logo-HHG.jpg";
+import drugCourtLogo from "../assets/partners/logan-county-drug-court-logo.png";
+import godsFoodBankLogo from "../assets/partners/gods-food-bank-logo.jpg";
+import communityActionLogo from "../assets/partners/community-action-logo.jpg";
+import aarpLogo from "../assets/partners/aarp-logo.svg";
+import loganCommunityLogo from "../assets/partners/lcs-logo.png";
+import regionalFoodBankLogo from "../assets/partners/rfb.jpeg";
+
+import good360Logo from "../assets/partners/good360.png";
+import naeirLogo from "../assets/partners/naeir.svg";
+import feedTheChildrenLogo from "../assets/partners/feedthechildren-logo.png";
+import lowesLogo from "../assets/partners/lowes.png";
+import freshLogo from "../assets/partners/fresh_reasors.svg";
+import disneyStoreLogo from "../assets/partners/disney-store-logo.svg";
+import jackBeLogo from "../assets/partners/jackbe.png";
+import visionSourceLogo from "../assets/partners/vision-source.png";
+import workforceLogo from "../assets/partners/OWB-transparent-bg.webp";
+
+const partners = [
+  {
+    name: "United Way of Logan County",
+    logo: unitedWayLogo,
+    url: "https://unitedwayokc.org/partnerships/united-way-of-logan-county/",
+  },
+  {
+    name: "Logan County Drug Court",
+    logo: drugCourtLogo,
+    url: "https://logancodrugcourt.org/",
+  },
+  {
+    name: "God’s Food Bank",
+    logo: godsFoodBankLogo,
+    url: "https://www.godsfoodbank.org/",
+  },
+  {
+    name: "Central Oklahoma Community Action Agency",
+    logo: communityActionLogo,
+    url: "https://cocaa.org/logan-county/",
+  },
+  {
+    name: "AARP",
+    logo: aarpLogo,
+    url: "https://www.aarp.org/",
+  },
+  {
+    name: "Logan Community Services, Inc.",
+    logo: loganCommunityLogo,
+    url: "https://www.servinglogan.com/",
+  },
+  {
+    name: "Regional Food Bank of Oklahoma",
+    logo: regionalFoodBankLogo,
+    url: "https://www.regionalfoodbank.org/",
+  },
+];
+
+const supporters = [
+  {
+    name: "Good360",
+    logo: good360Logo,
+    url: "https://good360.org/",
+  },
+  {
+    name: "NAEIR",
+    logo: naeirLogo,
+    url: "https://www.naeir.org/",
+  },
+  {
+    name: "Feed the Children",
+    logo: feedTheChildrenLogo,
+    url: "https://www.feedthechildren.org/",
+  },
+  {
+    name: "Lowe’s",
+    logo: lowesLogo,
+    url: "https://www.lowes.com/",
+  },
+  {
+    name: "Fresh by Reasor’s",
+    logo: freshLogo,
+    url: "https://www.freshbyreasors.com/",
+  },
+  {
+    name: "Disney Store",
+    logo: disneyStoreLogo,
+    url: "https://www.disneystore.com/",
+  },
+  {
+    name: "JackBe",
+    logo: jackBeLogo,
+    url: "https://jackbe.com/",
+  },
+  {
+    name: "Vision Source Guthrie",
+    logo: visionSourceLogo,
+    url: "https://www.visionsource-guthrie.com/",
+  },
+  {
+    name: "Oklahoma’s Workforce Board",
+    logo: workforceLogo,
+    url: "https://cowib.org/",
+  },
+];
+
+const recognitionGroups = [
+  {
+    id: "partners-title",
+    title: "Community Partners",
+    description:
+      "Working together to connect our community with food, resources, recovery support, and opportunities.",
+    organizations: partners,
+    background: "bg-sky-50",
+  },
+  {
+    id: "supporters-title",
+    title: "Community Supporters",
+    description:
+      "Thank you to the organizations and businesses whose generosity helps us meet everyday needs and keep hope moving forward.",
+    organizations: supporters,
+    background: "bg-white",
+  },
+];
+---
+
+<Layout title="Partners & Supporters">
+  <PageHeader
+    title="Partners & Supporters"
+    description="Thank you to the organizations and businesses that help us serve hope and move forward."
+  />
+
+  <!-- Community Partners and Supporters -->
+  {
+    recognitionGroups.map((group) => (
+      <section
+        class={`${group.background} py-8 sm:py-10`}
+        aria-labelledby={group.id}
+      >
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mb-6 text-center">
+            <h2
+              id={group.id}
+              class="text-3xl font-bold tracking-tight text-sky-700 sm:text-4xl"
+            >
+              {group.title}
+            </h2>
+
+            <div
+              class="mx-auto mt-4 h-1 w-full rounded-full bg-sky-700"
+              aria-hidden="true"
+            />
+
+            <p class="mx-auto mt-4 max-w-2xl leading-relaxed text-slate-700">
+              {group.description}
+            </p>
+          </div>
+
+          <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {group.organizations.map((organization, index) => (
+              <li
+                class:list={[
+                  "flex",
+                  {
+                    "lg:col-start-2":
+                      index === group.organizations.length - 1 &&
+                      group.organizations.length % 3 === 1,
+                  },
+                ]}
+              >
+                <a
+                  href={organization.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${organization.name} website (opens in a new tab)`}
+                  class="hope-frame hope-frame-accent group flex min-h-44 w-full flex-col items-center justify-center bg-white p-4 transition-transform duration-200 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700 motion-reduce:transform-none motion-reduce:transition-none"
+                >
+                  <div class="flex h-24 w-full items-center justify-center">
+                    <Image
+                      src={organization.logo}
+                      alt=""
+                      width={320}
+                      format={
+                        organization.logo.format === "svg"
+                          ? undefined
+                          : "webp"
+                      }
+                      loading="lazy"
+                      class="h-auto max-h-24 w-auto max-w-full object-contain"
+                    />
+                  </div>
+
+                  <h3 class="mt-3 text-center text-lg font-bold leading-snug text-sky-700 group-hover:underline group-focus-visible:underline">
+                    {organization.name}
+                  </h3>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    ))
+  }
+
+  <!-- Partnership Invitation -->
+  <section class="bg-white pb-8 pt-4 sm:pb-10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="hope-frame hope-frame-accent bg-sky-50 p-5 text-center sm:p-6">
+        <h2 class="text-2xl font-bold text-slate-900">
+          Help Us Keep Hope Moving Forward
+        </h2>
+
+        <p class="mx-auto mt-3 max-w-2xl leading-relaxed text-slate-700">
+          Interested in supporting Hope House through your business,
+          organization, or community group? Contact our team to discuss ways
+          to get involved.
+        </p>
+
+        <a
+          href="/contact"
+          class="hope-action mt-4 inline-flex min-h-11 items-center justify-center rounded-lg bg-sky-700 px-6 py-3 font-semibold text-white hover:bg-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700"
+        >
+          Connect With Our Team →
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
