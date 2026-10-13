@@ -1,6 +1,7 @@
 {
   "name": "Bobby",
   "photo": "../../assets/testimonials/bobby-walker.png",
+  "beforePhoto": "../../assets/testimonials/before-photos/bobby-walker-before.jpeg",
   "photoPosition": "center",
   "videoUrl": "",
   "paragraphs": [
