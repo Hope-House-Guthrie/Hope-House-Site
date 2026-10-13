@@ -5,9 +5,12 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import hopeLogo from "../assets/logo.svg";
 
-const stories = (await getCollection("testimonials"))
+const allStories = (await getCollection("testimonials"))
   .sort((a, b) => a.data.order - b.data.order)
   .map((entry) => entry.data);
+
+// Show only 2 on this page (random at build time)
+const stories = allStories.sort(() => Math.random() - 0.5).slice(0, 2);
 
 const donationUrl =
   "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=hopehouseguthrie@yahoo.com&item_name=Adopt-a-Room%20-%20Hope%20House%20Guthrie&currency_code=USD";
@@ -293,6 +296,15 @@ const donationUrl =
             </article>
           ))
         }
+      </div>
+
+      <div class="mt-8 text-center">
+        <a
+          href="/testimonials"
+          class="inline-flex min-h-11 items-center justify-center font-semibold text-sky-700 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700"
+        >
+          See More Stories of Hope →
+        </a>
       </div>
     </div>
   </section>
