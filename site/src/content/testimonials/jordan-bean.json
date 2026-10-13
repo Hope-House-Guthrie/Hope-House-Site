@@ -1,0 +1,15 @@
+{
+  "name": "Jordan",
+  "photo": "../../assets/testimonials/jordan-bean.png",
+  "beforePhoto": "../../assets/testimonials/before-photos/jordan-bean-before.jpg",
+  "photoPosition": "center",
+  "beforePhotoPosition": "center",
+  "videoUrl": "",
+  "paragraphs": [
+    "I enjoy playing guitar and worship music. I also enjoy working out, which I've done for years.",
+    "When I had nowhere else to go, Hope House Guthrie gave me shelter, a bed, food, and structure. What has meant the most to me is being around people who share my desire to stay clean.",
+    "I'm proud that I've found a job and become more open about sharing my life with others. I'm grateful to the people who support Hope House Guthrie. I don't know where I'd be without that support, but now I have some hope."
+  ],
+  "quote": "I don’t know where I’d be, but now I have some hope.",
+  "order": 1
+}

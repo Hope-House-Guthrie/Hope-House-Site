@@ -1,36 +1,22 @@
 ---
 import Layout from "../layouts/main.astro";
 import PageHeader from "../components/PageHeader.astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import hopeLogo from "../assets/logo.svg";
+
+const stories = (await getCollection("testimonials"))
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((entry) => entry.data);
 
 const donationUrl =
   "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=hopehouseguthrie@yahoo.com&item_name=Adopt-a-Room%20-%20Hope%20House%20Guthrie&currency_code=USD";
-
-const supportAreas = [
-  {
-    icon: "🏠",
-    title: "A Safe Place to Stay",
-    description:
-      "Help sustain a welcoming place for people working toward stability and their next step forward.",
-  },
-  {
-    icon: "🤝",
-    title: "Support Along the Way",
-    description:
-      "Support a residential program built around encouragement, accountability, and practical life skills.",
-  },
-  {
-    icon: "🌱",
-    title: "Room to Begin Again",
-    description:
-      "Help keep shelter and support available as residents rebuild routines and work toward independence.",
-  },
-];
 ---
 
 <Layout title="Adopt a Room">
   <PageHeader
     title="Adopt a Room. Make Space for Hope."
-    description="Help sustain a safe, welcoming place for someone rebuilding their life through a monthly donation of $40 or more."
+    description="Help sustain safe shelter and support for people rebuilding their lives, with monthly giving levels starting at $20."
   />
 
   <section class="bg-white py-12 sm:py-16" aria-labelledby="room-support-title">
@@ -90,27 +76,31 @@ const supportAreas = [
           </p>
 
           <p class="mt-3 text-5xl font-extrabold text-sky-700">
-            $40<span class="text-2xl">+</span>
+            $20<span class="text-2xl">+</span>
           </p>
 
           <p class="mt-2 font-semibold text-slate-700">
-            Minimum monthly donation
+            Monthly giving starts here
           </p>
 
           <p class="mx-auto mt-5 max-w-sm leading-relaxed text-slate-700">
-            A steady commitment to helping Hope House remain a place of shelter,
-            encouragement, and new beginnings.
+            Choose a giving level of $20, $30, or $40 per month to help sustain
+            shelter, encouragement, and opportunities for a new beginning.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="bg-sky-50 py-12 sm:py-16" aria-labelledby="support-title">
+  <section
+    id="choose-room"
+    class="scroll-mt-64 bg-sky-50 py-12 sm:py-16 md:scroll-mt-40"
+    aria-labelledby="support-title"
+  >
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="mb-8 text-center">
         <h2 id="support-title" class="text-3xl font-bold text-sky-700">
-          What Your Support Helps Make Possible
+          Choose Your Monthly Giving Level
         </h2>
 
         <div class="mt-4 h-1 w-full rounded-full bg-sky-700" aria-hidden="true">
@@ -119,20 +109,187 @@ const supportAreas = [
 
       <div class="grid gap-6 md:grid-cols-3">
         {
-          supportAreas.map((area) => (
-            <article class="hope-frame hope-frame-accent bg-white p-6">
-              <span
-                class="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-100 text-3xl"
+          [
+            {
+              name: "Room of Hope",
+              amount: 20,
+              icon: "🏠",
+              description:
+                "Help make space for safety, encouragement, and the first steps toward stability.",
+            },
+            {
+              name: "Room of Renewal",
+              amount: 30,
+              icon: "🌱",
+              description:
+                "Help sustain a welcoming place where residents can build healthy routines and work toward their goals.",
+            },
+            {
+              name: "Room of New Beginnings",
+              amount: 40,
+              icon: "☀️",
+              description:
+                "Help strengthen the shelter and ongoing support that allow residents to prepare for greater independence.",
+            },
+          ].map((level) => (
+            <article class="hope-frame hope-frame-accent flex flex-col bg-sky-50 p-6">
+              <div
+                class="mb-5 flex h-24 items-center justify-center rounded-xl bg-sky-100 text-5xl"
                 aria-hidden="true"
               >
-                {area.icon}
-              </span>
+                {level.icon}
+              </div>
 
-              <h3 class="text-xl font-bold text-sky-700">{area.title}</h3>
-
-              <p class="mt-3 text-sm leading-relaxed text-slate-700">
-                {area.description}
+              <p class="text-xs font-bold uppercase tracking-wider text-sky-700">
+                Demo · Monthly Giving Level
               </p>
+
+              <h3 class="mt-2 text-2xl font-bold text-sky-700">{level.name}</h3>
+
+              <p class="mt-3 flex-1 text-sm leading-relaxed text-slate-700">
+                {level.description}
+              </p>
+
+              <p class="mt-5 text-xl font-bold text-slate-900">
+                ${level.amount} per month
+              </p>
+
+              <button
+                type="button"
+                data-demo-room={level.name}
+                data-demo-amount={level.amount}
+                class="hope-action mt-4 min-h-11 rounded-lg bg-emerald-600 px-5 py-3 font-bold text-white transition-colors hover:bg-emerald-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-700"
+              >
+                Choose This Level · Demo
+              </button>
+            </article>
+          ))
+        }
+      </div>
+
+      <!-- Client stories -->
+      <div class="mt-8 space-y-8">
+        {
+          stories.map((story) => (
+            <article class="hope-frame hope-frame-accent bg-white p-6 sm:p-8">
+              <div class="grid gap-6 md:grid-cols-[16rem_minmax(0,1fr)]">
+                <div
+                  class="flex flex-col"
+                  data-photo-transition={story.beforePhoto ? "" : undefined}
+                >
+                  {story.photo ? (
+                    <div
+                      class:list={[
+                        "relative overflow-hidden rounded-xl",
+                        story.videoUrl ? "aspect-[4/3]" : "min-h-72 flex-1",
+                      ]}
+                    >
+                      {story.beforePhoto && (
+                        <div class="story-photo-before absolute inset-0">
+                          <Image
+                            src={story.beforePhoto}
+                            alt={`Earlier photo of ${story.name}`}
+                            width={640}
+                            format="webp"
+                            quality={80}
+                            loading="lazy"
+                            class="h-full w-full object-cover"
+                            style={{
+                              objectPosition: story.beforePhotoPosition,
+                            }}
+                          />
+                          <span class="absolute bottom-3 left-3 rounded-md bg-sky-700 px-3 py-1 text-sm font-semibold text-white">
+                            Then
+                          </span>
+                        </div>
+                      )}
+
+                      <div
+                        class:list={[
+                          "absolute inset-0",
+                          story.beforePhoto && "story-photo-now",
+                        ]}
+                      >
+                        <Image
+                          src={story.photo}
+                          alt={`Recent portrait of ${story.name}`}
+                          width={640}
+                          format="webp"
+                          quality={80}
+                          loading="lazy"
+                          class="h-full w-full object-cover"
+                          style={{ objectPosition: story.photoPosition }}
+                        />
+                        {story.beforePhoto && (
+                          <span class="absolute bottom-3 left-3 rounded-md bg-sky-700 px-3 py-1 text-sm font-semibold text-white">
+                            Now
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  ) : (
+                    <div class="flex min-h-72 flex-1 items-center justify-center rounded-xl bg-sky-50 p-8">
+                      <Image
+                        src={hopeLogo}
+                        alt="Hope House Guthrie"
+                        width={240}
+                        loading="lazy"
+                        class="h-auto w-full object-contain"
+                      />
+                    </div>
+                  )}
+
+                  {story.photo && story.beforePhoto && (
+                    <button
+                      type="button"
+                      data-photo-pause
+                      aria-label={`Pause photo transition for ${story.name}`}
+                      aria-pressed="false"
+                      class="story-photo-control mt-2 inline-flex min-h-11 items-center justify-center gap-2 self-center rounded-md px-3 text-sm font-semibold text-sky-700 hover:bg-sky-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700"
+                    >
+                      Ⅱ Pause
+                    </button>
+                  )}
+
+                  {story.videoUrl && (
+                    <a
+                      href={story.videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="hope-action mt-4 inline-flex min-h-11 items-center justify-center rounded-lg bg-sky-700 px-4 py-3 text-center text-sm font-bold text-white hover:bg-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700"
+                    >
+                      Watch {story.name}’s Story ↗
+                    </a>
+                  )}
+                </div>
+
+                <div class="min-w-0">
+                  <p class="text-xs font-bold uppercase tracking-wider text-sky-700">
+                    Stories of Hope
+                  </p>
+
+                  <h3 class="mt-2 text-2xl font-bold text-sky-700">
+                    Meet {story.name}
+                  </h3>
+
+                  {story.paragraphs.map((paragraph) => (
+                    <p class="mt-3 leading-relaxed text-slate-700">
+                      {paragraph}
+                    </p>
+                  ))}
+
+                  {story.quote && (
+                    <blockquote class="mt-5 border-l-4 border-sky-700 pl-4">
+                      <p class="italic leading-relaxed text-slate-700">
+                        “{story.quote}”
+                      </p>
+                      <footer class="mt-2 text-sm font-semibold text-sky-700">
+                        {story.name}
+                      </footer>
+                    </blockquote>
+                  )}
+                </div>
+              </div>
             </article>
           ))
         }
@@ -140,203 +297,24 @@ const supportAreas = [
     </div>
   </section>
 
-  <!-- Demo room sponsorship cards — replace before publishing -->
-  <section
-    id="choose-room"
-    class="scroll-mt-64 bg-white py-12 sm:py-16 md:scroll-mt-40"
-    aria-labelledby="choose-room-title"
+  <div
+    id="demo-room-selection"
+    class="hope-frame mt-8 hidden bg-sky-50 p-6 text-center"
   >
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mb-8 text-center">
-        <p class="text-xs font-bold uppercase tracking-wider text-sky-700">
-          Make a Connection
-        </p>
+    <p
+      id="demo-room-message"
+      role="status"
+      aria-live="polite"
+      class="font-semibold text-sky-700"
+    >
+    </p>
 
-        <h2 id="choose-room-title" class="mt-3 text-3xl font-bold text-sky-700">
-          Choose a Room to Sponsor
-        </h2>
-
-        <div class="mt-4 h-1 w-full rounded-full bg-sky-700" aria-hidden="true">
-        </div>
-
-        <p class="mx-auto mt-5 max-w-2xl leading-relaxed text-slate-700">
-          Help make room for rest, encouragement, and a new beginning through a
-          monthly sponsorship of $40 or more.
-        </p>
-
-        <p
-          class="mx-auto mt-4 max-w-2xl rounded-lg border border-amber-300 bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-900"
-        >
-          Concept preview for review: these room names, descriptions, and
-          sponsorship statuses are fictional. Demo selections do not reserve a
-          room or start a donation.
-        </p>
-      </div>
-
-      <div class="grid gap-6 md:grid-cols-3">
-        <article
-          class="hope-frame hope-frame-accent flex flex-col bg-sky-50 p-6"
-        >
-          <div
-            class="mb-5 flex h-24 items-center justify-center rounded-xl bg-sky-100 text-5xl"
-            aria-hidden="true"
-          >
-            🏠
-          </div>
-
-          <p class="text-xs font-bold uppercase tracking-wider text-sky-700">
-            Demo · Available to Sponsor
-          </p>
-
-          <h3 class="mt-2 text-2xl font-bold text-sky-700">Room of Hope</h3>
-
-          <p class="mt-3 flex-1 text-sm leading-relaxed text-slate-700">
-            A welcoming space to catch your breath, find encouragement, and
-            begin taking the next steps toward stability.
-          </p>
-
-          <p class="mt-5 font-bold text-slate-900">$40+ per month</p>
-
-          <button
-            type="button"
-            data-demo-room="Room of Hope"
-            class="hope-action mt-4 min-h-11 rounded-lg bg-emerald-600 px-5 py-3 font-bold text-white transition-colors hover:bg-emerald-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-700"
-          >
-            Select This Room · Demo
-          </button>
-        </article>
-
-        <article
-          class="hope-frame hope-frame-accent flex flex-col bg-sky-50 p-6"
-        >
-          <div
-            class="mb-5 flex h-24 items-center justify-center rounded-xl bg-sky-100 text-5xl"
-            aria-hidden="true"
-          >
-            🌱
-          </div>
-
-          <p class="text-xs font-bold uppercase tracking-wider text-sky-700">
-            Demo · Available to Sponsor
-          </p>
-
-          <h3 class="mt-2 text-2xl font-bold text-sky-700">Room of Renewal</h3>
-
-          <p class="mt-3 flex-1 text-sm leading-relaxed text-slate-700">
-            Space to build healthy routines, work toward personal goals, and
-            move forward with support along the way.
-          </p>
-
-          <p class="mt-5 font-bold text-slate-900">$40+ per month</p>
-
-          <button
-            type="button"
-            data-demo-room="Room of Renewal"
-            class="hope-action mt-4 min-h-11 rounded-lg bg-emerald-600 px-5 py-3 font-bold text-white transition-colors hover:bg-emerald-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-700"
-          >
-            Select This Room · Demo
-          </button>
-        </article>
-
-        <article
-          class="hope-frame hope-frame-accent flex flex-col bg-sky-50 p-6"
-        >
-          <div
-            class="mb-5 flex h-24 items-center justify-center rounded-xl bg-sky-100 text-5xl"
-            aria-hidden="true"
-          >
-            ☀️
-          </div>
-
-          <p class="text-xs font-bold uppercase tracking-wider text-sky-700">
-            Demo · Sponsored
-          </p>
-
-          <h3 class="mt-2 text-2xl font-bold text-sky-700">
-            Room of New Beginnings
-          </h3>
-
-          <p class="mt-3 flex-1 text-sm leading-relaxed text-slate-700">
-            A place to look ahead, rebuild confidence, and prepare for greater
-            independence.
-          </p>
-
-          <p class="mt-5 font-bold text-slate-900">
-            Supported by a caring donor
-          </p>
-
-          <div
-            class="mt-4 flex min-h-11 items-center justify-center rounded-lg border border-sky-200 bg-sky-100 px-5 py-3 font-bold text-sky-700"
-          >
-            Already Sponsored · Demo
-          </div>
-        </article>
-      </div>
-
-      <!-- Fictional story for concept review -->
-      <article class="hope-frame hope-frame-accent mt-8 bg-sky-50 p-6 sm:p-8">
-        <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
-          <div
-            class="flex h-24 w-24 shrink-0 items-center justify-center self-center rounded-full bg-sky-100 text-4xl sm:self-start"
-            aria-hidden="true"
-          >
-            👤
-          </div>
-
-          <div>
-            <p class="text-xs font-bold uppercase tracking-wider text-sky-700">
-              Fictional Person &amp; Story · Demo Only
-            </p>
-
-            <h3 class="mt-2 text-2xl font-bold text-sky-700">Meet Alex</h3>
-
-            <p class="mt-3 leading-relaxed text-slate-700">
-              Alex came to Hope House looking for a safe place to begin again
-              after experiencing homelessness and struggling with addiction.
-              With a stable place to stay, encouragement, and recovery support,
-              Alex began building healthy routines and working toward employment
-              and independent housing.
-            </p>
-
-            <blockquote class="mt-5 border-l-4 border-sky-700 pl-4">
-              <p class="italic leading-relaxed text-slate-700">
-                “Having somewhere safe to sleep gave me the chance to focus on
-                tomorrow. For the first time in a long time, I could see a way
-                forward.”
-              </p>
-              <footer class="mt-2 text-sm font-semibold text-sky-700">
-                — Alex, fictional sample testimonial
-              </footer>
-            </blockquote>
-
-            <p class="mt-5 text-sm text-slate-600">
-              This sample demonstrates how an approved story could appear. Alex
-              is not a real client and is not assigned to any room shown.
-            </p>
-          </div>
-        </div>
-      </article>
-
-      <div
-        id="demo-room-selection"
-        class="hope-frame mt-8 hidden bg-sky-50 p-6 text-center"
-      >
-        <p
-          id="demo-room-message"
-          role="status"
-          aria-live="polite"
-          class="font-semibold text-sky-700"
-        >
-        </p>
-
-        <p class="mt-3 text-sm leading-relaxed text-slate-700">
-          In the finished version, the selected sponsorship would carry through
-          to the monthly giving process. This preview does not save a selection
-          or process a payment.
-        </p>
-      </div>
-    </div>
-  </section>
+    <p class="mt-3 text-sm leading-relaxed text-slate-700">
+      In the finished version, the selected sponsorship would carry through to
+      the monthly giving process. This preview does not save a selection or
+      process a payment.
+    </p>
+  </div>
 
   <script>
     const demoSelection = document.getElementById("demo-room-selection");
@@ -349,7 +327,7 @@ const supportAreas = [
           if (!demoSelection || !demoMessage) return;
 
           demoSelection.classList.remove("hidden");
-          demoMessage.textContent = `Demo selection: ${button.dataset.demoRoom} — $40+ per month.`;
+          demoMessage.textContent = `Demo selection: ${button.dataset.demoRoom} - $${button.dataset.demoAmount} per month.`;
 
           demoSelection.scrollIntoView({
             behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
@@ -381,8 +359,8 @@ const supportAreas = [
         </div>
 
         <p class="mx-auto mt-5 max-w-2xl leading-relaxed text-slate-700">
-          Choose a monthly gift of $40 or more. Contact our team if you need
-          help arranging your sponsorship.
+          Monthly giving levels start at $20. Contact our team for help
+          arranging your Adopt-a-Room sponsorship.
         </p>
       </div>
 
@@ -457,4 +435,84 @@ const supportAreas = [
       </a>
     </div>
   </section>
+
+  <style>
+    .story-photo-before {
+      animation: story-before 14s infinite;
+    }
+
+    .story-photo-now {
+      animation: story-now 14s infinite;
+    }
+
+    @keyframes story-now {
+      0%,
+      21% {
+        opacity: 0;
+      }
+      36%,
+      86% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes story-before {
+      0%,
+      21% {
+        opacity: 1;
+      }
+      36%,
+      86% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    [data-photo-transition][data-paused] .story-photo-before,
+    [data-photo-transition][data-paused] .story-photo-now {
+      animation-play-state: paused;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .story-photo-before {
+        animation: none;
+        opacity: 0;
+      }
+
+      .story-photo-now {
+        animation: none;
+        opacity: 1;
+      }
+
+      .story-photo-control {
+        display: none;
+      }
+    }
+  </style>
+
+  <script>
+    document
+      .querySelectorAll<HTMLButtonElement>("[data-photo-pause]")
+      .forEach((button) => {
+        button.addEventListener("click", () => {
+          const frame = button.closest<HTMLElement>("[data-photo-transition]");
+          if (!frame) return;
+
+          const paused = frame.toggleAttribute("data-paused");
+          button.textContent = paused ? "▶ Resume" : "Ⅱ Pause";
+          button.setAttribute("aria-pressed", String(paused));
+
+          const label = button.getAttribute("aria-label") || "";
+          button.setAttribute(
+            "aria-label",
+            label.replace(/^(Pause|Resume)/, paused ? "Resume" : "Pause"),
+          );
+        });
+      });
+  </script>
 </Layout>
