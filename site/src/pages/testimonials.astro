@@ -1,0 +1,229 @@
+---
+import Layout from "../layouts/main.astro";
+import PageHeader from "../components/PageHeader.astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import hopeLogo from "../assets/logo.svg";
+
+const stories = (await getCollection("testimonials"))
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((entry) => entry.data);
+---
+
+<Layout title="Stories of Hope">
+  <PageHeader
+    title="Stories of Hope"
+    description="Real stories from people who have found shelter, support, and a new beginning at Hope House Guthrie."
+  />
+
+  <section class="bg-white py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="space-y-8">
+        {
+          stories.map((story) => (
+            <article class="hope-frame hope-frame-accent bg-white p-6 sm:p-8">
+              <div class="grid gap-6 md:grid-cols-[16rem_minmax(0,1fr)]">
+                <div
+                  class="flex flex-col"
+                  data-photo-transition={story.beforePhoto ? "" : undefined}
+                >
+                  {story.photo ? (
+                    <div
+                      class:list={[
+                        "relative overflow-hidden rounded-xl",
+                        story.videoUrl ? "aspect-[4/3]" : "min-h-72 flex-1",
+                      ]}
+                    >
+                      {story.beforePhoto && (
+                        <div class="story-photo-before absolute inset-0">
+                          <Image
+                            src={story.beforePhoto}
+                            alt={`Earlier photo of ${story.name}`}
+                            width={640}
+                            format="webp"
+                            quality={80}
+                            loading="lazy"
+                            class="h-full w-full object-cover"
+                            style={{
+                              objectPosition: story.beforePhotoPosition,
+                            }}
+                          />
+                          <span class="absolute bottom-3 left-3 rounded-md bg-sky-700 px-3 py-1 text-sm font-semibold text-white">
+                            Intake
+                          </span>
+                        </div>
+                      )}
+
+                      <div
+                        class:list={[
+                          "absolute inset-0",
+                          story.beforePhoto && "story-photo-now",
+                        ]}
+                      >
+                        <Image
+                          src={story.photo}
+                          alt={`Recent portrait of ${story.name}`}
+                          width={640}
+                          format="webp"
+                          quality={80}
+                          loading="lazy"
+                          class="h-full w-full object-cover"
+                          style={{ objectPosition: story.photoPosition }}
+                        />
+                        {story.beforePhoto && (
+                          <span class="absolute bottom-3 left-3 rounded-md bg-sky-700 px-3 py-1 text-sm font-semibold text-white">
+                            Current
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  ) : (
+                    <div class="flex min-h-72 flex-1 items-center justify-center rounded-xl bg-sky-50 p-8">
+                      <Image
+                        src={hopeLogo}
+                        alt="Hope House Guthrie"
+                        width={240}
+                        loading="lazy"
+                        class="h-auto w-full object-contain"
+                      />
+                    </div>
+                  )}
+
+                  {story.photo && story.beforePhoto && (
+                    <button
+                      type="button"
+                      data-photo-pause
+                      aria-label={`Pause photo transition for ${story.name}`}
+                      aria-pressed="false"
+                      class="story-photo-control mt-2 inline-flex min-h-11 items-center justify-center gap-2 self-center rounded-md px-3 text-sm font-semibold text-sky-700 hover:bg-sky-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700"
+                    >
+                      Ⅱ Pause
+                    </button>
+                  )}
+
+                  {story.videoUrl && (
+                    <a
+                      href={story.videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="hope-action mt-4 inline-flex min-h-11 items-center justify-center rounded-lg bg-sky-700 px-4 py-3 text-center text-sm font-bold text-white hover:bg-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700"
+                    >
+                      Watch {story.name}’s Story ↗
+                    </a>
+                  )}
+                </div>
+
+                <div class="min-w-0">
+                  <p class="text-xs font-bold uppercase tracking-wider text-sky-700">
+                    Stories of Hope
+                  </p>
+
+                  <h3 class="mt-2 text-2xl font-bold text-sky-700">
+                    Meet {story.name}
+                  </h3>
+
+                  {story.paragraphs.map((paragraph) => (
+                    <p class="mt-3 leading-relaxed text-slate-700">
+                      {paragraph}
+                    </p>
+                  ))}
+
+                  {story.quote && (
+                    <blockquote class="mt-5 border-l-4 border-sky-700 pl-4">
+                      <p class="italic leading-relaxed text-slate-700">
+                        “{story.quote}”
+                      </p>
+                      <footer class="mt-2 text-sm font-semibold text-sky-700">
+                        {story.name}
+                      </footer>
+                    </blockquote>
+                  )}
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .story-photo-before {
+      animation: story-before 14s infinite;
+    }
+
+    .story-photo-now {
+      animation: story-now 14s infinite;
+    }
+
+    @keyframes story-now {
+      0%,
+      21% {
+        opacity: 0;
+      }
+      36%,
+      86% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes story-before {
+      0%,
+      21% {
+        opacity: 1;
+      }
+      36%,
+      86% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    [data-photo-transition][data-paused] .story-photo-before,
+    [data-photo-transition][data-paused] .story-photo-now {
+      animation-play-state: paused;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .story-photo-before {
+        animation: none;
+        opacity: 0;
+      }
+
+      .story-photo-now {
+        animation: none;
+        opacity: 1;
+      }
+
+      .story-photo-control {
+        display: none;
+      }
+    }
+  </style>
+
+  <script>
+    document
+      .querySelectorAll<HTMLButtonElement>("[data-photo-pause]")
+      .forEach((button) => {
+        button.addEventListener("click", () => {
+          const frame = button.closest<HTMLElement>("[data-photo-transition]");
+          if (!frame) return;
+
+          const paused = frame.toggleAttribute("data-paused");
+          button.textContent = paused ? "▶ Resume" : "Ⅱ Pause";
+          button.setAttribute("aria-pressed", String(paused));
+
+          const label = button.getAttribute("aria-label") || "";
+          button.setAttribute(
+            "aria-label",
+            label.replace(/^(Pause|Resume)/, paused ? "Resume" : "Pause"),
+          );
+        });
+      });
+  </script>
+</Layout>
