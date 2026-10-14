@@ -1,0 +1,18 @@
+{
+  "name": "Joe",
+  "photo": "../../assets/testimonials/joe-clift.png",
+  "beforePhoto": "../../assets/testimonials/before-photos/joe-clift-before.png",
+  "photoPosition": "center",
+  "beforePhotoPosition": "center",
+  "videoUrl": "",
+  "paragraphs": [
+    "I enjoy playing and creating music, traveling, fishing, camping, and studying spiritual things.",
+    "After decades of drinking and a few stays in rehab, I came to Hope House Guthrie. I've enjoyed my time here, and for the first time in a long time, I've stayed sober for an extended period.",
+    "Being around like-minded people who are also working to stay sober has helped me. There's a lot of support here, along with opportunities to get involved in the community and help others.",
+        "Staying sober is my biggest accomplishment. I'm also proud of getting a vehicle again and the progress I'm making in my relationships with God and my family.",
+    "I've also become a driver for Hope House Guthrie. It gives me a way to give back, help others, and contribute to the place that has supported me.",
+    "I'm working toward continuing my sobriety, building trust with family and friends, strengthening my relationship with God, taking better care of my health, and saving money for whatever my future plans may be."
+  ],
+  "quote": "Staying sober is my biggest accomplishment.",
+  "order": 6
+}
