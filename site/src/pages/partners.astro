@@ -106,7 +106,7 @@ const supporters = [
     logo: workforceLogo,
     url: "https://cowib.org/",
   },
-    {
+  {
     name: "General Mailing Equipment 'GME'",
     logo: gmeLogo,
     url: "https://generalmailing.com/",
@@ -190,9 +190,7 @@ const recognitionGroups = [
                       alt=""
                       width={320}
                       format={
-                        organization.logo.format === "svg"
-                          ? undefined
-                          : "webp"
+                        organization.logo.format === "svg" ? undefined : "webp"
                       }
                       loading="lazy"
                       class="h-auto max-h-24 w-auto max-w-full object-contain"
@@ -211,27 +209,176 @@ const recognitionGroups = [
     ))
   }
 
-  <!-- Partnership Invitation -->
+  <!-- Partnership and Support Inquiry -->
   <section class="bg-white pb-8 pt-4 sm:pb-10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="hope-frame hope-frame-accent bg-sky-50 p-5 text-center sm:p-6">
-        <h2 class="text-2xl font-bold text-slate-900">
-          Help Us Keep Hope Moving Forward
-        </h2>
+      <div class="hope-frame hope-frame-accent bg-sky-50 p-6 sm:p-8">
+        <div class="text-center">
+          <h2
+            id="support-inquiry-title"
+            class="text-2xl font-bold text-sky-700"
+          >
+            Help Us Keep Hope Moving Forward
+          </h2>
 
-        <p class="mx-auto mt-3 max-w-2xl leading-relaxed text-slate-700">
-          Interested in supporting Hope House through your business,
-          organization, or community group? Contact our team to discuss ways
-          to get involved.
-        </p>
+          <p class="mx-auto mt-3 max-w-2xl leading-relaxed text-slate-700">
+            Interested in partnering with or supporting Hope House Guthrie? Tell
+            us a little about yourself and how you would like to help.
+          </p>
+        </div>
 
-        <a
-          href="/contact"
-          class="hope-action mt-4 inline-flex min-h-11 items-center justify-center rounded-lg bg-sky-700 px-6 py-3 font-semibold text-white hover:bg-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700"
+        <!-- TJ: Connect submission handling before enabling this form. -->
+        <form
+          id="support-inquiry-form"
+          aria-labelledby="support-inquiry-title"
+          class="mx-auto mt-8 max-w-3xl space-y-6 text-left"
         >
-          Connect With Our Team →
-        </a>
+          <div class="grid gap-5 sm:grid-cols-2">
+            <div>
+              <label
+                for="support-name"
+                class="block font-semibold text-slate-800"
+              >
+                Contact name <span class="ml-1 text-sky-700">(required)</span>
+              </label>
+              <input
+                id="support-name"
+                name="contact_name"
+                type="text"
+                autocomplete="name"
+                required
+                class="mt-2 min-h-11 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 focus:border-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-700"
+              />
+            </div>
+
+            <div>
+              <label
+                for="support-organization"
+                class="block font-semibold text-slate-800"
+              >
+                Business or organization
+                <span class="ml-1 font-normal text-slate-500">(optional)</span>
+              </label>
+              <input
+                id="support-organization"
+                name="organization"
+                type="text"
+                autocomplete="organization"
+                class="mt-2 min-h-11 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 focus:border-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-700"
+              />
+            </div>
+
+            <div>
+              <label
+                for="support-email"
+                class="block font-semibold text-slate-800"
+              >
+                Email <span class="ml-1 text-sky-700">(required)</span>
+              </label>
+              <input
+                id="support-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+                class="mt-2 min-h-11 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 focus:border-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-700"
+              />
+            </div>
+
+            <div>
+              <label
+                for="support-phone"
+                class="block font-semibold text-slate-800"
+              >
+                Phone <span class="ml-1 text-sky-700">(required)</span>
+              </label>
+              <input
+                id="support-phone"
+                name="phone"
+                type="tel"
+                autocomplete="tel"
+                required
+                class="mt-2 min-h-11 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 focus:border-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-700"
+              />
+            </div>
+          </div>
+
+          <fieldset>
+            <legend class="font-semibold text-slate-800">
+              How would you like to help?
+            </legend>
+            <p class="mt-1 text-sm text-slate-600">Select all that apply.</p>
+
+            <div class="mt-3 grid gap-3 sm:grid-cols-2">
+              {
+                [
+                  "Financial support",
+                  "Goods or supplies",
+                  "Services or discounts",
+                  "Community partnership",
+                  "Other / I’d like to discuss ideas",
+                ].map((option) => (
+                  <label class="flex min-h-11 cursor-pointer items-center gap-3 rounded-lg border border-sky-200 bg-white px-4 py-3 text-slate-700">
+                    <input
+                      type="checkbox"
+                      name="support_interests"
+                      value={option}
+                      class="h-5 w-5 shrink-0 accent-sky-700"
+                    />
+                    <span>{option}</span>
+                  </label>
+                ))
+              }
+            </div>
+          </fieldset>
+
+          <div>
+            <label
+              for="support-message"
+              class="block font-semibold text-slate-800"
+            >
+              Tell us about your idea
+              <span class="ml-1 text-sky-700">(required)</span>
+            </label>
+            <textarea
+              id="support-message"
+              name="message"
+              rows="5"
+              required
+              placeholder="What would you like to offer, or explore with our team?"
+              class="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 focus:border-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-700"
+            ></textarea>
+          </div>
+
+          <div class="text-center">
+            <button
+              type="submit"
+              disabled
+              aria-describedby="support-form-notice"
+              class="hope-action inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-sky-700 px-6 py-3 font-semibold text-white disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+            >
+              Send Inquiry — Coming Soon
+            </button>
+
+            <p id="support-form-notice" class="mt-3 text-sm text-slate-600">
+              Online inquiries are coming soon. For now,{" "}
+              <a href="/contact" class="font-semibold text-sky-700 underline">
+                contact our team
+              </a>{" "}
+              to discuss your idea.
+            </p>
+          </div>
+        </form>
       </div>
     </div>
   </section>
+
+  <script>
+    // Prevent submission until TJ connects the form.
+    document
+      .getElementById("support-inquiry-form")
+      ?.addEventListener("submit", (event) => {
+        event.preventDefault();
+      });
+  </script>
 </Layout>
