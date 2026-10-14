@@ -47,10 +47,10 @@ const {
         Full-bleed header row (not max-w-7xl) so branding + full nav + CTAs
         can fit on common desktop widths; body sections stay max-w-7xl.
       -->
-      <div class="mx-auto w-full max-w-7xl px-3 sm:px-4 lg:px-6 py-3 md:py-4">
+      <div class="mx-auto w-full px-4 sm:px-6 lg:px-10 py-3 md:py-4">
         <div
           id="header-bar"
-          class="flex items-center justify-between gap-2 sm:gap-3 min-w-0"
+          class="relative flex items-center justify-between gap-2 sm:gap-3 min-w-0"
         >
           <a
             id="header-brand"
@@ -99,7 +99,7 @@ const {
           >
             <nav
               aria-label="Main navigation"
-              class="flex items-center gap-2.5 xl:gap-3.5 text-sm font-medium text-slate-600"
+              class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-4 xl:gap-10 text-lg font-medium text-slate-600"
             >
               <a
                 href="/"
@@ -142,14 +142,14 @@ const {
             <div class="flex items-center gap-2 shrink-0">
               <a
                 href="/contact#client-inquiry"
-                class="hope-action inline-flex items-center justify-center bg-sky-700 hover:bg-sky-800 text-white font-semibold text-sm px-3 py-2 rounded-lg transition-colors whitespace-nowrap"
+                class="hope-action inline-flex h-11 w-36 items-center justify-center rounded-lg bg-sky-700 px-3 text-sm font-semibold text-white transition-colors hover:bg-sky-800 whitespace-nowrap"
               >
                 Ask About a Bed
               </a>
 
               <a
                 href="/volunteer#volunteer-interest"
-                class="hope-action inline-flex items-center justify-center bg-sky-700 hover:bg-sky-800 text-white font-semibold text-sm px-3 py-2 rounded-lg transition-colors whitespace-nowrap"
+                class="hope-action inline-flex h-11 w-36 items-center justify-center rounded-lg bg-sky-700 px-3 text-sm font-semibold text-white transition-colors hover:bg-sky-800 whitespace-nowrap"
               >
                 Volunteer
               </a>
@@ -662,8 +662,16 @@ const {
         const styles = getComputedStyle(headerBar);
         const gap = parseFloat(styles.columnGap || styles.gap || "0") || 12;
         const available = headerBar.clientWidth;
-        const needed = brandWidth + clusterWidth + gap;
-        // Small hysteresis buffer avoids flicker at the threshold.
+        const navWidth =
+          desktopCluster.querySelector("nav")?.getBoundingClientRect().width ??
+          0;
+
+        const actionsWidth =
+          desktopCluster.querySelector("div")?.getBoundingClientRect().width ??
+          0;
+
+        const needed = navWidth + 2 * Math.max(brandWidth, actionsWidth) + 48;
+
         const fits = needed <= available - 8;
 
         desktopCluster.style.visibility = previousVisibility;
