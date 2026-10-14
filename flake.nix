@@ -12,7 +12,6 @@
 
   outputs =
     {
-      self,
       ...
     }@inputs:
     let
@@ -20,46 +19,40 @@
 
       pkgs = import inputs.nixpkgs {
         inherit system;
-        overlays = [ self.overlays.default ];
       };
 
-      shell = pkgs.callPackage ./shell/package.nix {
+      devShell = pkgs.callPackage ./shell/package.nix {
         inherit inputs;
       };
 
-      module = ./site/module.nix;
+      h2-site = pkgs.callPackage ./site/package.nix {
+        inherit inputs;
+
+        version = "0.1.0";
+      };
+
+      module = (import ./site/module.nix { inherit h2-site; });
+
+      nixosModules = {
+        h2-site = module;
+        default = module;
+      };
     in
     {
-      devShells.${system}.default = shell;
+      devShells.${system}.default = devShell;
 
       nixosConfigurations.test-vm = inputs.nixpkgs.lib.nixosSystem {
         inherit system;
 
         modules = [
           ./site/test-vm
-          inputs.h3.nixosModules.h3-forms
-          {
-            nixpkgs.overlays = [
-              self.overlays.default
-              inputs.h3.overlays.default
-            ];
-          }
+          (inputs.h3.nixosModules.h3-forms { hostingEnvironment = "test"; })
+          (nixosModules.h2-site { hostingEnvironment = "test"; })
         ];
       };
 
-      nixosModules = {
-        h2-site = module;
-        default = module;
-      };
+      inherit nixosModules;
 
-      overlays.default = final: prev: {
-        h2-site = final.callPackage ./site/package.nix {
-          inherit inputs;
-
-          version = "0.1.0";
-        };
-      };
-
-      packages.${system}.default = pkgs.h2-site;
+      packages.${system}.default = h2-site;
     };
 }
