@@ -4,13 +4,14 @@ import PageHeader from "../components/PageHeader.astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import hopeLogo from "../assets/logo.svg";
+import paypalLogo from "../assets/paypal-logo.jpg";
 
 const allStories = (await getCollection("testimonials"))
   .sort((a, b) => a.data.order - b.data.order)
   .map((entry) => entry.data);
 
-// Show only 2 on this page (random at build time)
-const stories = allStories.sort(() => Math.random() - 0.5).slice(0, 2);
+// Include all stories; the browser randomly displays two.
+const stories = allStories;
 
 const donationUrl =
   "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=hopehouseguthrie@yahoo.com&item_name=Adopt-a-Room%20-%20Hope%20House%20Guthrie&currency_code=USD";
@@ -106,6 +107,10 @@ const donationUrl =
           Choose Your Monthly Giving Level
         </h2>
 
+        <p class="mt-3 text-slate-700">
+          Select a card to continue to payment with your chosen amount.
+        </p>
+
         <div class="mt-4 h-1 w-full rounded-full bg-sky-700" aria-hidden="true">
         </div>
       </div>
@@ -135,7 +140,13 @@ const donationUrl =
                 "Help strengthen the shelter and ongoing support that allow residents to prepare for greater independence.",
             },
           ].map((level) => (
-            <article class="hope-frame hope-frame-accent flex flex-col bg-sky-50 p-6">
+            <a
+              href="#demo-room-selection"
+              data-demo-room={level.name}
+              data-demo-amount={level.amount}
+              aria-label={`Choose ${level.name}: $${level.amount} per month`}
+              class="hope-frame hope-frame-accent flex flex-col bg-sky-50 p-6 no-underline transition-colors hover:bg-sky-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700"
+            >
               <div
                 class="mb-5 flex h-24 items-center justify-center rounded-xl bg-sky-100 text-5xl"
                 aria-hidden="true"
@@ -143,11 +154,7 @@ const donationUrl =
                 {level.icon}
               </div>
 
-              <p class="text-xs font-bold uppercase tracking-wider text-sky-700">
-                Demo · Monthly Giving Level
-              </p>
-
-              <h3 class="mt-2 text-2xl font-bold text-sky-700">{level.name}</h3>
+              <h3 class="text-2xl font-bold text-sky-700">{level.name}</h3>
 
               <p class="mt-3 flex-1 text-sm leading-relaxed text-slate-700">
                 {level.description}
@@ -156,25 +163,34 @@ const donationUrl =
               <p class="mt-5 text-xl font-bold text-slate-900">
                 ${level.amount} per month
               </p>
-
-              <button
-                type="button"
-                data-demo-room={level.name}
-                data-demo-amount={level.amount}
-                class="hope-action mt-4 min-h-11 rounded-lg bg-emerald-600 px-5 py-3 font-bold text-white transition-colors hover:bg-emerald-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-700"
-              >
-                Choose This Level · Demo
-              </button>
-            </article>
+            </a>
           ))
         }
       </div>
 
+      <div class="mt-6 flex items-center justify-center gap-3">
+        <span class="text-sm text-slate-600">
+          Secure payment through PayPal
+        </span>
+
+        <Image
+          src={paypalLogo}
+          alt="PayPal"
+          width={100}
+          loading="lazy"
+          class="h-auto w-20 shrink-0 object-contain"
+        />
+      </div>
+
       <!-- Client stories -->
-      <div class="mt-8 space-y-8">
+      <div id="random-client-stories" class="mt-8 space-y-8">
         {
-          stories.map((story) => (
-            <article class="hope-frame hope-frame-accent bg-white p-6 sm:p-8">
+          stories.map((story, index) => (
+            <article
+              data-story-card
+              hidden={index >= 2}
+              class="hope-frame hope-frame-accent bg-white p-6 sm:p-8"
+            >
               <div class="grid gap-6 md:grid-cols-[16rem_minmax(0,1fr)]">
                 <div
                   class="flex flex-col"
@@ -321,9 +337,10 @@ const donationUrl =
     const demoMessage = document.getElementById("demo-room-message");
 
     document
-      .querySelectorAll<HTMLButtonElement>("[data-demo-room]")
+      .querySelectorAll<HTMLAnchorElement>("[data-demo-room]")
       .forEach((button) => {
-        button.addEventListener("click", () => {
+        button.addEventListener("click", (event) => {
+          event.preventDefault();
           if (!demoSelection || !demoMessage) return;
 
           demoSelection.classList.remove("hidden");
@@ -382,6 +399,20 @@ const donationUrl =
           >
             Give Through PayPal →
           </a>
+
+          <div class="mt-4 flex items-center justify-center gap-3">
+            <span class="text-xs text-slate-500">
+              Secure payment through PayPal
+            </span>
+
+            <Image
+              src={paypalLogo}
+              alt="PayPal"
+              width={80}
+              loading="lazy"
+              class="h-auto w-16 shrink-0 object-contain"
+            />
+          </div>
         </article>
 
         <article class="hope-frame hope-frame-accent bg-sky-50 p-6 sm:p-8">
@@ -436,6 +467,27 @@ const donationUrl =
     </div>
   </section>
 
+  <script>
+    const container = document.getElementById("random-client-stories");
+
+    if (container) {
+      const cards = Array.from(
+        container.querySelectorAll<HTMLElement>("[data-story-card]"),
+      );
+
+      // Shuffle the cards on each page load.
+      for (let i = cards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [cards[i], cards[j]] = [cards[j], cards[i]];
+      }
+
+      cards.forEach((card, index) => {
+        card.hidden = index >= 2;
+        container.appendChild(card);
+      });
+    }
+  </script>
+
   <style>
     .story-photo-before {
       animation: story-before 14s infinite;
@@ -443,6 +495,10 @@ const donationUrl =
 
     .story-photo-now {
       animation: story-now 14s infinite;
+    }
+
+    [data-story-card][hidden] {
+      display: none !important;
     }
 
     @keyframes story-now {
