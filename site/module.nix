@@ -1,17 +1,18 @@
 {
+  h2-site,
+}:
+{
+  hostingEnvironment,
+}:
+{
   config,
   lib,
-  pkgs,
   ...
 }:
 
 let
   inherit (lib)
-    concatMapAttrs
-    filterAttrs
     listToAttrs
-    mapAttrs'
-    mapAttrsToList
     mkEnableOption
     mkIf
     mkOption
@@ -19,57 +20,36 @@ let
     types
     ;
 
-  cfg = config.services.h2-site;
-  enabledInstances = filterAttrs (_: inst: inst.enable) cfg;
-
-  instanceOptions =
-    { name, ... }:
-    {
-      options = {
-        enable = mkEnableOption "H2 Site instance: ${name}";
-
-        domains = mkOption {
-          type = types.listOf types.str;
-          default = [ ];
-          description = "Public domain names for the application.";
-        };
-
-        package = mkOption {
-          type = types.nullOr types.package;
-          default = null;
-          defaultText = lib.literalExpression "pkgs.h2-site";
-          description = "The H2 site package to use.";
-        };
-      };
-    };
+  cfg = config.services.h2-site.${hostingEnvironment};
 in
 {
-  options.services.h2-site = mkOption {
-    type = types.attrsOf (types.submodule instanceOptions);
-    default = { };
-    description = "Declarative multi-instance H2 site service configuration.";
+  options.services.h2-site.${hostingEnvironment} = {
+    enable = mkEnableOption "H2 Site instance: ${hostingEnvironment}";
+
+    domains = mkOption {
+      type = types.listOf types.str;
+      default = [ ];
+      description = "Public domain names for the application.";
+    };
   };
 
-  config = mkIf (enabledInstances != { }) {
-    users.users.caddy.extraGroups = mapAttrsToList (
-      name: _: config.services.h3-forms.${name}.group
-    ) enabledInstances;
+  config = mkIf (cfg.enable) {
+    users.users.caddy.extraGroups = [
+      config.services.h3-forms.${hostingEnvironment}.group
+    ];
 
     services.caddy = {
       enable = true;
 
-      virtualHosts = concatMapAttrs (
-        name: inst:
+      virtualHosts =
         let
-          package = if inst.package != null then inst.package else pkgs.h2-site;
-
           vhostConfig = {
             extraConfig = ''
-              root * "${package}/share/h2-site"
+              root * "${h2-site}/share/h2-site"
               encode gzip zstd
 
               handle /_form/* {
-                reverse_proxy unix/${config.services.h3-forms.${name}.socketPath}
+                reverse_proxy unix/${config.services.h3-forms.${hostingEnvironment}.socketPath}
               }
 
               handle {
@@ -95,8 +75,7 @@ in
             '';
           };
         in
-        listToAttrs (map (domain: nameValuePair domain vhostConfig) inst.domains)
-      ) enabledInstances;
+        listToAttrs (map (domain: nameValuePair domain vhostConfig) cfg.domains);
     };
   };
 }
