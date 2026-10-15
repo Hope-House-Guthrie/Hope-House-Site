@@ -1,7 +1,83 @@
 ---
 import Layout from "../layouts/main.astro";
+import PageHeader from "../components/PageHeader.astro";
 ---
 
 <Layout title="Page Not Found">
-  TODO
+  <PageHeader
+    title="Page Not Found"
+    description="We're sorry, but the page you are looking for doesn't exist or may have been moved."
+  />
+
+  <section class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div
+        class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-sky-100 text-sky-700 text-3xl font-extrabold mb-6"
+        aria-hidden="true"
+      >
+        404
+      </div>
+
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">
+        Looking for a Fresh Start?
+      </h2>
+
+      <p class="text-slate-600 leading-relaxed text-base sm:text-lg mb-8 max-w-xl mx-auto">
+        Don’t worry—sometimes we all take an unexpected turn. Here are some helpful links to get you back on track:
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto mb-10 text-left">
+        <a
+          href="/"
+          class="flex items-center gap-3 p-4 rounded-xl border border-sky-100 bg-sky-50/50 hover:bg-sky-100/70 transition-colors group"
+        >
+          <span class="text-2xl" aria-hidden="true">🏠</span>
+          <div>
+            <span class="block font-bold text-sky-800 group-hover:text-sky-900">Home</span>
+            <span class="text-xs text-slate-600">Return to the main page</span>
+          </div>
+        </a>
+
+        <a
+          href="/programs"
+          class="flex items-center gap-3 p-4 rounded-xl border border-sky-100 bg-sky-50/50 hover:bg-sky-100/70 transition-colors group"
+        >
+          <span class="text-2xl" aria-hidden="true">🌱</span>
+          <div>
+            <span class="block font-bold text-sky-800 group-hover:text-sky-900">Programs & Services</span>
+            <span class="text-xs text-slate-600">Shelter, meals, and recovery</span>
+          </div>
+        </a>
+
+        <a
+          href="/contact"
+          class="flex items-center gap-3 p-4 rounded-xl border border-sky-100 bg-sky-50/50 hover:bg-sky-100/70 transition-colors group"
+        >
+          <span class="text-2xl" aria-hidden="true">📞</span>
+          <div>
+            <span class="block font-bold text-sky-800 group-hover:text-sky-900">Contact Us</span>
+            <span class="text-xs text-slate-600">Get in touch or find our location</span>
+          </div>
+        </a>
+
+        <a
+          href="/donate"
+          class="flex items-center gap-3 p-4 rounded-xl border border-sky-100 bg-sky-50/50 hover:bg-sky-100/70 transition-colors group"
+        >
+          <span class="text-2xl" aria-hidden="true">❤️</span>
+          <div>
+            <span class="block font-bold text-sky-800 group-hover:text-sky-900">Donate</span>
+            <span class="text-xs text-slate-600">Support our mission in Guthrie</span>
+          </div>
+        </a>
+      </div>
+
+      <a
+        href="/"
+        class="inline-flex items-center justify-center rounded-lg bg-sky-700 px-6 py-3 font-semibold text-white shadow hover:bg-sky-800 transition-colors"
+      >
+        ← Back to Homepage
+      </a>
+    </div>
+  </section>
 </Layout>

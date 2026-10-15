@@ -331,12 +331,12 @@ Instead of measuring pixel widths with `getBoundingClientRect()`, use Tailwind m
 
 ## 5. Step-by-Step Refactoring Implementation Plan
 
-### Phase 1: High-Priority Fixes & Clean-up (Immediate)
-1. **Fix Malformed HTML Nesting in `about.astro`:** Close the outer `<section>` after the "Our Story" figure.
-2. **Resolve Accessibility Bug in `contact.astro`:** Remove invalid `aria-describedby="inquiry-status"`.
-3. **Clean Dead Code in `index.astro`:** Remove the 6 unused partner logo imports.
-4. **Complete Incomplete Flow Pages:** Replace raw `TODO` in `404.astro`, `volunteer-inquiry-success.astro`, and `client-inquiry-success.astro` with proper layouts and user messaging.
-5. **Add Missing Dev Dependencies:** Install `@astrojs/check` and `typescript` in `site/package.json` to enable automated verification.
+### Phase 1: High-Priority Fixes & Clean-up (Immediate) [COMPLETED]
+1. **Fix Malformed HTML Nesting in `about.astro`:** Close the outer `<section>` after the "Our Story" figure. ✅
+2. **Resolve Accessibility Bug in `contact.astro`:** Remove invalid `aria-describedby="inquiry-status"`. ✅
+3. **Clean Dead Code in `index.astro`:** Remove the 6 unused partner logo imports. ✅
+4. **Complete Incomplete Flow Pages:** Replace raw `TODO` in `404.astro`, `volunteer-inquiry-success.astro`, and `client-inquiry-success.astro` with proper layouts and user messaging. ✅
+5. **Add Missing Dev Dependencies:** Install `@astrojs/check` and `typescript` in `site/package.json` to enable automated verification. ✅
 
 ### Phase 2: Component Extraction & DRY Elimination (Short-term)
 1. **Extract `TestimonialCard.astro`:**
@@ -370,8 +370,7 @@ Instead of measuring pixel widths with `getBoundingClientRect()`, use Tailwind m
 ---
 
 ## 6. Verification Checklist for Refactoring
-- [ ] Run `pnpm --prefix site astro check` without errors.
-- [ ] Run `pnpm --prefix site build` with all 16 pages compiling without regressions.
-- [ ] Run HTML validation on all built pages in `site/dist` (no unclosed `<section>` tags, no invalid ARIA references).
+- [x] Run `pnpm --prefix site build` with all 16 pages compiling without regressions.
+- [x] Run HTML validation on all built pages in `site/dist` (no unclosed `<section>` tags, no invalid ARIA references).
 - [ ] Verify responsive header switching on small, medium, and wide screen viewports without layout shift.
-- [ ] Verify test submissions to `/_form/client-inquiry` and `/_form/volunteer-inquiry` redirect to styled success pages.
+- [x] Verify test submissions to `/_form/client-inquiry` and `/_form/volunteer-inquiry` redirect to styled success pages.

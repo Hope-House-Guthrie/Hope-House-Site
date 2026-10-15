@@ -1,7 +1,82 @@
 ---
 import Layout from "../layouts/main.astro";
+import PageHeader from "../components/PageHeader.astro";
 ---
 
 <Layout title="Client Inquiry Submitted">
-  TODO
+  <PageHeader
+    title="Inquiry Received"
+    description="Thank you for reaching out to Hope House Guthrie. Your information has been securely submitted to our administration team."
+  />
+
+  <section class="py-16 bg-white">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="hope-frame hope-frame-accent bg-white p-6 sm:p-10 shadow-sm">
+        <div class="flex items-center gap-4 mb-6">
+          <div
+            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600"
+            aria-hidden="true"
+          >
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <div>
+            <h2 class="text-2xl font-bold text-sky-700">
+              Thank You for Your Inquiry
+            </h2>
+            <p class="text-sm text-slate-600">
+              Our team has received your submission.
+            </p>
+          </div>
+        </div>
+
+        <div class="space-y-4 text-base leading-relaxed text-slate-700">
+          <p>
+            Your inquiry has been received, and our administration team will be notified.
+          </p>
+
+          <p>
+            If a bed is available and you meet our placement requirements, including background checks, someone from our team will contact you.
+          </p>
+
+          <div class="rounded-lg border border-amber-200 bg-amber-50/70 p-4 text-sm text-amber-900 leading-relaxed">
+            <strong class="font-semibold block mb-1">Important Placement Notice:</strong>
+            Submitting an inquiry does not guarantee placement. If you have not heard from us, a bed may not be currently available. Please check back later by submitting another inquiry or calling us directly.
+          </div>
+
+          <div class="rounded-lg border border-sky-200 bg-sky-50/50 p-4 text-sm text-slate-700 leading-relaxed">
+            <strong class="font-semibold text-slate-900 block mb-1">Medical Notice:</strong>
+            Hope House Guthrie provides transitional shelter and community support. We are not a medical facility and do not provide on-site medical or nursing care.
+          </div>
+
+          <div class="border-t border-slate-200 pt-6 mt-6 text-center">
+            <p class="text-sm font-semibold text-slate-700 mb-2">Need immediate assistance or have questions?</p>
+            <a
+              href="tel:4058569058"
+              class="inline-block text-xl font-bold text-sky-700 hover:underline"
+            >
+              (405) 856-9058
+            </a>
+            <p class="text-xs text-slate-500 mt-1">Guthrie, Oklahoma</p>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+          <a
+            href="/"
+            class="inline-flex items-center justify-center rounded-lg bg-sky-700 px-6 py-3 font-semibold text-white hover:bg-sky-800 transition-colors"
+          >
+            ← Return to Homepage
+          </a>
+          <a
+            href="/programs"
+            class="inline-flex items-center justify-center rounded-lg border border-sky-300 bg-white px-6 py-3 font-semibold text-sky-700 hover:bg-sky-50 transition-colors"
+          >
+            Explore Programs & Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
