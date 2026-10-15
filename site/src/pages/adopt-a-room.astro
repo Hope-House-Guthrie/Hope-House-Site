@@ -199,10 +199,45 @@ const donationUrl =
                   {story.photo ? (
                     <div
                       class:list={[
-                        "relative overflow-hidden rounded-xl",
+                        "story-photo-frame relative overflow-hidden rounded-xl",
                         story.videoUrl ? "aspect-[4/3]" : "min-h-72 flex-1",
                       ]}
+                      style={`--story-liquid-filter: url(#room-story-liquid-${index})`}
                     >
+                      {story.beforePhoto && (
+                        <svg
+                          class="pointer-events-none absolute h-0 w-0"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <defs>
+                            <filter
+                              id={`room-story-liquid-${index}`}
+                              x="-25%"
+                              y="-25%"
+                              width="150%"
+                              height="150%"
+                              color-interpolation-filters="sRGB"
+                            >
+                              <feTurbulence
+                                type="fractalNoise"
+                                baseFrequency="0.012 0.025"
+                                numOctaves="2"
+                                seed={index + 3}
+                                result="liquid-noise"
+                              />
+                              <feDisplacementMap
+                                data-liquid-displacement
+                                in="SourceGraphic"
+                                in2="liquid-noise"
+                                scale="0"
+                                xChannelSelector="R"
+                                yChannelSelector="G"
+                              />
+                            </filter>
+                          </defs>
+                        </svg>
+                      )}
                       {story.beforePhoto && (
                         <div class="story-photo-before absolute inset-0">
                           <Image
@@ -489,86 +524,224 @@ const donationUrl =
   </script>
 
   <style>
-    .story-photo-before {
-      animation: story-before 14s infinite;
-    }
-
-    .story-photo-now {
-      animation: story-now 14s infinite;
-    }
-
     [data-story-card][hidden] {
       display: none !important;
     }
 
-    @keyframes story-now {
-      0%,
-      21% {
-        opacity: 0;
-      }
-      36%,
-      86% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0;
-      }
+    .story-photo-before {
+      opacity: 0;
     }
 
-    @keyframes story-before {
-      0%,
-      21% {
-        opacity: 1;
-      }
-      36%,
-      86% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
+    .story-photo-now {
+      opacity: 1;
     }
 
-    [data-photo-transition][data-paused] .story-photo-before,
-    [data-photo-transition][data-paused] .story-photo-now {
-      animation-play-state: paused;
+    [data-photo-transition][data-liquid-active]
+      .story-photo-before
+      :global(img),
+    [data-photo-transition][data-liquid-active] .story-photo-now :global(img) {
+      filter: var(--story-liquid-filter);
+      transform: scale(1.06);
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .story-photo-before {
-        animation: none;
-        opacity: 0;
+      [data-photo-transition] .story-photo-before {
+        opacity: 0 !important;
       }
 
-      .story-photo-now {
-        animation: none;
-        opacity: 1;
+      [data-photo-transition] .story-photo-now {
+        opacity: 1 !important;
       }
 
-      .story-photo-control {
-        display: none;
+      [data-photo-transition] .story-photo-now span {
+        opacity: 1 !important;
+      }
+
+      [data-photo-transition] :global(img) {
+        filter: none !important;
+        transform: none !important;
       }
     }
   </style>
 
   <script>
-    document
-      .querySelectorAll<HTMLButtonElement>("[data-photo-pause]")
-      .forEach((button) => {
-        button.addEventListener("click", () => {
-          const frame = button.closest<HTMLElement>("[data-photo-transition]");
-          if (!frame) return;
+    function setupRoomStoryPhotos() {
+      const container = document.getElementById("random-client-stories");
+      if (!container) return;
 
-          const paused = frame.toggleAttribute("data-paused");
-          button.textContent = paused ? "▶ Resume" : "Ⅱ Pause";
-          button.setAttribute("aria-pressed", String(paused));
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      );
+      const cleanups: Array<() => void> = [];
 
-          const label = button.getAttribute("aria-label") || "";
-          button.setAttribute(
-            "aria-label",
-            label.replace(/^(Pause|Resume)/, paused ? "Resume" : "Pause"),
+      container
+        .querySelectorAll<HTMLElement>("[data-photo-transition]")
+        .forEach((frame) => {
+          const before = frame.querySelector<HTMLElement>(
+            ".story-photo-before",
           );
+          const current = frame.querySelector<HTMLElement>(".story-photo-now");
+          const displacement = frame.querySelector<SVGFEDisplacementMapElement>(
+            "[data-liquid-displacement]",
+          );
+
+          if (!before || !current || !displacement) return;
+
+          const beforeLabel = before.querySelector("span");
+          const currentLabel = current.querySelector("span");
+
+          const intakeHold = 4000;
+          const transition = 1800;
+          const currentHold = 6000;
+          const cycle = intakeHold + transition + currentHold + transition;
+
+          let elapsed = 0;
+          let lastTime: number | null = null;
+          let animationId = 0;
+          let visible = false;
+          let ready = false;
+          let disposed = false;
+
+          const ease = (value: number) => value * value * (3 - 2 * value);
+
+          function render() {
+            let amount = 0;
+            let strength = 0;
+
+            if (elapsed < intakeHold) {
+              amount = 0;
+            } else if (elapsed < intakeHold + transition) {
+              const progress = (elapsed - intakeHold) / transition;
+              amount = ease(progress);
+              strength = Math.sin(Math.PI * progress) * 65;
+            } else if (elapsed < intakeHold + transition + currentHold) {
+              amount = 1;
+            } else {
+              const progress =
+                (elapsed - intakeHold - transition - currentHold) / transition;
+
+              amount = 1 - ease(progress);
+              strength = Math.sin(Math.PI * progress) * 65;
+            }
+
+            before.style.opacity = "1";
+            current.style.opacity = String(amount);
+            displacement.setAttribute("scale", strength.toFixed(2));
+            frame.toggleAttribute("data-liquid-active", strength > 0.1);
+
+            if (beforeLabel) {
+              beforeLabel.style.opacity = amount < 0.5 ? "1" : "0";
+            }
+
+            if (currentLabel) {
+              currentLabel.style.opacity = amount >= 0.5 ? "1" : "0";
+            }
+          }
+
+          function shouldRun() {
+            return (
+              ready &&
+              !disposed &&
+              visible &&
+              !document.hidden &&
+              !reducedMotion.matches
+            );
+          }
+
+          function tick(time: number) {
+            animationId = 0;
+
+            if (!shouldRun()) {
+              lastTime = null;
+              return;
+            }
+
+            if (lastTime !== null) {
+              elapsed = (elapsed + Math.min(time - lastTime, 100)) % cycle;
+            }
+
+            lastTime = time;
+            render();
+            animationId = requestAnimationFrame(tick);
+          }
+
+          function sync() {
+            cancelAnimationFrame(animationId);
+            animationId = 0;
+            lastTime = null;
+
+            if (reducedMotion.matches) {
+              frame.removeAttribute("data-liquid-active");
+              before.style.opacity = "0";
+              current.style.opacity = "1";
+              displacement.setAttribute("scale", "0");
+
+              if (currentLabel) currentLabel.style.opacity = "1";
+            } else if (ready) {
+              render();
+            }
+
+            if (shouldRun()) {
+              animationId = requestAnimationFrame(tick);
+            }
+          }
+
+          const observer = new IntersectionObserver(
+            ([entry]) => {
+              visible = entry.isIntersecting;
+              sync();
+            },
+            { threshold: 0.1 },
+          );
+
+          observer.observe(frame);
+          reducedMotion.addEventListener("change", sync);
+          document.addEventListener("visibilitychange", sync);
+
+          const images = Array.from(
+            frame.querySelectorAll<HTMLImageElement>("img"),
+          );
+
+          Promise.all(
+            images.map(
+              (image) =>
+                new Promise<void>((resolve) => {
+                  if (image.complete) {
+                    resolve();
+                    return;
+                  }
+
+                  image.addEventListener("load", () => resolve(), {
+                    once: true,
+                  });
+                  image.addEventListener("error", () => resolve(), {
+                    once: true,
+                  });
+                }),
+            ),
+          ).then(() => {
+            if (disposed) return;
+            ready = images.every((image) => image.naturalWidth > 0);
+            sync();
+          });
+
+          cleanups.push(() => {
+            disposed = true;
+            cancelAnimationFrame(animationId);
+            observer.disconnect();
+            reducedMotion.removeEventListener("change", sync);
+            document.removeEventListener("visibilitychange", sync);
+          });
         });
-      });
+
+      document.addEventListener(
+        "astro:before-swap",
+        () => cleanups.forEach((cleanup) => cleanup()),
+        { once: true },
+      );
+    }
+
+    setupRoomStoryPhotos();
+    document.addEventListener("astro:after-swap", setupRoomStoryPhotos);
   </script>
 </Layout>
