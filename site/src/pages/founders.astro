@@ -3,11 +3,17 @@ import Layout from "../layouts/main.astro";
 import PageHeader from "../components/PageHeader.astro";
 import { Image } from "astro:assets";
 
-import hopeHouseLogo from "../assets/logo.svg";
 import suePhoto from "../assets/board/sue-ducharme.png";
 import ojPhoto from "../assets/board/founders/oj-myers.png";
+import maryPhoto from "../assets/board/founders/mary-myers.png";
 
 const founders = [
+  {
+    name: "Sue Ducharme",
+    image: suePhoto,
+    isPortrait: true,
+    bio: "",
+  },
   {
     name: "OJ Myers",
     image: ojPhoto,
@@ -16,13 +22,7 @@ const founders = [
   },
   {
     name: "Mary Myers",
-    image: hopeHouseLogo,
-    isPortrait: false,
-    bio: "",
-  },
-  {
-    name: "Sue Ducharme",
-    image: suePhoto,
+    image: maryPhoto,
     isPortrait: true,
     bio: "",
   },
