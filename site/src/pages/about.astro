@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import Layout from "../layouts/main.astro";
 import BoardSection from "../components/board-section.astro";
 import PageHeader from "../components/PageHeader.astro";
+import SectionHeading from "../components/SectionHeading.astro";
 import hopeHouseSign from "../assets/hope-house-sign.png";
 
 const allMembers = await getCollection("board");
@@ -100,23 +101,12 @@ const advisoryMembers = sortedMembers.filter(
   <!-- Mission and Vision -->
     <section class="py-16 bg-sky-50 border-y border-sky-100">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-10">
-          <h2
-            class="text-3xl sm:text-4xl font-bold text-sky-700 tracking-tight"
-          >
-            Serving Hope &amp; Moving Forward
-          </h2>
-
-          <div
-            class="w-full h-1 bg-sky-700 rounded-full mx-auto mt-4"
-            aria-hidden="true"
-          >
-          </div>
-
-          <p class="mt-2 text-lg text-slate-800">
-            Our purpose today. Our hope for tomorrow.
-          </p>
-        </div>
+        <SectionHeading
+          title="Serving Hope & Moving Forward"
+          subtitle="Our purpose today. Our hope for tomorrow."
+          class="mb-10"
+          subtitleClass="mt-2 text-lg text-slate-800"
+        />
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div
@@ -164,24 +154,12 @@ const advisoryMembers = sortedMembers.filter(
     <!-- Core Values -->
     <section class="py-16 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-10">
-          <h2
-            class="text-3xl sm:text-4xl font-bold text-sky-700 tracking-tight"
-          >
-            Our Core Values
-          </h2>
-
-          <div
-            class="w-full h-1 bg-sky-700 rounded-full mx-auto mt-4"
-            aria-hidden="true"
-          >
-          </div>
-
-          <p class="text-slate-800 text-lg mt-4">
-            The values that shape how we serve, lead, and care for our
-            community.
-          </p>
-        </div>
+        <SectionHeading
+          title="Our Core Values"
+          subtitle="The values that shape how we serve, lead, and care for our community."
+          class="mb-10"
+          subtitleClass="text-slate-800 text-lg mt-4"
+        />
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           {
@@ -259,24 +237,12 @@ const advisoryMembers = sortedMembers.filter(
     <!-- Board of Directors -->
     <section class="py-16 bg-sky-50 border-t border-sky-100">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <h2
-            class="text-3xl sm:text-4xl font-bold text-sky-700 tracking-tight"
-          >
-            Board of Directors
-          </h2>
-
-          <div
-            class="w-full h-1 bg-sky-700 rounded-full mx-auto mt-4"
-            aria-hidden="true"
-          >
-          </div>
-
-          <p class="text-slate-700 text-lg mt-4">
-            Community leaders helping guide the mission and future of Hope House
-            Guthrie.
-          </p>
-        </div>
+        <SectionHeading
+          title="Board of Directors"
+          subtitle="Community leaders helping guide the mission and future of Hope House Guthrie."
+          class="mb-12"
+          subtitleClass="text-slate-700 text-lg mt-4"
+        />
 
         <BoardSection title="Board Officers" members={officers} />
         <BoardSection title="Board Members" members={boardMembers} />

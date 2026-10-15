@@ -342,7 +342,6 @@ Instead of measuring pixel widths with `getBoundingClientRect()`, use Tailwind m
 1. **Extract `TestimonialCard.astro`:**
    - Migrate repeated card markup and CSS from `testimonials.astro` and `adopt-a-room.astro`.
    - Separate the heavy liquid animation script into an opt-in client module (`src/scripts/liquid-photo.ts`).
-   - Fix `adopt-a-room.astro` to only select and render 2 testimonials on the server rather than sending 8 to the client and shuffling via DOM manipulation.
 2. **Decompose `main.astro`:**
    - Extract `Header.astro`, `Footer.astro`, `AnnouncementBar.astro`, and `DonateTab.astro`.
    - Replace the imperative 115-line JS measuring script in the header with clean responsive Tailwind CSS.

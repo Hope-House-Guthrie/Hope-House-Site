@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/main.astro";
 import PageHeader from "../components/PageHeader.astro";
+import SectionHeading from "../components/SectionHeading.astro";
 
 const walkInServices = [
   {
@@ -96,21 +97,14 @@ const residentialPrograms = [
   >
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid items-start gap-6 md:grid-cols-3 md:gap-12">
-        <div>
-          <span class="text-xs font-bold uppercase tracking-wide text-sky-700">
-            Direct Food Relief
-          </span>
-
-          <h2 id="lunch-title" class="mt-2 text-2xl font-bold text-slate-900">
-            Lou’s — Lunch on Us
-          </h2>
-
-          <div
-            class="mt-3 h-1 w-full rounded-full bg-sky-700"
-            aria-hidden="true"
-          >
-          </div>
-        </div>
+        <SectionHeading
+          tag="Direct Food Relief"
+          title="Lou’s — Lunch on Us"
+          id="lunch-title"
+          titleClass="text-2xl font-bold text-slate-900"
+          centered={false}
+          class="mb-0"
+        />
 
         <div class="space-y-4 leading-relaxed text-slate-600 md:col-span-2">
           <p>
@@ -236,23 +230,16 @@ const residentialPrograms = [
     aria-labelledby="walk-in-title"
   >
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mb-8">
-        <p class="text-xs font-bold uppercase tracking-wide text-sky-700">
-          Everyday Support
-        </p>
-
-        <h2 id="walk-in-title" class="mt-2 text-3xl font-bold text-slate-900">
-          Walk-In Services
-        </h2>
-
-        <div class="mt-3 h-1 w-full rounded-full bg-sky-700" aria-hidden="true">
-        </div>
-
-        <p class="mt-5 max-w-2xl leading-relaxed text-slate-700">
-          Support for everyday needs, with a welcoming team ready to help.
-          Walk-in services are available seven days a week until 5:00 PM.
-        </p>
-      </div>
+      <SectionHeading
+        tag="Everyday Support"
+        title="Walk-In Services"
+        id="walk-in-title"
+        titleClass="text-3xl font-bold text-slate-900"
+        subtitle="Support for everyday needs, with a welcoming team ready to help. Walk-in services are available seven days a week until 5:00 PM."
+        centered={false}
+        class="mb-8"
+        subtitleClass="mt-5 max-w-2xl leading-relaxed text-slate-700"
+      />
 
       <div class="hope-frame hope-frame-accent mb-8 bg-white p-6 sm:p-8">
         <div class="flex flex-col gap-4 sm:flex-row sm:items-start">
@@ -304,24 +291,16 @@ const residentialPrograms = [
     aria-labelledby="housing-title"
   >
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mb-8">
-        <p class="text-xs font-bold uppercase tracking-wide text-sky-700">
-          A Place to Begin Again
-        </p>
-
-        <h2 id="housing-title" class="mt-2 text-3xl font-bold text-slate-900">
-          Emergency &amp; Transitional Shelter Programs
-        </h2>
-
-        <div class="mt-3 h-1 w-full rounded-full bg-sky-700" aria-hidden="true">
-        </div>
-
-        <p class="mt-5 max-w-3xl leading-relaxed text-slate-700">
-          From a short-term place to stay to a longer journey toward stability,
-          our programs offer shelter, support, and opportunities to move
-          forward.
-        </p>
-      </div>
+      <SectionHeading
+        tag="A Place to Begin Again"
+        title="Emergency & Transitional Shelter Programs"
+        id="housing-title"
+        titleClass="text-3xl font-bold text-slate-900"
+        subtitle="From a short-term place to stay to a longer journey toward stability, our programs offer shelter, support, and opportunities to move forward."
+        centered={false}
+        class="mb-8"
+        subtitleClass="mt-5 max-w-3xl leading-relaxed text-slate-700"
+      />
 
       <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {
@@ -435,24 +414,16 @@ const residentialPrograms = [
     aria-labelledby="recovery-title"
   >
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mb-8">
-        <p class="text-xs font-bold uppercase tracking-wide text-sky-700">
-          Connection &amp; Encouragement
-        </p>
-
-        <h2 id="recovery-title" class="mt-2 text-3xl font-bold text-slate-900">
-          Recovery &amp; Peer Support
-        </h2>
-
-        <div class="mt-3 h-1 w-full rounded-full bg-sky-700" aria-hidden="true">
-        </div>
-
-        <p class="mt-5 max-w-3xl leading-relaxed text-slate-700">
-          Moving forward takes support. Our meetings and groups provide
-          opportunities to connect, share experiences, and build skills for
-          recovery and everyday life.
-        </p>
-      </div>
+      <SectionHeading
+        tag="Connection & Encouragement"
+        title="Recovery & Peer Support"
+        id="recovery-title"
+        titleClass="text-3xl font-bold text-slate-900"
+        subtitle="Moving forward takes support. Our meetings and groups provide opportunities to connect, share experiences, and build skills for recovery and everyday life."
+        centered={false}
+        class="mb-8"
+        subtitleClass="mt-5 max-w-3xl leading-relaxed text-slate-700"
+      />
 
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
         <!-- NA Meetings -->

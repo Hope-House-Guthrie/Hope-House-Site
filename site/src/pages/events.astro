@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/main.astro";
 import EventsWeather from "../components/EventWeather.astro";
+import SectionHeading from "../components/SectionHeading.astro";
 
 const upcomingEvents = [
   {
@@ -38,20 +39,13 @@ const upcomingEvents = [
   <!-- Calendar Placeholder -->
   <section id="calendar" class="bg-white py-12 sm:py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="mb-4 text-2xl font-bold text-sky-700 sm:text-3xl">
-        Community Calendar
-      </h2>
-
-      <div
-        class="mb-5 mt-4 h-1 w-full rounded-full bg-sky-700"
-        aria-hidden="true"
-      >
-      </div>
-
-      <p class="mb-8 max-w-2xl leading-relaxed text-slate-700">
-        A place to see public Hope House events and selected gatherings from
-        around our community.
-      </p>
+      <SectionHeading
+        title="Community Calendar"
+        subtitle="A place to see public Hope House events and selected gatherings from around our community."
+        centered={false}
+        titleClass="mb-4 text-2xl font-bold text-sky-700 sm:text-3xl"
+        subtitleClass="mb-8 max-w-2xl"
+      />
 
       <!-- TJ: Replace this placeholder with the public Google Calendar. -->
       <div
@@ -74,15 +68,12 @@ const upcomingEvents = [
   <!-- Featured Event -->
   <section class="bg-sky-50 py-12 sm:py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="mb-4 text-2xl font-bold text-sky-700 sm:text-3xl">
-        Something to Look Forward To
-      </h2>
-
-      <div
-        class="mb-8 mt-4 h-1 w-full rounded-full bg-sky-700"
-        aria-hidden="true"
-      >
-      </div>
+      <SectionHeading
+        title="Something to Look Forward To"
+        centered={false}
+        titleClass="mb-4 text-2xl font-bold text-sky-700 sm:text-3xl"
+        class="mb-8"
+      />
 
       <div class="hope-frame overflow-hidden bg-white lg:grid lg:grid-cols-2">
         <div
@@ -149,21 +140,13 @@ const upcomingEvents = [
   <!-- Upcoming Events -->
   <section class="bg-white py-12 sm:py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="mb-4 text-2xl font-bold text-sky-700 sm:text-3xl">
-        Coming Together
-      </h2>
-
-      <div
-        class="mb-5 mt-4 h-1 w-full rounded-full bg-sky-700"
-        aria-hidden="true"
-      >
-      </div>
-
-      <p class="mb-8 max-w-2xl leading-relaxed text-slate-700">
-        We’re building this space for Hope House gatherings, community events,
-        and opportunities to lend a hand. Listings below are previews while
-        details are being gathered.
-      </p>
+      <SectionHeading
+        title="Coming Together"
+        subtitle="We’re building this space for Hope House gatherings, community events, and opportunities to lend a hand. Listings below are previews while details are being gathered."
+        centered={false}
+        titleClass="mb-4 text-2xl font-bold text-sky-700 sm:text-3xl"
+        subtitleClass="mb-8 max-w-2xl"
+      />
 
       <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
         {
@@ -200,20 +183,13 @@ const upcomingEvents = [
   <section class="bg-sky-50 py-12 sm:py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="hope-frame bg-white p-6 sm:p-10">
-        <h2 class="mb-4 text-2xl font-bold text-sky-700 sm:text-3xl">
-          Have a Community Event to Share?
-        </h2>
-
-        <div
-          class="mb-5 mt-4 h-1 w-full rounded-full bg-sky-700"
-          aria-hidden="true"
-        >
-        </div>
-
-        <p class="mb-6 max-w-2xl leading-relaxed text-slate-700">
-          Hosting an event in Guthrie or a surrounding community? Send us the
-          details for consideration on our events page and community calendar.
-        </p>
+        <SectionHeading
+          title="Have a Community Event to Share?"
+          subtitle="Hosting an event in Guthrie or a surrounding community? Send us the details for consideration on our events page and community calendar."
+          centered={false}
+          titleClass="mb-4 text-2xl font-bold text-sky-700 sm:text-3xl"
+          subtitleClass="mb-6 max-w-2xl"
+        />
 
         <a
           href="/submit-event"

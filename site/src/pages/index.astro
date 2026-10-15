@@ -4,6 +4,7 @@ import { Image, getImage } from "astro:assets";
 import aerialImage from "../assets/new-aerial.jpeg";
 
 import Spotlight from "../components/Spotlight.astro";
+import SectionHeading from "../components/SectionHeading.astro";
 
 const optimizedAerialImage = await getImage({
   src: aerialImage,
@@ -78,22 +79,12 @@ const optimizedAerialImage = await getImage({
   <!-- Key Services Grid -->
   <section class="py-16 lg:py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="mb-10 text-center">
-        <h2 class="text-3xl font-bold text-sky-700">
-          Serving Hope &amp; Moving Forward
-        </h2>
-
-        <div
-          class="mx-auto mt-4 mb-5 h-1 w-full rounded-full bg-sky-700"
-          aria-hidden="true"
-        >
-        </div>
-
-        <p class="mx-auto max-w-2xl text-slate-900 leading-relaxed">
-          We advocate for every person who comes through our doors, offering
-          short-term shelter, long-term stabilization, and community care.
-        </p>
-      </div>
+      <SectionHeading
+        title="Serving Hope & Moving Forward"
+        subtitle="We advocate for every person who comes through our doors, offering short-term shelter, long-term stabilization, and community care."
+        class="mb-10"
+        subtitleClass="text-slate-900"
+      />
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="hope-frame hope-frame-accent flex flex-col bg-sky-50 p-6">
@@ -179,19 +170,12 @@ const optimizedAerialImage = await getImage({
   <!-- Our Impact -->
   <section class="py-12 lg:py-14 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="mb-8 text-center">
-        <h2 class="text-3xl font-bold text-sky-700">Our Impact</h2>
-
-        <div
-          class="mx-auto mt-4 mb-4 h-1 w-full rounded-full bg-sky-700"
-          aria-hidden="true"
-        >
-        </div>
-
-        <p class="mx-auto max-w-2xl text-slate-600">
-          Meals, essential resources, and hope for our community.
-        </p>
-      </div>
+      <SectionHeading
+        title="Our Impact"
+        subtitle="Meals, essential resources, and hope for our community."
+        class="mb-8"
+        subtitleClass="text-slate-600"
+      />
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
         <div
