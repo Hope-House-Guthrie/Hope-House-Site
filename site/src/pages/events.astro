@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/main.astro";
-import PageHeader from "../components/PageHeader.astro";
+import EventsWeather from "../components/EventWeather.astro";
 
 const upcomingEvents = [
   {
@@ -33,13 +33,46 @@ const upcomingEvents = [
 ---
 
 <Layout title="Events">
-  <PageHeader
-    title="Gather, Connect & Find Hope"
-    description="Explore events at Hope House Guthrie and opportunities to connect with the community around us."
-  />
+  <EventsWeather />
 
-  <!--Featured Event -->
-  <section class="bg-white py-12 sm:py-16">
+  <!-- Calendar Placeholder -->
+  <section id="calendar" class="bg-white py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="mb-4 text-2xl font-bold text-sky-700 sm:text-3xl">
+        Community Calendar
+      </h2>
+
+      <div
+        class="mb-5 mt-4 h-1 w-full rounded-full bg-sky-700"
+        aria-hidden="true"
+      >
+      </div>
+
+      <p class="mb-8 max-w-2xl leading-relaxed text-slate-700">
+        A place to see public Hope House events and selected gatherings from
+        around our community.
+      </p>
+
+      <!-- TJ: Replace this placeholder with the public Google Calendar. -->
+      <div
+        class="hope-frame flex min-h-80 flex-col items-center justify-center bg-sky-50 px-6 py-12 text-center"
+      >
+        <span class="mb-4 text-5xl" aria-hidden="true">📅</span>
+
+        <h3 class="mb-3 text-2xl font-bold text-sky-700">
+          Our Calendar Is Coming Soon
+        </h3>
+
+        <p class="max-w-lg leading-relaxed text-slate-700">
+          We’re getting this space ready. Check back for event dates, times,
+          locations, and details to help you plan your visit.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Event -->
+  <section class="bg-sky-50 py-12 sm:py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="mb-4 text-2xl font-bold text-sky-700 sm:text-3xl">
         Something to Look Forward To
@@ -51,7 +84,7 @@ const upcomingEvents = [
       >
       </div>
 
-      <div class="hope-frame overflow-hidden bg-sky-50 lg:grid lg:grid-cols-2">
+      <div class="hope-frame overflow-hidden bg-white lg:grid lg:grid-cols-2">
         <div
           class="flex min-h-64 flex-col items-center justify-center bg-amber-50 p-8 text-center sm:min-h-80"
         >
@@ -114,7 +147,7 @@ const upcomingEvents = [
   </section>
 
   <!-- Upcoming Events -->
-  <section class="bg-sky-50 py-12 sm:py-16">
+  <section class="bg-white py-12 sm:py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="mb-4 text-2xl font-bold text-sky-700 sm:text-3xl">
         Coming Together
@@ -135,7 +168,7 @@ const upcomingEvents = [
       <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
         {
           upcomingEvents.map((event) => (
-            <article class="hope-frame hope-frame-accent flex flex-col bg-white p-6">
+            <article class="hope-frame hope-frame-accent flex flex-col bg-sky-50 p-6">
               <span class="mb-4 text-4xl" aria-hidden="true">
                 {event.icon}
               </span>
@@ -159,42 +192,6 @@ const upcomingEvents = [
             </article>
           ))
         }
-      </div>
-    </div>
-  </section>
-
-  <!-- Calendar Placeholder -->
-  <section id="calendar" class="bg-white py-12 sm:py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="mb-4 text-2xl font-bold text-sky-700 sm:text-3xl">
-        Community Calendar
-      </h2>
-
-      <div
-        class="mb-5 mt-4 h-1 w-full rounded-full bg-sky-700"
-        aria-hidden="true"
-      >
-      </div>
-
-      <p class="mb-8 max-w-2xl leading-relaxed text-slate-700">
-        A place to see public Hope House events and selected gatherings from
-        around our community.
-      </p>
-
-      <!-- TJ: Replace this placeholder with the public Google Calendar. -->
-      <div
-        class="hope-frame flex min-h-80 flex-col items-center justify-center bg-sky-50 px-6 py-12 text-center"
-      >
-        <span class="mb-4 text-5xl" aria-hidden="true">📅</span>
-
-        <h3 class="mb-3 text-2xl font-bold text-sky-700">
-          Our Calendar Is Coming Soon
-        </h3>
-
-        <p class="max-w-lg leading-relaxed text-slate-700">
-          We’re getting this space ready. Check back for event dates, times,
-          locations, and details to help you plan your visit.
-        </p>
       </div>
     </div>
   </section>
