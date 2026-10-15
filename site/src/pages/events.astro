@@ -3,44 +3,43 @@ import Layout from "../layouts/main.astro";
 import PageHeader from "../components/PageHeader.astro";
 
 const upcomingEvents = [
-    {
-        title: "Hope House Guthrie Fall Festival",
-        category: "Hope House Guthrie",
-        description:
-            "A day to gather, connect, and celebrate with our community.",
-        location: "Hope House Guthrie",
-        detail: "Date and activities coming soon",
-        icon: "🍂"
-    },
-    {
-        title: "Community Event Spotlight",
-        category: "Community",
-        description:
-            "Discover local gatherings and opportunities to connect around Guthrie.",
-        location: "Guthrie and surrounding communities",
-        detail: "Event listings coming soon",
-        icon: "🏘️",
-    },
-    {
-        title: "Volunteer Together",
-        category: "Get Involved",
-        description:
-            "Help make Hope House Guthrie events welcoming and memorable by sharing your time and talents.",
-        location: "Hope House Guthrie",
-        detail: "Volunteer opportunities coming soon",
-        icon: "🤝",
-    },
+  {
+    title: "Hope House Guthrie Fall Festival",
+    category: "Hope House Guthrie",
+    description: "A day to gather, connect, and celebrate with our community.",
+    location: "Hope House Guthrie",
+    detail: "Date and activities coming soon",
+    icon: "🍂",
+  },
+  {
+    title: "Community Event Spotlight",
+    category: "Community",
+    description:
+      "Discover local gatherings and opportunities to connect around Guthrie.",
+    location: "Guthrie and surrounding communities",
+    detail: "Event listings coming soon",
+    icon: "🏘️",
+  },
+  {
+    title: "Volunteer Together",
+    category: "Get Involved",
+    description:
+      "Help make Hope House Guthrie events welcoming and memorable by sharing your time and talents.",
+    location: "Hope House Guthrie",
+    detail: "Volunteer opportunities coming soon",
+    icon: "🤝",
+  },
 ];
 ---
 
 <Layout title="Events">
-    <PageHeader
-        title="Gather, Connect & Find Hope"
-        description="Explore events at Hope House Guthrie and opportunities to connect with the community around us."
-    />
+  <PageHeader
+    title="Gather, Connect & Find Hope"
+    description="Explore events at Hope House Guthrie and opportunities to connect with the community around us."
+  />
 
-       <!--Featured Event -->
-        <section class="bg-white py-12 sm:py-16">
+  <!--Featured Event -->
+  <section class="bg-white py-12 sm:py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="mb-4 text-2xl font-bold text-sky-700 sm:text-3xl">
         Something to Look Forward To
@@ -49,11 +48,10 @@ const upcomingEvents = [
       <div
         class="mb-8 mt-4 h-1 w-full rounded-full bg-sky-700"
         aria-hidden="true"
-      ></div>
-
-      <div
-        class="hope-frame overflow-hidden bg-sky-50 lg:grid lg:grid-cols-2"
       >
+      </div>
+
+      <div class="hope-frame overflow-hidden bg-sky-50 lg:grid lg:grid-cols-2">
         <div
           class="flex min-h-64 flex-col items-center justify-center bg-amber-50 p-8 text-center sm:min-h-80"
         >
@@ -78,15 +76,17 @@ const upcomingEvents = [
           </h3>
 
           <p class="mb-6 leading-relaxed text-slate-700">
-            We’re preparing a chance to come together, enjoy the season,
-            and celebrate our community. Check back for confirmed event
-            details and ways to participate.
+            We’re preparing a chance to come together, enjoy the season, and
+            celebrate our community. Check back for confirmed event details and
+            ways to participate.
           </p>
 
           <dl class="space-y-4">
             <div>
               <dt class="font-semibold text-slate-900">When</dt>
-              <dd class="text-slate-600">Confirmed date and time coming soon</dd>
+              <dd class="text-slate-600">
+                Confirmed date and time coming soon
+              </dd>
             </div>
 
             <div>
@@ -123,12 +123,13 @@ const upcomingEvents = [
       <div
         class="mb-5 mt-4 h-1 w-full rounded-full bg-sky-700"
         aria-hidden="true"
-      ></div>
+      >
+      </div>
 
       <p class="mb-8 max-w-2xl leading-relaxed text-slate-700">
-        We’re building this space for Hope House gatherings, community
-        events, and opportunities to lend a hand. Listings below are
-        previews while details are being gathered.
+        We’re building this space for Hope House gatherings, community events,
+        and opportunities to lend a hand. Listings below are previews while
+        details are being gathered.
       </p>
 
       <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -143,9 +144,7 @@ const upcomingEvents = [
                 {event.category}
               </p>
 
-              <h3 class="mb-3 text-xl font-bold text-sky-700">
-                {event.title}
-              </h3>
+              <h3 class="mb-3 text-xl font-bold text-sky-700">{event.title}</h3>
 
               <p class="mb-6 leading-relaxed text-slate-700">
                 {event.description}
@@ -155,9 +154,7 @@ const upcomingEvents = [
                 <p class="text-sm font-semibold text-slate-800">
                   {event.location}
                 </p>
-                <p class="mt-2 text-sm text-slate-600">
-                  {event.detail}
-                </p>
+                <p class="mt-2 text-sm text-slate-600">{event.detail}</p>
               </div>
             </article>
           ))
@@ -176,11 +173,12 @@ const upcomingEvents = [
       <div
         class="mb-5 mt-4 h-1 w-full rounded-full bg-sky-700"
         aria-hidden="true"
-      ></div>
+      >
+      </div>
 
       <p class="mb-8 max-w-2xl leading-relaxed text-slate-700">
-        A place to see public Hope House events and selected gatherings
-        from around our community.
+        A place to see public Hope House events and selected gatherings from
+        around our community.
       </p>
 
       <!-- TJ: Replace this placeholder with the public Google Calendar. -->
@@ -194,38 +192,43 @@ const upcomingEvents = [
         </h3>
 
         <p class="max-w-lg leading-relaxed text-slate-700">
-          We’re getting this space ready. Check back for event dates,
-          times, locations, and details to help you plan your visit.
+          We’re getting this space ready. Check back for event dates, times,
+          locations, and details to help you plan your visit.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Suggest an Event -->
+  <!-- Submit a Community Event -->
   <section class="bg-sky-50 py-12 sm:py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="hope-frame bg-white p-6 sm:p-10">
         <h2 class="mb-4 text-2xl font-bold text-sky-700 sm:text-3xl">
-          Have Something to Share?
+          Have a Community Event to Share?
         </h2>
 
         <div
           class="mb-5 mt-4 h-1 w-full rounded-full bg-sky-700"
           aria-hidden="true"
-        ></div>
+        >
+        </div>
 
         <p class="mb-6 max-w-2xl leading-relaxed text-slate-700">
-          Know of a community event that could benefit our neighbors?
-          Contact us with the details so our team can consider it for
-          the calendar.
+          Hosting an event in Guthrie or a surrounding community? Send us the
+          details for consideration on our events page and community calendar.
         </p>
 
         <a
-          href="/contact"
-          class="inline-block rounded-lg bg-sky-700 px-6 py-3 text-center font-semibold text-white transition-colors hover:bg-sky-800"
+          href="/submit-event"
+          class="inline-flex min-h-11 items-center justify-center rounded-lg bg-sky-700 px-6 py-3 text-center font-semibold text-white transition-colors hover:bg-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700"
         >
-          Contact Our Team
+          Submit a Community Event
         </a>
+
+        <p class="mt-4 max-w-2xl text-sm leading-relaxed text-slate-600">
+          Submissions are reviewed by Hope House Guthrie before being added.
+          Submitting an event does not guarantee publication.
+        </p>
       </div>
     </div>
   </section>
