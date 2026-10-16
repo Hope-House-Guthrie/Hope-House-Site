@@ -1,0 +1,53 @@
+---
+// src/components/forms/lib/PhoneInput.astro
+interface Props {
+  id?: string;
+  name?: string;
+  label?: string;
+  value?: string;
+  placeholder?: string;
+  required?: boolean;
+  class?: string;
+}
+
+const {
+  id = "phone",
+  name = "phone",
+  label = "Phone Number",
+  value = "",
+  placeholder = "(555) 555-5555",
+  required = false,
+  class: className = "",
+} = Astro.props;
+---
+
+<div class={className}>
+  {label && (
+    <label for={id} class="hope-label">
+      {label} {required && "*"}
+    </label>
+  )}
+  <input
+    id={id}
+    name={name}
+    type="tel"
+    autocomplete="tel"
+    inputmode="tel"
+    placeholder={placeholder}
+    value={value}
+    required={required}
+    maxlength="14"
+    class="hope-input"
+    data-phone-input
+  />
+</div>
+
+<script>
+  import { formatPhoneNumber } from "./formatters";
+
+  document.querySelectorAll<HTMLInputElement>("input[data-phone-input]").forEach((input) => {
+    input.addEventListener("input", () => {
+      input.value = formatPhoneNumber(input.value);
+    });
+  });
+</script>

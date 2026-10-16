@@ -1,0 +1,56 @@
+---
+interface Props {
+  id: string;
+  name: string;
+  label: string;
+  type?: "text" | "email" | "number" | "date" | "url" | "password";
+  value?: string;
+  placeholder?: string;
+  required?: boolean;
+  autocomplete?: string;
+  maxlength?: number;
+  min?: string | number;
+  step?: string | number;
+  class?: string;
+}
+
+const {
+  id,
+  name,
+  label,
+  type = "text",
+  value = "",
+  placeholder = "",
+  required = false,
+  autocomplete,
+  maxlength,
+  min,
+  step,
+  class: className = "",
+} = Astro.props;
+---
+
+<div class={className}>
+  <label for={id} class="hope-label">
+    {label} {required && "*"}
+  </label>
+  <input
+    type={type}
+    id={id}
+    name={name}
+    value={value}
+    placeholder={placeholder}
+    required={required}
+    autocomplete={autocomplete}
+    maxlength={maxlength}
+    min={min}
+    step={step}
+    class="hope-input"
+  />
+</div>
+
+<style>
+  input[type=number] {
+    color-scheme: light;
+  }
+</style>
