@@ -2,31 +2,9 @@
 import Layout from "../layouts/main.astro";
 import PageHeader from "../components/PageHeader.astro";
 import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 
-import suePhoto from "../assets/board/sue-ducharme.png";
-import ojPhoto from "../assets/board/founders/oj-myers.png";
-import maryPhoto from "../assets/board/founders/mary-myers.png";
-
-const founders = [
-  {
-    name: "Sue Ducharme",
-    image: suePhoto,
-    isPortrait: true,
-    bio: "",
-  },
-  {
-    name: "OJ Myers",
-    image: ojPhoto,
-    isPortrait: true,
-    bio: "",
-  },
-  {
-    name: "Mary Myers",
-    image: maryPhoto,
-    isPortrait: true,
-    bio: "",
-  },
-];
+const founders = await getCollection("founders");
 ---
 
 <Layout title="Our Founders">
@@ -61,10 +39,9 @@ const founders = [
 
       <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
         {
-          founders.map((founder) => (
+          founders.map(({ data: founder }) => (
             <article class="hope-frame hope-frame-accent overflow-hidden bg-white">
               <div class="flex aspect-square items-center justify-center bg-sky-100">
-                {founder.isPortrait ? (
                   <Image
                     src={founder.image}
                     alt={founder.name}
@@ -73,15 +50,6 @@ const founders = [
                     loading="lazy"
                     class="h-full w-full object-cover object-top"
                   />
-                ) : (
-                  <Image
-                    src={founder.image}
-                    alt=""
-                    width={320}
-                    loading="lazy"
-                    class="h-auto max-h-64 w-3/4 object-contain"
-                  />
-                )}
               </div>
 
               <div class="p-6 text-center">

@@ -1,118 +1,12 @@
 ---
-import Layout from "../layouts/main.astro";
-import PageHeader from "../components/PageHeader.astro";
+import Layout from "@/layouts/main.astro";
+import PageHeader from "@/components/PageHeader.astro";
 import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import PartnerInquiryForm from "@/components/forms/PartnerInquiryForm.astro";
 
-import unitedWayLogo from "../assets/partners/united-way-logo-HHG.jpg";
-import drugCourtLogo from "../assets/partners/logan-county-drug-court-logo.png";
-import godsFoodBankLogo from "../assets/partners/gods-food-bank-logo.jpg";
-import communityActionLogo from "../assets/partners/community-action-logo.jpg";
-import aarpLogo from "../assets/partners/aarp-logo.svg";
-import loganCommunityLogo from "../assets/partners/lcs-logo.png";
-import regionalFoodBankLogo from "../assets/partners/rfb.jpeg";
-
-import good360Logo from "../assets/partners/good360.png";
-import naeirLogo from "../assets/partners/naeir.svg";
-import feedTheChildrenLogo from "../assets/partners/feedthechildren-logo.png";
-import lowesLogo from "../assets/partners/lowes.png";
-import freshLogo from "../assets/partners/fresh_reasors.svg";
-import disneyStoreLogo from "../assets/partners/disney-store-logo.svg";
-import jackBeLogo from "../assets/partners/jackbe.png";
-import visionSourceLogo from "../assets/partners/vision-source.png";
-import workforceLogo from "../assets/partners/OWB-transparent-bg.webp";
-import gmeLogo from "../assets/partners/gme-black-red-logo.jpg";
-import PartnerInquiryForm from "../components/forms/PartnerInquiryForm.astro";
-
-const partners = [
-  {
-    name: "United Way of Logan County",
-    logo: unitedWayLogo,
-    url: "https://unitedwayokc.org/partnerships/united-way-of-logan-county/",
-  },
-  {
-    name: "Logan County Drug Court",
-    logo: drugCourtLogo,
-    url: "https://logancodrugcourt.org/",
-  },
-  {
-    name: "God’s Food Bank",
-    logo: godsFoodBankLogo,
-    url: "https://www.godsfoodbank.org/",
-  },
-  {
-    name: "Central Oklahoma Community Action Agency",
-    logo: communityActionLogo,
-    url: "https://cocaa.org/logan-county/",
-  },
-  {
-    name: "AARP",
-    logo: aarpLogo,
-    url: "https://www.aarp.org/",
-  },
-  {
-    name: "Logan Community Services, Inc.",
-    logo: loganCommunityLogo,
-    url: "https://www.servinglogan.com/",
-  },
-  {
-    name: "Regional Food Bank of Oklahoma",
-    logo: regionalFoodBankLogo,
-    url: "https://www.regionalfoodbank.org/",
-  },
-];
-
-const supporters = [
-  {
-    name: "Good360",
-    logo: good360Logo,
-    url: "https://good360.org/",
-  },
-  {
-    name: "NAEIR",
-    logo: naeirLogo,
-    url: "https://www.naeir.org/",
-  },
-  {
-    name: "Feed the Children",
-    logo: feedTheChildrenLogo,
-    url: "https://www.feedthechildren.org/",
-  },
-  {
-    name: "Lowe’s",
-    logo: lowesLogo,
-    url: "https://www.lowes.com/",
-  },
-  {
-    name: "Fresh by Reasor’s",
-    logo: freshLogo,
-    url: "https://www.freshbyreasors.com/",
-  },
-  {
-    name: "Disney Store",
-    logo: disneyStoreLogo,
-    url: "https://www.disneystore.com/",
-  },
-  {
-    name: "JackBe",
-    logo: jackBeLogo,
-    url: "https://jackbe.com/",
-  },
-  {
-    name: "Vision Source Guthrie",
-    logo: visionSourceLogo,
-    url: "https://www.visionsource-guthrie.com/",
-  },
-  {
-    name: "Oklahoma’s Workforce Board",
-    logo: workforceLogo,
-    url: "https://cowib.org/",
-  },
-  {
-    name: "General Mailing Equipment 'GME'",
-    logo: gmeLogo,
-    url: "https://gmeoffice.tech",
-  },
-];
+const partners = await getCollection("partners");
+const supporters = await getCollection("supporters");
 
 const recognitionGroups = [
   {
@@ -167,7 +61,7 @@ const recognitionGroups = [
           </div>
 
           <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {group.organizations.map((organization, index) => (
+            {group.organizations.map(({ data: organization }, index) => (
               <li
                 class:list={[
                   "flex",

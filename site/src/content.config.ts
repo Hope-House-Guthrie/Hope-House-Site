@@ -11,7 +11,6 @@ const board = defineCollection({
       desc: z.string(),
       group: z.enum(["officer", "board", "advisory"]),
       photo: image().optional(),
-      //photo: z.string().optional(),
       photoPosition: z.string().optional(),
       order: z.number().optional(),
     }),
@@ -36,4 +35,90 @@ const testimonials = defineCollection({
     }),
 });
 
-export const collections = { board, testimonials };
+const volunteerOpportunities = defineCollection({
+  loader: glob({
+    pattern: "**/*.json",
+    base: "./src/content/volunteer-opportunities",
+  }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    icon: z.string(),
+  }),
+});
+
+const walkInServices = defineCollection({
+  loader: glob({
+    pattern: "**/*.json",
+    base: "./src/content/walk-in-services",
+  }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    icon: z.string(),
+  }),
+});
+
+const residentialPrograms = defineCollection({
+  loader: glob({
+    pattern: "**/*.json",
+    base: "./src/content/residential-programs",
+  }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    icon: z.string(),
+    label: z.string(),
+    expectations: z.string().array(),
+  }),
+});
+
+const partners = defineCollection({
+  loader: glob({
+    pattern: "**/*.json",
+    base: "./src/content/partners",
+  }),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      logo: image(),
+      url: z.url(),
+    }),
+});
+
+const supporters = defineCollection({
+  loader: glob({
+    pattern: "**/*.json",
+    base: "./src/content/supporters",
+  }),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      logo: image(),
+      url: z.url(),
+    }),
+});
+
+const founders = defineCollection({
+  loader: glob({
+    pattern: "**/*.json",
+    base: "./src/content/founders",
+  }),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      image: image(),
+      bio: z.string().optional(),
+    }),
+});
+
+export const collections = {
+  board,
+  founders,
+  partners,
+  residentialPrograms,
+  supporters,
+  testimonials,
+  volunteerOpportunities,
+  walkInServices,
+};

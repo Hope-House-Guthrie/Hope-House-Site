@@ -1,86 +1,12 @@
 ---
-import Layout from "../layouts/main.astro";
-import PageHeader from "../components/PageHeader.astro";
-import SectionHeading from "../components/SectionHeading.astro";
+import { getCollection } from "astro:content";
 
-const walkInServices = [
-  {
-    icon: "📦",
-    title: "Food Boxes",
-    description:
-      "Each account may receive one food box per week. This limit applies to both individuals and families, regardless of household size. Stop at the front desk to request yours.",
-  },
-  {
-    icon: "🧺",
-    title: "Laundry",
-    description:
-      "Each account may do two loads of laundry per week. This limit also applies to family accounts, regardless of household size. Please start by 3:00 PM and finish washing and drying by 5:00 PM.",
-  },
-  {
-    icon: "🧼",
-    title: "Hygiene Essentials",
-    description:
-      "Personal care items to help with everyday needs. Stop at the front desk to ask about available toiletries and hygiene supplies.",
-  },
-  {
-    icon: "🚿",
-    title: "Showers",
-    description:
-      "One shower per person, per visit, with a 15-minute time limit. Towels and washcloths are provided; please return them afterward.",
-  },
-  {
-    icon: "🍼",
-    title: "Baby Items",
-    description:
-      "Support for your little ones, including formula, diapers, baby clothing, toys, and other essentials. Items depend on current supplies—ask at the front desk about what’s available.",
-  },
-  {
-    icon: "👕",
-    title: "Clothing",
-    description:
-      "Visit once every two weeks to select up to three outfits and one pair of shoes. Please keep your shopping visit to 15 minutes.",
-  },
-];
+import Layout from "@/layouts/main.astro";
+import PageHeader from "@/components/PageHeader.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
 
-const residentialPrograms = [
-  {
-    icon: "🌙",
-    label: "OVN · Up to Two Nights",
-    title: "Overnight Program",
-    description:
-      "A short-term place to stay for someone who needs immediate shelter, subject to availability.",
-    expectations: [
-      "Stays of up to two nights.",
-      "Guests complete an OVN intake packet.",
-      "Needs are reviewed during the stay. Moving into another Hope House program may be considered but is not guaranteed.",
-    ],
-  },
-  {
-    icon: "🏠",
-    label: "TEMP · 90-Day Program",
-    title: "Emergency Shelter Program",
-    description:
-      "Shelter, meals, and supportive services while participants work toward greater stability and their next steps.",
-    expectations: [
-      "A 90-day program focused on immediate needs and stability.",
-      "Help connecting with employment, benefits, healthcare, and community resources.",
-      "Required classes and roll calls when work permits, along with assigned volunteer duties.",
-    ],
-  },
-  {
-    icon: "🌱",
-    label: "LTP · 12–18 Months",
-    title: "Life Transformation Program",
-    description:
-      "“Streets to Stability” is a residential recovery program supporting lasting change, personal growth, and independence.",
-    expectations: [
-      "A 12–18-month program with a structured 30-day orientation.",
-      "Individual goals, peer support, accountability, and coordination of supportive services.",
-      "Participation in required classes, roll calls, and assigned volunteer duties, with applicable work exceptions.",
-      "Preparation for long-term stability and independence.",
-    ],
-  },
-];
+const walkInServices = await getCollection("walkInServices");
+const residentialPrograms = await getCollection("residentialPrograms");
 ---
 
 <Layout title="Programs & Services">
@@ -263,7 +189,7 @@ const residentialPrograms = [
 
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
-          walkInServices.map((service) => (
+          walkInServices.map(({ data: service }) => (
             <article class="service-card hope-frame hope-frame-accent bg-white p-6">
               <span
                 class="service-icon mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-100 text-3xl"
@@ -304,7 +230,7 @@ const residentialPrograms = [
 
       <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {
-          residentialPrograms.map((program) => (
+          residentialPrograms.map(({ data: program }) => (
             <article class="service-card hope-frame hope-frame-accent flex flex-col bg-sky-50 p-6">
               <span
                 class="service-icon mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-100 text-3xl"
