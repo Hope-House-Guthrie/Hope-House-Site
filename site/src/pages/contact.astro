@@ -1,7 +1,9 @@
 ---
-import Layout from "../layouts/main.astro";
-import PageHeader from "../components/PageHeader.astro";
-import ClientInquiryForm from "../components/forms/ClientInquiryForm.astro";
+import Layout from "@/layouts/main.astro";
+import PageHeader from "@/components/PageHeader.astro";
+import ClientInquiryForm from "@/components/forms/ClientInquiryForm.astro";
+import Container from "@/components/Container.astro";
+import Card from "@/components/Card.astro";
 ---
 
 <Layout title="Contact Us">
@@ -10,7 +12,7 @@ import ClientInquiryForm from "../components/forms/ClientInquiryForm.astro";
     description="Whether you need assistance, have questions about our programs, or want to support our work, we're here to help connect you with the right information."
   />
   <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <Container>
       <div class="grid md:grid-cols-2 gap-12">
         <!-- Contact Information -->
         <div>
@@ -40,7 +42,7 @@ import ClientInquiryForm from "../components/forms/ClientInquiryForm.astro";
         </div>
 
         <!-- Services & Hours -->
-        <div class="hope-frame hope-frame-accent bg-sky-50 p-8">
+        <Card accent class="bg-sky-50 p-8">
           <span class="text-xs font-bold text-sky-700 uppercase tracking-wide">
             Need Help?
           </span>
@@ -64,9 +66,9 @@ import ClientInquiryForm from "../components/forms/ClientInquiryForm.astro";
               </p>
             </div>
           </div>
-        </div>
+        </Card>
       </div>
-    </div>
+    </Container>
   </section>
 
   <!-- Meeting Questions -->
@@ -75,8 +77,8 @@ import ClientInquiryForm from "../components/forms/ClientInquiryForm.astro";
     class="scroll-mt-64 bg-white pb-16 md:scroll-mt-40"
     aria-labelledby="meeting-inquiries-title"
   >
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="hope-frame hope-frame-accent bg-sky-50 p-6 sm:p-8">
+    <Container>
+      <Card accent class="bg-sky-50 p-6 sm:p-8">
         <div class="flex flex-col gap-5 sm:flex-row sm:items-start">
           <span
             class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-sky-100 text-3xl"
@@ -123,8 +125,8 @@ import ClientInquiryForm from "../components/forms/ClientInquiryForm.astro";
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </Card>
+    </Container>
   </section>
 
   <ClientInquiryForm />

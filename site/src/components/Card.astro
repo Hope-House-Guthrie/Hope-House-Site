@@ -1,0 +1,13 @@
+---
+interface Props {
+  accent?: boolean;
+  class?: string;
+  [key: string]: any;
+}
+
+const { accent = false, class: className = "", ...rest } = Astro.props;
+const frameClass = accent ? "hope-frame hope-frame-accent" : "hope-frame";
+---
+<div class={`${frameClass} ${className}`} {...rest}>
+  <slot />
+</div>

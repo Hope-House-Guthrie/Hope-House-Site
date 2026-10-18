@@ -112,8 +112,24 @@ const founders = defineCollection({
     }),
 });
 
+const coreValues = defineCollection({
+  loader: glob({
+    pattern: "**/*.json",
+    base: "./src/content/core-values",
+  }),
+  schema: z.object({
+    title: z.string(),
+    direction: z.enum(["value-top", "value-bottom"]),
+    delay: z.string().regex(/^\d+ms$/),
+    statement: z.string(),
+    description: z.string(),
+    icon: z.string(),
+  }),
+});
+
 export const collections = {
   board,
+  coreValues,
   founders,
   partners,
   residentialPrograms,
