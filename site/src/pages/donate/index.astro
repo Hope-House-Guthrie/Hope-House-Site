@@ -1,8 +1,8 @@
 ---
-import Layout from "../layouts/main.astro";
-import PageHeader from "../components/PageHeader.astro";
+import Layout from "@/layouts/main/index.astro";
+import PageHeader from "@/lib/PageHeader.astro";
 import { Image } from "astro:assets";
-import paypalLogo from "../assets/paypal-logo.jpg";
+import paypalLogo from "@/assets/paypal-logo.jpg";
 ---
 
 <Layout title="Donate & Support">
@@ -34,7 +34,7 @@ import paypalLogo from "../assets/paypal-logo.jpg";
           </p>
         </div>
         <a
-          href="/300-club"
+          href="/donate/300-club"
           class="hope-action bg-sky-700 hover:bg-sky-800 text-white text-center font-bold py-3 rounded-lg block transition-colors"
         >
           Join the 300 Club
@@ -62,7 +62,7 @@ import paypalLogo from "../assets/paypal-logo.jpg";
           </p>
         </div>
         <a
-          href="/adopt-a-room"
+          href="/donate/adopt-a-room"
           class="hope-action block rounded-lg bg-emerald-600 py-3 text-center font-bold text-white transition-colors hover:bg-emerald-700"
         >
           Adopt a Room →

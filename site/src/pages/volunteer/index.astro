@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "@/layouts/main.astro";
-import PageHeader from "@/components/PageHeader.astro";
-import VolunteerInquiryForm from "@/components/forms/VolunteerInquiryForm.astro";
+import Layout from "@/layouts/main/index.astro";
+import PageHeader from "@/lib/PageHeader.astro";
+import VolunteerInquiryForm from "@/forms/VolunteerInquiryForm.astro";
 
 const volunteerOpportunities = await getCollection("volunteerOpportunities");
 ---

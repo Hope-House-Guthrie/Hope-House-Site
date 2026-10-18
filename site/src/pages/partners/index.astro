@@ -1,9 +1,9 @@
 ---
-import Layout from "@/layouts/main.astro";
-import PageHeader from "@/components/PageHeader.astro";
+import Layout from "@/layouts/main/index.astro";
+import PageHeader from "@/lib/PageHeader.astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-import PartnerInquiryForm from "@/components/forms/PartnerInquiryForm.astro";
+import PartnerInquiryForm from "@/forms/PartnerInquiryForm.astro";
 
 const partners = await getCollection("partners");
 const supporters = await getCollection("supporters");

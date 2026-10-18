@@ -1,7 +1,7 @@
 ---
-import Layout from "../layouts/main.astro";
-import PageHeader from "../components/PageHeader.astro";
-import TestimonialCard from "../components/TestimonialCard.astro";
+import Layout from "@/layouts/main/index.astro";
+import PageHeader from "@/lib/PageHeader.astro";
+import TestimonialCard from "@/pages/impact/lib/TestimonialCard.astro";
 import { getCollection } from "astro:content";
 
 const stories = (await getCollection("testimonials"))
@@ -28,7 +28,7 @@ const stories = (await getCollection("testimonials"))
   </section>
 
   <script>
-    import { initLiquidPhotos } from "../scripts/liquid-photo";
+    import { initLiquidPhotos } from "./lib/liquid-photo";
 
     initLiquidPhotos();
     document.addEventListener("astro:after-swap", () => initLiquidPhotos());

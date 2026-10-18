@@ -187,7 +187,7 @@ There are four different form states across four pages:
 
 ```mermaid
 graph TD
-    subgraph Layout Components ["src/components/layout/"]
+    subgraph Layout Components ["src/lib/layout/"]
         AnnouncementBar["AnnouncementBar.astro"]
         Header["Header.astro"]
         DesktopNav["DesktopNav.astro"]
@@ -196,7 +196,7 @@ graph TD
         Footer["Footer.astro"]
     end
 
-    subgraph UI Primitives ["src/components/ui/"]
+    subgraph UI Primitives ["src/lib/ui/"]
         SectionHeading["SectionHeading.astro"]
         PageHeader["PageHeader.astro (existing)"]
         Button["Button.astro"]
@@ -204,7 +204,7 @@ graph TD
         Modal["Modal.astro"]
     end
 
-    subgraph Feature Components ["src/components/features/"]
+    subgraph Feature Components ["src/lib/features/"]
         TestimonialCard["TestimonialCard.astro"]
         BoardSection["BoardSection.astro (existing)"]
         Spotlight["Spotlight.astro (existing)"]
@@ -227,7 +227,7 @@ Eliminates ~350 lines of duplicate code between `testimonials.astro` and `adopt-
 
 ```astro
 ---
-// src/components/TestimonialCard.astro
+// src/lib/TestimonialCard.astro
 import { Image } from "astro:assets";
 import hopeLogo from "../assets/logo.svg";
 
@@ -273,7 +273,7 @@ Replaces repeated heading markup across 10 pages.
 
 ```astro
 ---
-// src/components/SectionHeading.astro
+// src/lib/SectionHeading.astro
 interface Props {
   title: string;
   subtitle?: string;

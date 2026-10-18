@@ -1,12 +1,12 @@
 ---
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-import Layout from "@/layouts/main.astro";
-import BoardSection from "@/components/board-section.astro";
-import PageHeader from "@/components/PageHeader.astro";
-import SectionHeading from "@/components/SectionHeading.astro";
-import Container from "@/components/Container.astro";
-import Card from "@/components/Card.astro";
+import Layout from "@/layouts/main/index.astro";
+import BoardSection from "./lib/BoardSection.astro";
+import PageHeader from "@/lib/PageHeader.astro";
+import SectionHeading from "@/lib/SectionHeading.astro";
+import Container from "@/lib/Container.astro";
+import Card from "@/lib/Card.astro";
 import hopeHouseSign from "@/assets/hope-house-sign.png";
 
 const allMembers = await getCollection("board");
@@ -90,7 +90,7 @@ const advisoryMembers = sortedMembers.filter(
 
       <div class="mt-0.5 mb-8 text-center">
         <a
-          href="/founders"
+          href="founders"
           class="hope-action inline-flex w-fit min-h-11 items-center justify-center rounded-lg bg-sky-700 px-6 py-3 font-semibold text-white hover:bg-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700"
         >
           Meet Our Founders →
@@ -255,7 +255,7 @@ const advisoryMembers = sortedMembers.filter(
   </style>
 
   <script>
-    import { setupAboutReveal } from "@/scripts/setup-about-reveal";
+    import { setupAboutReveal } from "./lib/setup-about-reveal";
 
     setupAboutReveal();
     document.addEventListener("astro:after-swap", () => setupAboutReveal());

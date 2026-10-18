@@ -1,0 +1,234 @@
+---
+import Layout from "@/layouts/main/index.astro";
+import { getImage } from "astro:assets";
+import aerialImage from "@/assets/new-aerial.jpeg";
+
+import Spotlight from "./lib/Spotlight.astro";
+import SectionHeading from "@/lib/SectionHeading.astro";
+import Container from "@/lib/Container.astro";
+import Card from "@/lib/Card.astro";
+
+const optimizedAerialImage = await getImage({
+  src: aerialImage,
+  format: "webp",
+  quality: 60,
+});
+---
+
+<Layout title="Home">
+  <!-- Homepage Hero -->
+  <section class="relative overflow-hidden bg-sky-50">
+    <img
+      src={optimizedAerialImage.src}
+      width={optimizedAerialImage.attributes.width}
+      height={optimizedAerialImage.attributes.height}
+      alt="Aerial view of Hope House Guthrie and its surrounding grounds"
+      loading="eager"
+      fetchpriority="high"
+      class="block h-auto w-full max-w-none lg:absolute lg:inset-0 lg:h-full lg:object-cover lg:object-center"
+    />
+
+    <div
+      class="pointer-events-none absolute inset-0 z-[1] hidden lg:block"
+      style="background-color: rgba(32, 32, 34, 0.627);"
+      aria-hidden="true"
+    >
+    </div>
+
+    <Container class="relative z-10 py-8 sm:py-10 lg:flex lg:min-h-[calc(100vh-108px)] lg:items-center lg:py-20">
+      <div class="max-w-3xl lg:pl-14">
+        <span
+          class="mb-4 inline-block rounded-full border border-sky-200 bg-sky-100 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-sky-700 lg:border-sky-700 lg:bg-sky-900/80 lg:text-sky-300"
+        >
+          Serving Oklahoma
+        </span>
+
+        <h1
+          class="hero-heading mb-5 text-4xl font-extrabold leading-tight tracking-tight text-sky-700 sm:text-5xl lg:mb-6 lg:text-6xl lg:text-white"
+        >
+          Hope Starts Here.
+        </h1>
+
+        <p
+          class="mb-6 max-w-xl text-lg leading-relaxed text-slate-700 sm:text-xl lg:text-slate-100"
+        >
+          Hope House Guthrie provides shelter, meals, clothing, recovery
+          support, and a path towards stability for people from across Oklahoma
+          who need a place to begin again.
+        </p>
+
+        <div class="flex flex-col gap-4 sm:flex-row">
+          <a
+            href="/contact#client-inquiry"
+            class="rounded-lg bg-emerald-600 px-8 py-3.5 text-center font-bold text-white shadow-sm transition-colors hover:bg-emerald-500"
+          >
+            Get Help
+          </a>
+
+          <a
+            href="/donate"
+            class="rounded-lg border border-sky-300 bg-white px-8 py-3.5 text-center font-semibold text-sky-700 transition-colors hover:bg-sky-100 lg:border-white/20 lg:bg-white/30 lg:text-white lg:hover:bg-white/40"
+          >
+            Support Hope House
+          </a>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Key Services Grid -->
+  <section class="py-16 lg:py-20 bg-white">
+    <Container>
+      <SectionHeading
+        title="Serving Hope & Moving Forward"
+        subtitle="We advocate for every person who comes through our doors, offering short-term shelter, long-term stabilization, and community care."
+        class="mb-10"
+        subtitleClass="text-slate-900"
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <Card accent class="flex flex-col bg-sky-50 p-6">
+          <div
+            class="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center text-xl mb-4"
+            aria-hidden="true"
+          >
+            🍲
+          </div>
+
+          <h3 class="text-xl font-bold text-slate-900 mb-2">
+            Community Lunch &amp; Walk-In Services
+          </h3>
+
+          <p class="text-slate-800 text-sm leading-relaxed mb-6">
+            Serving daily hot lunches from 11:00 AM – 1:00 PM. Walk-in services
+            include showers, clothing, and hygiene toiletries until 5:00 PM.
+          </p>
+
+          <a
+            href="/programs#soup-kitchen"
+            class="mt-auto self-start text-sky-700 text-sm font-semibold hover:underline"
+          >
+            Learn More &rarr;
+          </a>
+        </Card>
+
+        <Card accent class="flex flex-col bg-sky-50 p-6">
+          <div
+            class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center text-xl mb-4"
+            aria-hidden="true"
+          >
+            🏠
+          </div>
+
+          <h3 class="text-xl font-bold text-slate-900 mb-2">
+            Transitional Housing
+          </h3>
+
+          <p class="text-slate-800 text-sm leading-relaxed mb-6">
+            Transitional housing with structured support to help individuals
+            work toward stability, independence, and their next step forward.
+          </p>
+
+          <a
+            href="/programs#housing"
+            class="mt-auto self-start text-sky-700 text-sm font-semibold hover:underline"
+          >
+            Learn More &rarr;
+          </a>
+        </Card>
+
+        <Card accent class="flex flex-col bg-sky-50 p-6">
+          <div
+            class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center text-xl mb-4"
+            aria-hidden="true"
+          >
+            🌱
+          </div>
+
+          <h3 class="text-xl font-bold text-slate-900 mb-2">
+            Recovery &amp; Support
+          </h3>
+
+          <p class="text-slate-800 text-sm leading-relaxed mb-6">
+            Narcotics Anonymous (NA) meetings, recovery support, job transition,
+            budgeting, and connections to community resources.
+          </p>
+
+          <a
+            href="/programs#recovery"
+            class="mt-auto self-start text-sky-700 text-sm font-semibold hover:underline"
+          >
+            Learn More &rarr;
+          </a>
+        </Card>
+      </div>
+    </Container>
+  </section>
+
+  <Spotlight />
+
+  <!-- Our Impact -->
+  <section class="py-12 lg:py-14 bg-white">
+    <Container>
+      <SectionHeading
+        title="Our Impact"
+        subtitle="Meals, essential resources, and hope for our community."
+        class="mb-8"
+        subtitleClass="text-slate-600"
+      />
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        <Card accent class="bg-white px-6 py-8 text-center">
+          <div class="text-3xl mb-3" aria-hidden="true">🍲</div>
+
+          <h3 class="text-xl font-bold text-sky-700">Meals Served</h3>
+
+          <p class="mt-3 text-slate-600 text-sm">
+            Community meal totals coming soon
+          </p>
+        </Card>
+
+        <Card accent class="bg-white px-6 py-8 text-center">
+          <div class="text-3xl mb-3" aria-hidden="true">📦</div>
+
+          <h3 class="text-xl font-bold text-sky-700">Food Boxes Distributed</h3>
+
+          <p class="mt-3 text-slate-600 text-sm">
+            Food distribution totals coming soon
+          </p>
+        </Card>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Community Partners -->
+  <section class="border-t border-sky-200 bg-sky-50 py-10">
+    <div class="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-sky-700">
+        Hope Grows Through Community
+      </h2>
+
+      <p class="mx-auto mt-3 max-w-2xl leading-relaxed text-slate-700">
+        Thank you to the partners and supporters who help us serve hope and move
+        forward.
+      </p>
+
+      <a
+        href="/partners"
+        class="hope-action mt-5 inline-flex min-h-11 items-center justify-center rounded-lg bg-sky-700 px-6 py-3 font-semibold text-white hover:bg-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700"
+      >
+        Meet Our Partners &amp; Supporters →
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  @media (min-width: 1024px) {
+    .hero-heading {
+      text-shadow:
+        0 2px 4px rgb(0 0 0 / 75%),
+        0 6px 18px rgb(0 0 0 / 45%);
+    }
+  }
+</style>

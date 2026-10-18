@@ -1,8 +1,8 @@
 ---
-import Layout from "../layouts/main.astro";
-import PageHeader from "../components/PageHeader.astro";
+import Layout from "@/layouts/main/index.astro";
+import PageHeader from "@/lib/PageHeader.astro";
 import { Image } from "astro:assets";
-import paypalLogo from "../assets/paypal-logo.jpg";
+import paypalLogo from "@/assets/paypal-logo.jpg";
 
 const givingLevels = [10, 25, 50];
 ---
@@ -266,7 +266,7 @@ const givingLevels = [10, 25, 50];
       </p>
 
       <a
-        href="/testimonials"
+        href="/impact"
         class="hope-action mt-6 inline-flex min-h-11 items-center justify-center rounded-lg bg-sky-700 px-6 py-3 font-bold text-white transition-colors hover:bg-sky-800"
       >
         Read Our Stories of Hope →

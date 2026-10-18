@@ -1,10 +1,10 @@
 ---
-import Layout from "../layouts/main.astro";
-import PageHeader from "../components/PageHeader.astro";
-import TestimonialCard from "../components/TestimonialCard.astro";
+import Layout from "@/layouts/main/index.astro";
+import PageHeader from "@/lib/PageHeader.astro";
+import TestimonialCard from "@/pages/impact/lib/TestimonialCard.astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-import paypalLogo from "../assets/paypal-logo.jpg";
+import paypalLogo from "@/assets/paypal-logo.jpg";
 
 const allStories = (await getCollection("testimonials"))
   .sort((a, b) => a.data.order - b.data.order)
@@ -198,7 +198,7 @@ const donationUrl =
 
       <div class="mt-8 text-center">
         <a
-          href="/testimonials"
+          href="/impact"
           class="inline-flex min-h-11 items-center justify-center font-semibold text-sky-700 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700"
         >
           See More Stories of Hope →
@@ -362,7 +362,7 @@ const donationUrl =
   </section>
 
   <script>
-    import { initLiquidPhotos } from "../scripts/liquid-photo";
+    import { initLiquidPhotos } from "@/pages/impact/lib/liquid-photo"; // todo: gross
 
     initLiquidPhotos();
     document.addEventListener("astro:after-swap", () => initLiquidPhotos());

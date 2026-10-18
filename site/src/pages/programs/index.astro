@@ -1,9 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 
-import Layout from "@/layouts/main.astro";
-import PageHeader from "@/components/PageHeader.astro";
-import SectionHeading from "@/components/SectionHeading.astro";
+import Layout from "@/layouts/main/index.astro";
+import PageHeader from "@/lib/PageHeader.astro";
+import SectionHeading from "@/lib/SectionHeading.astro";
 
 const walkInServices = await getCollection("walkInServices");
 const residentialPrograms = await getCollection("residentialPrograms");
