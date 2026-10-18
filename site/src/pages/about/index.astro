@@ -9,6 +9,8 @@ import Container from "@/lib/Container.astro";
 import Card from "@/lib/Card.astro";
 import hopeHouseSign from "@/assets/hope-house-sign.png";
 
+import "./index.css";
+
 const allMembers = await getCollection("board");
 const coreValues = await getCollection("coreValues");
 
@@ -218,41 +220,6 @@ const advisoryMembers = sortedMembers.filter(
       />
     </Container>
   </section>
-
-  <style>
-    [data-about-reveal] {
-      --reveal-x: 0px;
-      --reveal-y: 0px;
-    }
-
-    [data-about-reveal="left"],
-    [data-about-reveal="value-top"] {
-      --reveal-x: -28px;
-    }
-
-    [data-about-reveal="right"],
-    [data-about-reveal="value-bottom"] {
-      --reveal-x: 28px;
-    }
-
-    @media (min-width: 768px) {
-      [data-about-reveal="value-top"] {
-        --reveal-x: 0px;
-        --reveal-y: -32px;
-      }
-
-      [data-about-reveal="value-bottom"] {
-        --reveal-x: 0px;
-        --reveal-y: 32px;
-      }
-    }
-
-    @media (max-width: 767px) {
-      [data-about-reveal] {
-        --reveal-delay: 0ms !important;
-      }
-    }
-  </style>
 
   <script>
     import { setupAboutReveal } from "./lib/setup-about-reveal";

@@ -1,0 +1,32 @@
+[data-about-reveal] {
+    --reveal-x: 0px;
+    --reveal-y: 0px;
+}
+
+[data-about-reveal="left"],
+[data-about-reveal="value-top"] {
+    --reveal-x: -28px;
+}
+
+[data-about-reveal="right"],
+[data-about-reveal="value-bottom"] {
+    --reveal-x: 28px;
+}
+
+@media (min-width: 768px) {
+    [data-about-reveal="value-top"] {
+    --reveal-x: 0px;
+    --reveal-y: -32px;
+    }
+
+    [data-about-reveal="value-bottom"] {
+    --reveal-x: 0px;
+    --reveal-y: 32px;
+    }
+}
+
+@media (max-width: 767px) {
+    [data-about-reveal] {
+    --reveal-delay: 0ms !important;
+    }
+}

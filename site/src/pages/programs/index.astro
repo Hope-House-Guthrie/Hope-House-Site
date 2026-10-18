@@ -5,6 +5,8 @@ import Layout from "@/layouts/main/index.astro";
 import PageHeader from "@/lib/PageHeader.astro";
 import SectionHeading from "@/lib/SectionHeading.astro";
 
+import "./index.css";
+
 const walkInServices = await getCollection("walkInServices");
 const residentialPrograms = await getCollection("residentialPrograms");
 ---
@@ -470,93 +472,3 @@ const residentialPrograms = await getCollection("residentialPrograms");
     </div>
   </section>
 </Layout>
-
-<style>
-  /* Animated steam above the lunch bowl */
-  .lunch-steam {
-    animation: lunch-steam-rise 3.6s ease-in-out infinite;
-  }
-
-  .lunch-steam-two {
-    animation-delay: -1.2s;
-  }
-
-  .lunch-steam-three {
-    animation-delay: -2.4s;
-  }
-
-  @keyframes lunch-steam-rise {
-    0%,
-    100% {
-      opacity: 0.35;
-      transform: translateY(3px);
-    }
-
-    50% {
-      opacity: 0.85;
-      transform: translateY(-5px);
-    }
-  }
-
-  /* Icons bounce when a service or program card is hovered or pressed */
-  .service-card:hover .service-icon,
-  .service-card:active .service-icon {
-    animation: service-icon-bounce 650ms ease-in-out;
-  }
-
-  @keyframes service-icon-bounce {
-    0%,
-    100% {
-      transform: translateY(0) rotate(0);
-    }
-
-    30% {
-      transform: translateY(-7px) rotate(-6deg);
-    }
-
-    60% {
-      transform: translateY(-3px) rotate(5deg);
-    }
-  }
-
-  /* Automatic double heartbeat */
-  .housing-heart {
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: housing-heartbeat 2s ease-in-out infinite;
-  }
-
-  @keyframes housing-heartbeat {
-    0%,
-    40%,
-    100% {
-      transform: scale(1);
-    }
-
-    12% {
-      transform: scale(1.35);
-    }
-
-    22% {
-      transform: scale(1);
-    }
-
-    32% {
-      transform: scale(1.22);
-    }
-  }
-
-  /* Respect visitors' reduced-motion preference */
-  @media (prefers-reduced-motion: reduce) {
-    .lunch-steam,
-    .housing-heart,
-    .service-card:hover .service-icon,
-    .service-card:active .service-icon {
-      animation: none;
-    }
-
-    .lunch-steam {
-      opacity: 0.65;
-    }
-  }
-</style>
