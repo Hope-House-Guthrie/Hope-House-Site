@@ -1,9 +1,11 @@
 ---
 import Layout from "@/layouts/main/index.astro";
 import PageHeader from "@/lib/PageHeader.astro";
+import ContactInfo from "./lib/ContactInfo.astro";
+import ServicesHoursCard from "./lib/ServicesHoursCard.astro";
+import SupportGroupCard from "./lib/SupportGroupCard.astro";
 import ClientInquiryForm from "@/forms/ClientInquiryForm.astro";
 import Container from "@/lib/Container.astro";
-import Card from "@/lib/Card.astro";
 ---
 
 <Layout title="Contact Us">
@@ -11,121 +13,23 @@ import Card from "@/lib/Card.astro";
     title="Contact Hope House Guthrie"
     description="Whether you need assistance, have questions about our programs, or want to support our work, we're here to help connect you with the right information."
   />
+
   <section class="py-16 bg-white">
     <Container>
       <div class="grid md:grid-cols-2 gap-12">
-        <!-- Contact Information -->
-        <div>
-          <span class="text-xs font-bold text-sky-700 uppercase tracking-wide">
-            Get in Touch
-          </span>
-
-          <h2 class="text-2xl font-bold text-slate-900 mt-1 mb-6">
-            Hope House Guthrie
-          </h2>
-
-          <div class="space-y-5 text-slate-600">
-            <div>
-              <strong class="text-slate-900">Visit Us</strong>
-              <p>1916 E. Perkins Ave.<br />Guthrie, OK 73044</p>
-            </div>
-
-            <div>
-              <strong class="text-slate-900">Phone</strong>
-              <p>
-                <a href="tel:4058569058" class="text-sky-700 hover:underline">
-                  (405) 856-9058
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Services & Hours -->
-        <Card accent class="bg-sky-50 p-8">
-          <span class="text-xs font-bold text-sky-700 uppercase tracking-wide">
-            Need Help?
-          </span>
-
-          <h2 class="text-2xl font-bold text-slate-900 mt-1 mb-6">
-            Services Available Daily
-          </h2>
-
-          <div class="space-y-6 text-slate-600">
-            <div>
-              <h3 class="font-bold text-slate-900">Community Lunch</h3>
-              <p>Seven days a week</p>
-              <p class="font-semibold text-slate-800">11:00 AM - 1:00 PM</p>
-            </div>
-
-            <div>
-              <h3 class="font-bold text-slate-900">Walk-In Services</h3>
-              <p>Showers, clothing, and essential hygiene items</p>
-              <p class="font-semibold text-slate-800">
-                7 days a week until 5:00 PM
-              </p>
-            </div>
-          </div>
-        </Card>
+        <ContactInfo />
+        <ServicesHoursCard />
       </div>
     </Container>
   </section>
 
-  <!-- Meeting Questions -->
   <section
     id="meeting-inquiries"
     class="scroll-mt-64 bg-white pb-16 md:scroll-mt-40"
     aria-labelledby="meeting-inquiries-title"
   >
     <Container>
-      <Card accent class="bg-sky-50 p-6 sm:p-8">
-        <div class="flex flex-col gap-5 sm:flex-row sm:items-start">
-          <span
-            class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-sky-100 text-3xl"
-            aria-hidden="true"
-          >
-            🤝
-          </span>
-
-          <div class="min-w-0 flex-1">
-            <p class="text-xs font-bold uppercase tracking-wider text-sky-700">
-              Recovery &amp; Connection
-            </p>
-
-            <h2
-              id="meeting-inquiries-title"
-              class="mt-2 text-2xl font-bold text-slate-900"
-            >
-              Meeting &amp; Support Group Questions
-            </h2>
-
-            <p class="mt-3 max-w-3xl leading-relaxed text-slate-700">
-              Interested in attending a Narcotics Anonymous meeting or learning
-              about our support groups? Contact our team for meeting times,
-              attendance details, and information about which groups are
-              available to you.
-            </p>
-
-            <div
-              class="mt-5 flex flex-col items-start gap-4 sm:flex-row sm:items-center"
-            >
-              <a
-                href="tel:4058569058"
-                class="hope-action inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-sky-700 px-5 py-3 text-center text-sm font-bold text-white transition-colors hover:bg-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700 sm:w-auto"
-              >
-                Call (405) 856-9058
-              </a>
-
-              <a
-                href="mailto:intake@hopehouseguthrie.org?subject=Meeting%20and%20Support%20Group%20Question"
-                class="inline-flex min-h-11 items-center rounded-lg px-2 font-semibold text-sky-700 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700"
-              >
-                Email About Meetings →
-              </a>
-            </div>
-          </div>
-        </div>
-      </Card>
+      <SupportGroupCard />
     </Container>
   </section>
 

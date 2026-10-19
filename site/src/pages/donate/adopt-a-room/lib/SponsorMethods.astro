@@ -1,0 +1,100 @@
+---
+import { Image } from "astro:assets";
+import paypalLogo from "@/assets/paypal-logo.jpg";
+
+interface Props {
+  donationUrl: string;
+}
+
+const { donationUrl } = Astro.props;
+---
+
+<section
+  id="sponsor"
+  class="scroll-mt-64 bg-white py-12 sm:py-16 md:scroll-mt-40"
+  aria-labelledby="sponsor-title"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mb-8 text-center">
+      <p class="text-xs font-bold uppercase tracking-wider text-sky-700">
+        Make Room for Hope
+      </p>
+
+      <h2 id="sponsor-title" class="mt-3 text-3xl font-bold text-sky-700">
+        Become an Adopt-a-Room Sponsor
+      </h2>
+
+      <div class="mt-4 h-1 w-full rounded-full bg-sky-700" aria-hidden="true">
+      </div>
+
+      <p class="mx-auto mt-5 max-w-2xl leading-relaxed text-slate-700">
+        Monthly giving levels start at $20. Contact our team for help
+        arranging your Adopt-a-Room sponsorship.
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      <article
+        class="hope-frame hope-frame-accent flex flex-col bg-sky-50 p-6 sm:p-8"
+      >
+        <h3 class="text-xl font-bold text-sky-700">Give Online</h3>
+
+        <p class="mt-3 leading-relaxed text-slate-700">
+          Open our PayPal donation page to make your gift. If a monthly giving
+          option is available, select it to set up your sponsorship.
+          Otherwise, contact our team to arrange monthly giving.
+        </p>
+
+        <a
+          href={donationUrl}
+          class="hope-action mt-6 inline-flex min-h-11 items-center justify-center rounded-lg bg-emerald-600 px-6 py-3 text-center font-bold text-white transition-colors hover:bg-emerald-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-700"
+        >
+          Give Through PayPal →
+        </a>
+
+        <div class="mt-4 flex items-center justify-center gap-3">
+          <span class="text-xs text-slate-500">
+            Secure payment through PayPal
+          </span>
+
+          <Image
+            src={paypalLogo}
+            alt="PayPal"
+            width={80}
+            loading="lazy"
+            class="h-auto w-16 shrink-0 object-contain"
+          />
+        </div>
+      </article>
+
+      <article class="hope-frame hope-frame-accent bg-sky-50 p-6 sm:p-8">
+        <h3 class="text-xl font-bold text-sky-700">Give by Check</h3>
+
+        <p class="mt-3 text-slate-700">Make checks payable to:</p>
+        <p class="mt-2 font-bold text-slate-900">NHD - HOPE HOUSE GUTHRIE</p>
+
+        <p class="mt-4 leading-relaxed text-slate-700">
+          Mail to:<br />
+          PO Box 491<br />
+          Guthrie, OK 73044
+        </p>
+
+        <p class="mt-4 text-sm leading-relaxed text-slate-700">
+          Write “Adopt-a-Room” in the memo line so our team can identify your
+          sponsorship gift.
+        </p>
+      </article>
+    </div>
+
+    <div class="mt-8 text-center">
+      <p class="text-slate-700">Questions about sponsoring a room?</p>
+
+      <a
+        href="tel:4058870288"
+        class="mt-2 inline-block rounded font-bold text-sky-700 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700"
+      >
+        Call Admin: (405) 887-0288
+      </a>
+    </div>
+  </div>
+</section>

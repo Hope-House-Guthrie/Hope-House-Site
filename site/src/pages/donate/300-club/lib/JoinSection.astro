@@ -1,0 +1,101 @@
+---
+import { Image } from "astro:assets";
+import paypalLogo from "@/assets/paypal-logo.jpg";
+
+const givingLevels = [10, 25, 50];
+---
+
+<section
+  id="join-the-club"
+  class="scroll-mt-64 bg-sky-50 py-12 sm:py-16 md:scroll-mt-40"
+  aria-labelledby="join-title"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto mb-8 max-w-2xl text-center">
+      <h2 id="join-title" class="text-3xl font-bold text-sky-700">
+        Find Your Monthly Fit.
+      </h2>
+
+      <p class="mt-4 leading-relaxed text-slate-700">
+        Choose an amount that works for you. Our team can help you arrange
+        your monthly gift and become part of The 300 Club.
+      </p>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+      {
+        givingLevels.map((amount) => (
+          <article class="hope-frame hope-frame-accent flex flex-col bg-white p-6 text-center">
+            <p class="text-xs font-bold uppercase tracking-wider text-sky-700">
+              The 300 Club
+            </p>
+
+            <h3 class="mt-4 text-4xl font-extrabold text-sky-700">
+              ${amount}
+            </h3>
+
+            <p class="mt-2 text-slate-600">per month</p>
+
+            <a
+              href={`mailto:admin@hopehouseguthrie.org?subject=${encodeURIComponent("300 Club Monthly Giving Inquiry")}&body=${encodeURIComponent(`Hello! I'd like to join The 300 Club with a $${amount} monthly gift. Please let me know how to get started.`)}`}
+              class="hope-action mt-6 inline-flex min-h-11 items-center justify-center rounded-lg bg-emerald-600 px-4 py-3 font-bold text-white transition-colors hover:bg-emerald-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-700"
+            >
+              Count Me In →
+            </a>
+          </article>
+        ))
+      }
+
+      <article
+        class="hope-frame hope-frame-accent flex flex-col bg-white p-6 text-center"
+      >
+        <p class="text-xs font-bold uppercase tracking-wider text-sky-700">
+          The 300 Club
+        </p>
+
+        <h3 class="mt-4 text-3xl font-extrabold text-sky-700">Your Amount</h3>
+
+        <p class="mt-2 text-slate-600">starting at $10 per month</p>
+
+        <a
+          href="tel:4058870288"
+          class="hope-action mt-auto inline-flex min-h-11 items-center justify-center rounded-lg bg-emerald-600 px-4 py-3 font-bold text-white transition-colors hover:bg-emerald-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-700"
+        >
+          Let’s Talk →
+        </a>
+      </article>
+    </div>
+
+    <div class="mt-6 flex items-center justify-center gap-3">
+      <span class="text-xs text-slate-500">
+        PayPal monthly giving coming soon
+      </span>
+
+      <Image
+        src={paypalLogo}
+        alt="PayPal"
+        width={80}
+        loading="lazy"
+        class="h-auto w-16 shrink-0 object-contain"
+      />
+    </div>
+
+    <div class="mx-auto mt-10 max-w-2xl text-center">
+      <p class="leading-relaxed text-slate-700">
+        Prefer to arrange your gift by phone?
+      </p>
+
+      <a
+        href="tel:4058870288"
+        class="mt-2 inline-block font-bold text-sky-700 hover:underline"
+      >
+        Call Admin: (405) 887-0288
+      </a>
+
+      <p class="mt-4 text-sm text-slate-600">
+        Choosing an amount opens an inquiry. It does not charge you or set up
+        a recurring payment.
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,45 @@
+---
+export interface Props {
+  phoneNumber?: string;
+  phoneDisplay?: string;
+}
+
+const { 
+  phoneNumber = "4058569058", 
+  phoneDisplay = "(405) 856-9058" 
+} = Astro.props;
+---
+
+<aside
+  class="self-start rounded-xl border border-sky-200 bg-sky-50 p-6 sm:p-8 shadow-sm lg:sticky lg:top-28"
+  aria-labelledby="volunteer-panel-title"
+>
+  <span class="text-xs font-bold uppercase tracking-wider text-sky-700">
+    Make a Difference
+  </span>
+  <h2
+    id="volunteer-panel-title"
+    class="mt-2 text-2xl font-bold text-slate-900"
+  >
+    Interested in Volunteering?
+  </h2>
+  <p class="mt-4 leading-relaxed text-slate-700">
+    Whether you are volunteering on your own or bringing a group, we
+    would like to learn about your interests and availability.
+  </p>
+  <a
+    href="#volunteer-interest"
+    class="mt-6 block rounded-lg bg-emerald-600 px-5 py-3.5 text-center font-bold text-white transition-colors hover:bg-emerald-700"
+  >
+    Volunteer Interest Form
+  </a>
+  <p class="mt-5 text-sm leading-relaxed text-slate-600">
+    Questions? Call us to discuss current opportunities.
+  </p>
+  <a
+    href={`tel:${phoneNumber}`}
+    class="mt-2 block text-lg font-bold text-sky-700 hover:underline"
+  >
+    {phoneDisplay}
+  </a>
+</aside>

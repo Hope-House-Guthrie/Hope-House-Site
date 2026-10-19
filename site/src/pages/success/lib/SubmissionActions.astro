@@ -1,0 +1,23 @@
+---
+interface Props {
+  secondaryHref: string;
+  secondaryLabel: string;
+}
+
+const { secondaryHref, secondaryLabel } = Astro.props;
+---
+
+<div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+  <a
+    href="/"
+    class="inline-flex items-center justify-center rounded-lg bg-sky-700 px-6 py-3 font-semibold text-white hover:bg-sky-800 transition-colors"
+  >
+    ← Return to Homepage
+  </a>
+  <a
+    href={secondaryHref}
+    class="inline-flex items-center justify-center rounded-lg border border-sky-300 bg-white px-6 py-3 font-semibold text-sky-700 hover:bg-sky-50 transition-colors"
+  >
+    {secondaryLabel}
+  </a>
+</div>

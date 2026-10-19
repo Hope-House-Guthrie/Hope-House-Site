@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  organization: {
+    name: string;
+    url: string;
+    logo: any; // ImageMetadata or image source
+  };
+  isLastCentered?: boolean;
+}
+
+const { organization, isLastCentered = false } = Astro.props;
+---
+
+<li
+  class:list={[
+    "flex",
+    {
+      "lg:col-start-2": isLastCentered,
+    },
+  ]}
+>
+  <a
+    href={organization.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`${organization.name} website (opens in a new tab)`}
+    class="hope-frame hope-frame-accent group flex min-h-44 w-full flex-col items-center justify-center bg-white p-4 transition-transform duration-200 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700 motion-reduce:transform-none motion-reduce:transition-none"
+  >
+    <div class="flex h-24 w-full items-center justify-center">
+      <Image
+        src={organization.logo}
+        alt=""
+        width={320}
+        format={
+          organization.logo.format === "svg" ? undefined : "webp"
+        }
+        loading="lazy"
+        class="h-auto max-h-24 w-auto max-w-full object-contain"
+      />
+    </div>
+
+    <h3 class="mt-3 text-center text-lg font-bold leading-snug text-sky-700 group-hover:underline group-focus-visible:underline">
+      {organization.name}
+    </h3>
+  </a>
+</li>

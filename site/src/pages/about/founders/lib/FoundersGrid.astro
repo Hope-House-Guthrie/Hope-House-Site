@@ -1,0 +1,75 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+import ButtonLink from "../../lib/ButtonLink.astro";
+
+interface Props {
+  founders: CollectionEntry<"founders">[];
+}
+
+const { founders } = Astro.props;
+---
+
+<section class="bg-sky-50 py-10 sm:py-12" aria-labelledby="founders-title">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mb-8 text-center">
+      <h2
+        id="founders-title"
+        class="text-3xl font-bold tracking-tight text-sky-700 sm:text-4xl"
+      >
+        The People Behind the Beginning
+      </h2>
+
+      <div
+        class="mx-auto mt-4 h-1 w-full rounded-full bg-sky-700"
+        aria-hidden="true"
+      >
+      </div>
+
+      <p class="mx-auto mt-4 max-w-2xl leading-relaxed text-slate-700">
+        Recognizing OJ Myers, Mary Myers, and Sue Ducharme and their part in
+        starting
+        <span class="block">Hope House Guthrie.</span>
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      {
+        founders.map(({ data: founder }) => (
+          <article class="hope-frame hope-frame-accent overflow-hidden bg-white">
+            <div class="flex aspect-square items-center justify-center bg-sky-100">
+              <Image
+                src={founder.image}
+                alt={founder.name}
+                width={600}
+                format="webp"
+                loading="lazy"
+                class="h-full w-full object-cover object-top"
+              />
+            </div>
+
+            <div class="p-6 text-center">
+              <h3 class="text-2xl font-bold text-sky-700">{founder.name}</h3>
+
+              <p class="mt-2 text-sm font-semibold uppercase tracking-wide text-slate-600">
+                Co-Founder
+              </p>
+
+              {founder.bio && (
+                <p class="mt-4 text-left leading-relaxed text-slate-700">
+                  {founder.bio}
+                </p>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="mt-8 text-center">
+      <ButtonLink href="/about">
+        ← Explore Our Story
+      </ButtonLink>
+    </div>
+  </div>
+</section>

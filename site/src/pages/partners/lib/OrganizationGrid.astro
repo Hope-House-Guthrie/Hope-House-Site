@@ -1,0 +1,59 @@
+---
+import OrganizationCard from "./OrganizationCard.astro";
+
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  organizations: Array<{
+    data: {
+      name: string;
+      url: string;
+      logo: any;
+    };
+  }>;
+  background: string;
+}
+
+const { id, title, description, organizations, background } = Astro.props;
+---
+
+<section
+  class={`${background} py-8 sm:py-10`}
+  aria-labelledby={id}
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mb-6 text-center">
+      <h2
+        id={id}
+        class="text-3xl font-bold tracking-tight text-sky-700 sm:text-4xl"
+      >
+        {title}
+      </h2>
+
+      <div
+        class="mx-auto mt-4 h-1 w-full rounded-full bg-sky-700"
+        aria-hidden="true"
+      />
+
+      <p class="mx-auto mt-4 max-w-2xl leading-relaxed text-slate-700">
+        {description}
+      </p>
+    </div>
+
+    <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {organizations.map(({ data: organization }, index) => {
+        const isLastCentered =
+          index === organizations.length - 1 &&
+          organizations.length % 3 === 1;
+
+        return (
+          <OrganizationCard
+            organization={organization}
+            isLastCentered={isLastCentered}
+          />
+        );
+      })}
+    </ul>
+  </div>
+</section>

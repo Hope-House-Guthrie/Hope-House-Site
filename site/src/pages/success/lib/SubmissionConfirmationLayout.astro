@@ -1,0 +1,59 @@
+---
+import Layout from "@/layouts/main/index.astro";
+import PageHeader from "@/lib/PageHeader.astro";
+import SubmissionActions from "./SubmissionActions.astro";
+
+interface Props {
+  metaTitle: string;
+  headerTitle: string;
+  headerDescription: string;
+  cardTitle: string;
+  cardSubtitle: string;
+  secondaryButtonHref: string;
+  secondaryButtonLabel: string;
+}
+
+const {
+  metaTitle,
+  headerTitle,
+  headerDescription,
+  cardTitle,
+  cardSubtitle,
+  secondaryButtonHref,
+  secondaryButtonLabel
+} = Astro.props;
+---
+
+<Layout title={metaTitle}>
+  <PageHeader title={headerTitle} description={headerDescription} />
+
+  <section class="py-16 bg-white">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="hope-frame hope-frame-accent bg-white p-6 sm:p-10 shadow-sm">
+        <div class="flex items-center gap-4 mb-6">
+          <div
+            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600"
+            aria-hidden="true"
+          >
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <div>
+            <h2 class="text-2xl font-bold text-sky-700">{cardTitle}</h2>
+            <p class="text-sm text-slate-600">{cardSubtitle}</p>
+          </div>
+        </div>
+
+        <div class="space-y-4 text-base leading-relaxed text-slate-700">
+          <slot />
+        </div>
+
+        <SubmissionActions
+          secondaryHref={secondaryButtonHref}
+          secondaryLabel={secondaryButtonLabel}
+        />
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,42 @@
+---
+import Container from "@/lib/Container.astro";
+import SectionHeading from "@/lib/SectionHeading.astro";
+import Card from "@/lib/Card.astro";
+import CardHeader from "./CardHeader.astro";
+---
+
+<section class="py-16 bg-sky-50 border-y border-sky-100">
+  <Container>
+    <SectionHeading
+      title="Serving Hope & Moving Forward"
+      subtitle="Our purpose today. Our hope for tomorrow."
+      class="mb-10"
+      subtitleClass="mt-2 text-lg text-slate-800"
+    />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <Card data-about-reveal="left" class="overflow-hidden bg-white">
+        <CardHeader title="Our Mission" />
+        <div class="p-6 sm:p-8">
+          <p class="text-slate-800 leading-relaxed">
+            We serve the most needful in our community; we feed the hungry,
+            shelter the homeless, and provide safety for the hurt and the
+            neglected. We advocate for each person who comes through our
+            door.
+          </p>
+        </div>
+      </Card>
+
+      <Card data-about-reveal="right" class="overflow-hidden bg-white">
+        <CardHeader title="Our Vision" />
+        <div class="p-6 sm:p-8">
+          <p class="text-slate-800 leading-relaxed">
+            To create a safe place that empowers individuals and families to
+            achieve their full potential and contribute to a thriving
+            community.
+          </p>
+        </div>
+      </Card>
+    </div>
+  </Container>
+</section>

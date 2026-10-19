@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/main/index.astro";
 import PageHeader from "@/lib/PageHeader.astro";
-import TestimonialCard from "@/pages/impact/lib/TestimonialCard.astro";
+import TestimonialsList from "@/pages/impact/lib/TestimonialsList.astro";
 import { getCollection } from "astro:content";
 
 const stories = (await getCollection("testimonials"))
@@ -15,17 +15,7 @@ const stories = (await getCollection("testimonials"))
     description="Real stories from people who have found shelter, support, and a new beginning at Hope House Guthrie."
   />
 
-  <section class="bg-white py-12 sm:py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="space-y-8">
-        {
-          stories.map((story, index) => (
-            <TestimonialCard story={story} index={index} />
-          ))
-        }
-      </div>
-    </div>
-  </section>
+  <TestimonialsList stories={stories} />
 
   <script>
     import { initLiquidPhotos } from "./lib/liquid-photo";

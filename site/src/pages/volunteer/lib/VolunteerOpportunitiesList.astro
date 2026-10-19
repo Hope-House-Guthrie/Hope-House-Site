@@ -1,0 +1,40 @@
+---
+import VolunteerOpportunityCard from "./VolunteerOpportunityCard.astro";
+
+export interface OpportunityData {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+export interface Props {
+  opportunities: Array<{ data: OpportunityData }>;
+}
+
+const { opportunities } = Astro.props;
+---
+
+<div class="min-w-0">
+  <h2 class="text-3xl font-bold text-sky-700">Ways to Get Involved</h2>
+  <div
+    class="mt-4 mb-5 h-1 w-full rounded-full bg-sky-700"
+    aria-hidden="true"
+  >
+  </div>
+  <p class="mb-8 text-slate-600 leading-relaxed">
+    Explore areas where you would like to help. Projects and assignments
+    are coordinated with our team based on current needs.
+  </p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    {
+      opportunities.map(({ data: opportunity }) => (
+        <VolunteerOpportunityCard
+          icon={opportunity.icon}
+          title={opportunity.title}
+          description={opportunity.description}
+        />
+      ))
+    }
+  </div>
+</div>

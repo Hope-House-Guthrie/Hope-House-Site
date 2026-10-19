@@ -3,6 +3,8 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/main/index.astro";
 import PageHeader from "@/lib/PageHeader.astro";
 import VolunteerInquiryForm from "@/forms/VolunteerInquiryForm.astro";
+import VolunteerOpportunitiesList from "./lib/VolunteerOpportunitiesList.astro";
+import VolunteerSidebar from "./lib/VolunteerSidebar.astro";
 
 const volunteerOpportunities = await getCollection("volunteerOpportunities");
 ---
@@ -18,84 +20,8 @@ const volunteerOpportunities = await getCollection("volunteerOpportunities");
       <div
         class="grid grid-cols-1 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] gap-8 lg:gap-10"
       >
-        <!--Volunteer Opportunities -->
-        <div class="min-w-0">
-          <h2 class="text-3xl font-bold text-sky-700">Ways to Get Involved</h2>
-          <div
-            class="mt-4 mb-5 h-1 w-full rounded-full bg-sky-700"
-            aria-hidden="true"
-          >
-          </div>
-          <p class="mb-8 text-slate-600 leading-relaxed">
-            Explore areas where you would like to help. Projects and assignments
-            are coordinated with our team based on current needs.
-          </p>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {
-              volunteerOpportunities.map(({ data: opportunity }) => (
-                <article class="flex flex-col rounded-xl border border-sky-200 bg-sky-50 p-6 shadow-sm">
-                  <div
-                    class="mb-5 flex h-16 w-16 items-center justify-center rounded-xl bg-white text-3xl"
-                    aria-hidden="true"
-                  >
-                    {opportunity.icon}
-                  </div>
-
-                  <h3 class="mb-3 text-xl font-bold text-slate-900">
-                    {opportunity.title}
-                  </h3>
-
-                  <p class="mb-6 text-sm leading-relaxed text-slate-700">
-                    {opportunity.description}
-                  </p>
-
-                  <a
-                    href="#volunteer-interest"
-                    class="mt-auto self-start font-semibold text-sm text-sky-700 hover:underline"
-                  >
-                    Express Interest &rarr;
-                  </a>
-                </article>
-              ))
-            }
-          </div>
-        </div>
-
-        <!-- Sticky Panel: stops at the end of this section -->
-        <aside
-          class="self-start rounded-xl border border-sky-200 bg-sky-50 p-6 sm:p-8 shadow-sm lg:sticky lg:top-28"
-          aria-labelledby="volunteer-panel-title"
-        >
-          <span class="text-xs font-bold uppercase tracking-wider text-sky-700">
-            Make a Difference
-          </span>
-          <h2
-            id="volunteer-panel-title"
-            class="mt-2 text-2xl font-bold text-slate-900"
-          >
-            Interested in Volunteering?
-          </h2>
-          <p class="mt-4 leading-relaxed text-slate-700">
-            Whether you are volunteering on your own or bringing a group, we
-            would like to learn about your interests and availability.
-          </p>
-          <a
-            href="#volunteer-interest"
-            class="mt-6 block rounded-lg bg-emerald-600 px-5 py-3.5 text-center font-bold text-white transition-colors hover:bg-emerald-700"
-          >
-            Volunteer Interest Form
-          </a>
-          <p class="mt-5 text-sm leading-relaxed text-slate-600">
-            Questions? Call us to discuss current opportunities.
-          </p>
-          <a
-            href="tel:4058569058"
-            class="mt-2 block text-lg font-bold text-sky-700 hover:underline"
-          >
-            (405) 856-9058
-          </a>
-        </aside>
+        <VolunteerOpportunitiesList opportunities={volunteerOpportunities} />
+        <VolunteerSidebar />
       </div>
     </div>
   </section>

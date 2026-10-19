@@ -1,0 +1,31 @@
+---
+import Layout from "@/layouts/main/index.astro";
+import PageHeader from "@/lib/PageHeader.astro";
+import { getCollection } from "astro:content";
+
+import AdoptHero from "./lib/AdoptHero.astro";
+import GivingLevels from "./lib/GivingLevels.astro";
+import SponsorMethods from "./lib/SponsorMethods.astro";
+import ThankYouSection from "./lib/ThankYouSection.astro";
+
+const allStories = (await getCollection("testimonials"))
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((entry) => entry.data);
+
+const stories = allStories.slice(0, 2);
+
+const donationUrl =
+  "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=hopehouseguthrie@yahoo.com&item_name=Adopt-a-Room%20-%20Hope%20House%20Guthrie&currency_code=USD";
+---
+
+<Layout title="Adopt a Room">
+  <PageHeader
+    title="Adopt a Room. Make Space for Hope."
+    description="Help sustain safe shelter and support for people rebuilding their lives, with monthly giving levels starting at $20."
+  />
+
+  <AdoptHero />
+  <GivingLevels stories={stories} />
+  <SponsorMethods donationUrl={donationUrl} />
+  <ThankYouSection />
+</Layout>

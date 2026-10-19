@@ -1,0 +1,70 @@
+---
+import { Image } from "astro:assets";
+import Container from "@/lib/Container.astro";
+import ButtonLink from "./ButtonLink.astro";
+import hopeHouseSign from "@/assets/hope-house-sign.png";
+---
+
+<section class="py-16 bg-white overflow-x-clip">
+  <Container class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+    <div>
+      <h2 class="text-3xl font-bold text-sky-700 mb-6">Our Story</h2>
+
+      <p class="text-slate-800 mb-4 leading-relaxed">
+        Hope House Guthrie began in 2020 with just $80 and a simple
+        commitment: make sure people experiencing homelessness on Guthrie’s
+        west side had a hot meal. Those early meals were served through <strong
+          >Lou’s - Lunch on Us</strong
+        >, an effort that became one of the first steps toward what would
+        eventually grow into Hope House Guthrie. Through Neighborhood Hope
+        Dealers, Inc., a simple meal became the beginning of something larger:
+        a place where people could find safety, support, and the opportunity
+        to start again.
+      </p>
+
+      <p class="text-slate-800 mb-4 leading-relaxed">
+        Even as the COVID-19 pandemic brought new challenges, the work
+        continued. In 2022, a USDA grant helped purchase an 18,000-square-foot
+        building, making room for shelter, residential programs, walk-in
+        services, and a growing network of community support.
+      </p>
+
+      <p class="text-slate-800 mb-4 leading-relaxed">
+        Today, we walk alongside individuals and families facing homelessness,
+        addiction, domestic violence, and other hardships. A meal or a safe
+        place to sleep may be the first step. Recovery support, counseling,
+        life skills, and employment readiness help people take the next steps
+        toward stability and independence.
+      </p>
+
+      <p class="text-slate-800 leading-relaxed">
+        For many of our staff members, this mission is personal. They once
+        came to Hope House seeking help and now help lead the programs that
+        supported their own recovery. Their experience brings understanding
+        and practical encouragement to our work—and offers others a powerful
+        reason to believe a new beginning is possible.
+      </p>
+    </div>
+
+    <figure>
+      <Image
+        src={hopeHouseSign}
+        alt="Hope House Guthrie sign at the parking lot entrance"
+        format="webp"
+        widths={[400, 800, 1200]}
+        sizes="(max-width: 1024px) 100vw, 50vw"
+        class="hope-frame block w-full h-auto bg-sky-100 p-2"
+      />
+      <figcaption class="mt-3 text-center text-sm text-slate-800">
+        Welcoming visitors since 2021. Hope House Guthrie’s entrance sign was
+        generously funded by Mrs. Gellenback.
+      </figcaption>
+    </figure>
+
+    <div class="mt-0.5 mb-8 text-center lg:col-span-2">
+      <ButtonLink href="founders">
+        Meet Our Founders →
+      </ButtonLink>
+    </div>
+  </Container>
+</section>

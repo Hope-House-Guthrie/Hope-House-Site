@@ -1,0 +1,33 @@
+---
+export interface Props {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+const { icon, title, description } = Astro.props;
+---
+
+<article class="flex flex-col rounded-xl border border-sky-200 bg-sky-50 p-6 shadow-sm">
+  <div
+    class="mb-5 flex h-16 w-16 items-center justify-center rounded-xl bg-white text-3xl"
+    aria-hidden="true"
+  >
+    {icon}
+  </div>
+
+  <h3 class="mb-3 text-xl font-bold text-slate-900">
+    {title}
+  </h3>
+
+  <p class="mb-6 text-sm leading-relaxed text-slate-700">
+    {description}
+  </p>
+
+  <a
+    href="#volunteer-interest"
+    class="mt-auto self-start font-semibold text-sm text-sky-700 hover:underline"
+  >
+    Express Interest &rarr;
+  </a>
+</article>

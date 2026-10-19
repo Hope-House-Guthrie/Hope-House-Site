@@ -38,7 +38,8 @@
         "recommendations": [
             "astro-build.astro-vscode",
             "jnoortheen.nix-ide",
-            "esbenp.prettier-vscode"
+            "esbenp.prettier-vscode",
+            "bradlc.vscode-tailwindcss"
         ]
     }
 }

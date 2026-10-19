@@ -1,0 +1,62 @@
+---
+import { Image } from "astro:assets";
+import paypalLogo from "@/assets/paypal-logo.jpg";
+---
+
+<div
+  id="donate-options"
+  class="max-w-3xl mx-auto mt-16 p-8 bg-slate-50 border border-slate-200 rounded-xl"
+>
+  <h3 class="text-xl font-bold text-slate-900 mb-6 text-center">
+    Ways to Send Your Donation
+  </h3>
+
+  <div class="grid sm:grid-cols-2 gap-6">
+    <!-- Online donation -->
+    <div class="bg-white p-5 rounded-lg border border-slate-200">
+      <h4 class="font-bold text-slate-900 mb-2">Donate Online</h4>
+
+      <p class="text-sm text-slate-600 mb-4">
+        Give securely through PayPal to support Neighborhood Hope Dealers,
+        Inc. / Hope House Guthrie.
+      </p>
+
+      <a
+        href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=hopehouseguthrie@yahoo.com&item_name=Hope%20House%20Guthrie&currency_code=USD"
+        class="hope-action block w-full rounded-lg bg-emerald-600 py-2.5 text-center text-sm font-bold text-white transition-colors hover:bg-emerald-700"
+      >
+        Proceed to Online Payment →
+      </a>
+
+      <div class="mt-4 flex items-center justify-center gap-3">
+        <span class="text-xs text-slate-500">
+          Secure payment through PayPal
+        </span>
+
+        <Image
+          src={paypalLogo}
+          alt="PayPal"
+          width={80}
+          loading="lazy"
+          class="h-auto w-16 shrink-0 object-contain"
+        />
+      </div>
+    </div>
+
+    <!-- Check donation -->
+    <div class="bg-white p-5 rounded-lg border border-slate-200">
+      <h4 class="font-bold text-slate-900 mb-2">Donate by Check</h4>
+
+      <p class="text-sm text-slate-600">Please make checks payable to:</p>
+
+      <p class="text-sm font-semibold text-slate-800 my-2">
+        NHD - HOPE HOUSE GUTHRIE
+      </p>
+
+      <p class="text-xs text-slate-500">
+        Mail to:<br />
+        PO Box 491, Guthrie, OK 73044
+      </p>
+    </div>
+  </div>
+</div>

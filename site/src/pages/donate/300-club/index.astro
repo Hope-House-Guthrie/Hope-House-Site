@@ -1,0 +1,20 @@
+---
+import Layout from "@/layouts/main/index.astro";
+import PageHeader from "@/lib/PageHeader.astro";
+
+import ClubHero from "./lib/ClubHero.astro";
+import SteadySupport from "./lib/SteadySupport.astro";
+import ClubStory from "./lib/ClubStory.astro";
+import JoinSection from "./lib/JoinSection.astro";
+import ClubFooter from "./lib/ClubFooter.astro";
+---
+
+<Layout title="The 300 Club">
+  <PageHeader title="The 300 Club" description="Small Gifts. Steady Hope." />
+
+  <ClubHero />
+  <SteadySupport />
+  <ClubStory />
+  <JoinSection />
+  <ClubFooter />
+</Layout>

@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/main/index.astro";
+import PageHeader from "@/lib/PageHeader.astro";
+import FoundersGrid from "./lib/FoundersGrid.astro";
+
+const founders = await getCollection("founders");
+---
+
+<Layout title="Our Founders">
+  <PageHeader
+    title="Our Founders"
+    description="Meet the people who helped bring Hope House Guthrie to life."
+  />
+
+  <FoundersGrid founders={founders} />
+</Layout>

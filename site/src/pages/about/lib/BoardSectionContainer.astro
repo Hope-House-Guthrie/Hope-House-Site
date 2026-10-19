@@ -1,0 +1,35 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Container from "@/lib/Container.astro";
+import SectionHeading from "@/lib/SectionHeading.astro";
+import BoardSection from "./BoardSection.astro";
+
+interface Props {
+  members: CollectionEntry<"board">[];
+}
+
+const { members } = Astro.props;
+
+const sortedMembers = [...members].sort(
+  (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0),
+);
+
+const officers = sortedMembers.filter((item) => item.data.group === "officer");
+const boardMembers = sortedMembers.filter((item) => item.data.group === "board");
+const advisoryMembers = sortedMembers.filter((item) => item.data.group === "advisory");
+---
+
+<section class="py-16 bg-sky-50 border-t border-sky-100">
+  <Container>
+    <SectionHeading
+      title="Board of Directors"
+      subtitle="Community leaders helping guide the mission and future of Hope House Guthrie."
+      class="mb-12"
+      subtitleClass="text-slate-700 text-lg mt-4"
+    />
+
+    <BoardSection title="Board Officers" members={officers} />
+    <BoardSection title="Board Members" members={boardMembers} />
+    <BoardSection title="Non-Voting Advisory Board" members={advisoryMembers} />
+  </Container>
+</section>

@@ -1,0 +1,84 @@
+---
+import Container from "@/lib/Container.astro";
+
+interface Props {
+  optimizedAerialImage: {
+    src: string;
+    attributes: {
+      width?: number;
+      height?: number;
+    };
+  };
+}
+
+const { optimizedAerialImage } = Astro.props;
+---
+
+<section class="relative overflow-hidden bg-sky-50">
+  <img
+    src={optimizedAerialImage.src}
+    width={optimizedAerialImage.attributes.width}
+    height={optimizedAerialImage.attributes.height}
+    alt="Aerial view of Hope House Guthrie and its surrounding grounds"
+    loading="eager"
+    fetchpriority="high"
+    class="block h-auto w-full max-w-none lg:absolute lg:inset-0 lg:h-full lg:object-cover lg:object-center"
+  />
+
+  <div
+    class="pointer-events-none absolute inset-0 z-[1] hidden lg:block"
+    style="background-color: rgba(32, 32, 34, 0.627);"
+    aria-hidden="true"
+  >
+  </div>
+
+  <Container class="relative z-10 py-8 sm:py-10 lg:flex lg:min-h-[calc(100vh-108px)] lg:items-center lg:py-20">
+    <div class="max-w-3xl lg:pl-14">
+      <span
+        class="mb-4 inline-block rounded-full border border-sky-200 bg-sky-100 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-sky-700 lg:border-sky-700 lg:bg-sky-900/80 lg:text-sky-300"
+      >
+        Serving Oklahoma
+      </span>
+
+      <h1
+        class="hero-heading mb-5 text-4xl font-extrabold leading-tight tracking-tight text-sky-700 sm:text-5xl lg:mb-6 lg:text-6xl lg:text-white"
+      >
+        Hope Starts Here.
+      </h1>
+
+      <p
+        class="mb-6 max-w-xl text-lg leading-relaxed text-slate-700 sm:text-xl lg:text-slate-100"
+      >
+        Hope House Guthrie provides shelter, meals, clothing, recovery
+        support, and a path towards stability for people from across Oklahoma
+        who need a place to begin again.
+      </p>
+
+      <div class="flex flex-col gap-4 sm:flex-row">
+        <a
+          href="/contact#client-inquiry"
+          class="rounded-lg bg-emerald-600 px-8 py-3.5 text-center font-bold text-white shadow-sm transition-colors hover:bg-emerald-500"
+        >
+          Get Help
+        </a>
+
+        <a
+          href="/donate"
+          class="rounded-lg border border-sky-300 bg-white px-8 py-3.5 text-center font-semibold text-sky-700 transition-colors hover:bg-sky-100 lg:border-white/20 lg:bg-white/30 lg:text-white lg:hover:bg-white/40"
+        >
+          Support Hope House
+        </a>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style>
+  @media (min-width: 1024px) {
+    .hero-heading {
+      text-shadow:
+        0 2px 4px rgb(0 0 0 / 75%),
+        0 6px 18px rgb(0 0 0 / 45%);
+    }
+  }
+</style>

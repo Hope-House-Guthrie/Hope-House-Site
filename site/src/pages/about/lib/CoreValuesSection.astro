@@ -1,0 +1,65 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Container from "@/lib/Container.astro";
+import SectionHeading from "@/lib/SectionHeading.astro";
+import Card from "@/lib/Card.astro";
+
+interface Props {
+  coreValues: CollectionEntry<"coreValues">[];
+}
+
+const { coreValues } = Astro.props;
+---
+
+<section class="py-16 bg-white">
+  <Container>
+    <SectionHeading
+      title="Our Core Values"
+      subtitle="The values that shape how we serve, lead, and care for our community."
+      class="mb-10"
+      subtitleClass="text-slate-800 text-lg mt-4"
+    />
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {
+        coreValues.map(({ data: value }) => (
+          <Card
+            accent
+            data-about-reveal={value.direction}
+            style={`--reveal-delay: ${value.delay}`}
+            class="group bg-white p-7 motion-safe:transition-transform motion-safe:duration-700 motion-safe:hover:-translate-y-1"
+          >
+            <div class="w-12 h-12 rounded-full bg-sky-50 flex items-center justify-center mb-5">
+              <svg
+                class="w-6 h-6 text-sky-700"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d={value.icon}
+                />
+              </svg>
+            </div>
+
+            <h3 class="text-xl font-bold text-sky-700 mb-2">
+              {value.title}
+            </h3>
+
+            <p class="font-semibold text-slate-900 mb-3">
+              {value.statement}
+            </p>
+
+            <p class="text-slate-700 leading-relaxed">
+              {value.description}
+            </p>
+          </Card>
+        ))
+      }
+    </div>
+  </Container>
+</section>
