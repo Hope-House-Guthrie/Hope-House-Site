@@ -1,0 +1,101 @@
+:root {
+  /* Hero */
+  --color-hero-bg: theme(colors.sky.50);
+  --color-hero-overlay: rgba(32, 32, 34, 0.627);
+  --color-hero-badge-border: theme(colors.sky.200);
+  --color-hero-badge-bg: theme(colors.sky.100);
+  --color-hero-badge-text: theme(colors.sky.700);
+  --color-hero-badge-border-lg: theme(colors.sky.700);
+  --color-hero-badge-bg-lg: rgb(7 89 133 / 0.8);
+  --color-hero-badge-text-lg: theme(colors.sky.300);
+  --color-hero-title: theme(colors.sky.700);
+  --color-hero-title-lg: theme(colors.white);
+  --color-hero-desc: theme(colors.slate.700);
+  --color-hero-desc-lg: theme(colors.slate.100);
+  --color-hero-shadow-1: rgb(0 0 0 / 75%);
+  --color-hero-shadow-2: rgb(0 0 0 / 45%);
+
+  /* Buttons */
+  --color-btn-primary-bg: theme(colors.emerald.600);
+  --color-btn-primary-text: theme(colors.white);
+  --color-btn-primary-hover: theme(colors.emerald.500);
+  --color-btn-secondary-border: theme(colors.sky.300);
+  --color-btn-secondary-bg: theme(colors.white);
+  --color-btn-secondary-text: theme(colors.sky.700);
+  --color-btn-secondary-hover: theme(colors.sky.100);
+  --color-btn-secondary-border-lg: rgb(255 255 255 / 0.2);
+  --color-btn-secondary-bg-lg: rgb(255 255 255 / 0.3);
+  --color-btn-secondary-text-lg: theme(colors.white);
+  --color-btn-secondary-hover-lg: rgb(255 255 255 / 0.4);
+
+  /* Impact */
+  --color-impact-bg: theme(colors.white);
+  --color-impact-subtitle: theme(colors.slate.600);
+  --color-card-bg: theme(colors.white);
+  --color-card-title: theme(colors.sky.700);
+  --color-card-desc: theme(colors.slate.600);
+
+  /* Services */
+  --color-services-bg: theme(colors.white);
+  --color-services-subtitle: theme(colors.slate.900);
+  --color-service-card-bg: theme(colors.sky.50);
+  --color-service-icon-bg-1: theme(colors.sky.100);
+  --color-service-icon-bg-2: theme(colors.amber.100);
+  --color-service-icon-bg-3: theme(colors.emerald.100);
+  --color-service-title: theme(colors.slate.900);
+  --color-service-desc: theme(colors.slate.800);
+  --color-service-link: theme(colors.sky.700);
+
+  /* Spotlight */
+  --color-spotlight-from: theme(colors.sky.100);
+  --color-spotlight-via: theme(colors.sky.50);
+  --color-spotlight-to: theme(colors.white);
+  --color-spotlight-title: theme(colors.sky.700);
+  --color-spotlight-bar: theme(colors.sky.700);
+  --color-spotlight-desc: theme(colors.slate.600);
+  --color-spotlight-border: theme(colors.sky.200);
+  --color-spotlight-border-top: theme(colors.sky.500);
+  --color-spotlight-bg: theme(colors.white);
+  --color-spotlight-shadow: rgb(12 74 110 / 0.1);
+  --color-spotlight-item-title: theme(colors.slate.900);
+  --color-spotlight-item-sub: theme(colors.slate.500);
+  --color-spotlight-outline: theme(colors.sky.700);
+  --color-spotlight-controls-border: theme(colors.sky.100);
+  --color-spotlight-controls-bg: theme(colors.sky.50);
+  --color-spotlight-counter: theme(colors.slate.500);
+  --color-spotlight-btn-bg: theme(colors.sky.700);
+  --color-spotlight-btn-text: theme(colors.white);
+  --color-spotlight-btn-hover: theme(colors.sky.800);
+  --color-spotlight-btn-outline: theme(colors.sky.700);
+  --color-spotlight-play-hover: theme(colors.sky.100);
+  --color-dialog-bg: theme(colors.white);
+  --color-dialog-btn-bg: theme(colors.sky.700);
+  --color-dialog-btn-text: theme(colors.white);
+  --color-dialog-btn-hover: theme(colors.sky.800);
+  --color-spotlight-shadow-1: theme(colors.sky.300);
+  --color-spotlight-shadow-2: #d0e8f5;
+  --color-spotlight-shadow-3: rgb(12 74 110 / 30%);
+  --color-spotlight-inset: rgb(255 255 255 / 90%);
+  --color-slides-grad-1: #ffffff;
+  --color-slides-grad-2: #f0f9ff;
+  --color-slides-grad-3: #e0f2fe;
+  --color-flyer-shadow: rgb(15 23 42 / 20%);
+  --color-flyer-shadow-hover: rgb(15 23 42 / 25%);
+  --color-arrow-grad-top: #0284c7;
+  --color-arrow-grad-bottom: #0369a1;
+  --color-arrow-inset: rgb(255 255 255 / 30%);
+  --color-arrow-shadow-1: #075985;
+  --color-arrow-shadow-2: rgb(12 74 110 / 20%);
+  --color-arrow-inset-active: rgb(255 255 255 / 20%);
+  --color-arrow-shadow-active: #075985;
+
+  /* Partners */
+  --color-partners-border: theme(colors.sky.200);
+  --color-partners-bg: theme(colors.sky.50);
+  --color-partners-title: theme(colors.sky.700);
+  --color-partners-desc: theme(colors.slate.700);
+  --color-partners-btn-bg: theme(colors.sky.700);
+  --color-partners-btn-text: theme(colors.white);
+  --color-partners-btn-hover: theme(colors.sky.800);
+  --color-partners-btn-outline: theme(colors.sky.700);
+}

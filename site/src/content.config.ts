@@ -127,12 +127,26 @@ const coreValues = defineCollection({
   }),
 });
 
+const spotlights = defineCollection({
+  loader: glob({
+    pattern: "**/*.json",
+    base: "./src/content/spotlights",
+  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      image: image(),
+      order: z.number().optional().default(0),
+    }),
+});
+
 export const collections = {
   board,
   coreValues,
   founders,
   partners,
   residentialPrograms,
+  spotlights,
   supporters,
   testimonials,
   volunteerOpportunities,
