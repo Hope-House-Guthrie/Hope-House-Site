@@ -6,7 +6,7 @@ const spotlights = await getCollection("spotlights");
 ---
 
 <section
-  class="bg-linear-to-br from-sky-100 via-sky-50 to-white py-12 sm:py-16"
+  class="py-12 sm:py-16"
   aria-labelledby="spotlight-title"
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -27,8 +27,8 @@ const spotlights = await getCollection("spotlights");
     </div>
 
     <div
-      id="hope-spotlight"
-      class="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-sky-200 border-t-4 border-t-sky-500 bg-white shadow-xl shadow-sky-900/10"
+      id="hope-spotlight1"
+      class1="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-sky-200 border-t-4 border-t-sky-500 bg-white shadow-xl shadow-sky-900/10"
       role="region"
       aria-roledescription="carousel"
       aria-label="Hope House community spotlights"
@@ -43,22 +43,15 @@ const spotlights = await getCollection("spotlights");
               aria-roledescription="slide"
               aria-label={`${index + 1} of ${spotlights.length}: ${item.title}`}
             >
-              <button
-                type="button"
-                data-enlarge
-                class="block w-full rounded-lg focus-visible:outline ffocus-visible:outline-offset-4 focus-visible:outline-sky-700"
-                aria-label={`Enlarge flyer: ${item.title}`}
-              >
-                <Image
+              <Image
                   src={item.image}
                   alt={item.title}
                   width={1000}
                   format="webp"
                   quality={85}
                   loading="lazy"
-                  class="mx-auto h-90 w-full object-contain sm:h-130"
+                  class="mx-auto w-full object-contain"
                 />
-              </button>
 
               <h3 class="mt-5 text-center text-lg font-bold text-slate-900">
                 {item.title}

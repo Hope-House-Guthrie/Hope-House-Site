@@ -12,7 +12,7 @@ interface Props {
 const { optimizedAerialImage } = Astro.props;
 ---
 
-<section class="relative overflow-hidden bg-sky-50">
+<div class="relative overflow-hidden bg-sky-50">
   <img
     src={optimizedAerialImage.src}
     width={optimizedAerialImage.attributes.width}
@@ -69,7 +69,7 @@ const { optimizedAerialImage } = Astro.props;
       </div>
     </div>
   </div>
-</section>
+</div>
 
 <style>
   @media (min-width: 1024px) {

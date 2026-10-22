@@ -3,6 +3,8 @@
   themes: light --default, dark --prefersdark;
 }
 
+@import "./lib/utility.css";
+
 select {
   color-scheme: light;
 }
@@ -16,6 +18,12 @@ select option:checked {
   background-color: #0369a1;
   color: #ffffff;
 }
+
+body {
+  @apply bg-sky-50;
+}
+
+/* todo: remove or move the below */
 
 /* Shared raised frame for cards and boxes */
 .hope-frame {
