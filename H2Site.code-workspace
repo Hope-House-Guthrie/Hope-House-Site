@@ -6,6 +6,10 @@
     ],
     "settings": {
         "js/ts.preferences.quoteStyle": "double",
+        "[astro]": {
+            "editor.formatOnSave": true,
+            "editor.defaultFormatter": "astro-build.astro-vscode"
+        },
         "[typescript]": {
             "editor.defaultFormatter": "esbenp.prettier-vscode",
             "editor.formatOnSave": true,

@@ -2,10 +2,13 @@
 import { defineConfig, sharpImageService } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 
+import react from "@astrojs/react";
+
 export default defineConfig({
   image: {
     service: sharpImageService(),
   },
+
   vite: {
     plugins: [tailwindcss()],
     server: {
@@ -16,4 +19,6 @@ export default defineConfig({
       },
     },
   },
+
+  integrations: [react()],
 });

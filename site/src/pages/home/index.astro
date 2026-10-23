@@ -10,7 +10,7 @@ import CardsList from "./lib/CardsList.astro";
 import PageSection from "./lib/PageSection.astro";
 
 import Hero from "./lib/Hero.astro";
-import Spotlight from "./lib/Spotlight/index.astro";
+import Spotlight from "./lib/Spotlight.tsx";
 
 const optimizedAerialImage = await getImage({
   src: aerialImage,
@@ -18,160 +18,136 @@ const optimizedAerialImage = await getImage({
   quality: 60,
 });
 
-const spotlights = await getCollection("spotlights");
 const partners = await getCollection("partners");
 const supporters = await getCollection("supporters");
 
 const partnersAndSupporters = partners
-  .map(x => x.data)
-  .concat(supporters.map(x => x.data));
+  .map((x) => x.data)
+  .concat(supporters.map((x) => x.data));
+
+const spotlights = await Promise.all(
+  (await getCollection("spotlights")).map(async ({ id, data }) => {
+    const image = await getImage({
+      src: data.image,
+      width: 1000,
+      format: "webp",
+      quality: 85,
+    });
+
+    return {
+      id,
+      title: data.title,
+      src: image.src,
+      srcset: image.attributes.srcset,
+      width: image.attributes.width,
+      height: image.attributes.height,
+    };
+  }),
+);
 ---
 
 <Layout title="Home">
   <Hero optimizedAerialImage={optimizedAerialImage} />
-  
-  <PageSection title="Serving Hope & Moving Forward" subtitle="We advocate for every person who comes through our doors, offering short-term shelter, long-term stabilization, and community care.">
+
+  <PageSection
+    title="Serving Hope & Moving Forward"
+    subtitle="We advocate for every person who comes through our doors, offering short-term shelter, long-term stabilization, and community care."
+  >
     <CardsList variant="columns-3">
       <Card>
-        <figure class="bg-sky-100" aria-hidden="true">
-          🍲
-        </figure>
+        <figure class="bg-sky-100" aria-hidden="true">🍲</figure>
 
-        <h3>
-          Community Lunch &amp; Walk-In Services
-        </h3>
+        <h3>Community Lunch &amp; Walk-In Services</h3>
 
         <p>
           Serving daily hot lunches from 11:00 AM – 1:00 PM. Walk-in services
           include showers, clothing, and hygiene toiletries until 5:00 PM.
         </p>
 
-        <a href="/programs#soup-kitchen">
-          Learn More &rarr;
-        </a>
+        <a href="/programs#soup-kitchen"> Learn More &rarr; </a>
       </Card>
       <Card>
-        <figure class="bg-amber-100" aria-hidden="true">
-          🏠
-        </figure>
+        <figure class="bg-amber-100" aria-hidden="true">🏠</figure>
 
-        <h3>
-          Transitional Housing
-        </h3>
+        <h3>Transitional Housing</h3>
 
         <p>
-          Transitional housing with structured support to help individuals
-          work toward stability, independence, and their next step forward.
+          Transitional housing with structured support to help individuals work
+          toward stability, independence, and their next step forward.
         </p>
 
-        <a href="/programs#housing">
-          Learn More &rarr;
-        </a>
+        <a href="/programs#housing"> Learn More &rarr; </a>
       </Card>
       <Card>
-        <figure class="bg-emerald-100" aria-hidden="true">
-          🌱
-        </figure>
+        <figure class="bg-emerald-100" aria-hidden="true">🌱</figure>
 
-        <h3>
-          Recovery &amp; Support
-        </h3>
+        <h3>Recovery &amp; Support</h3>
 
         <p>
           Narcotics Anonymous (NA) meetings, recovery support, job transition,
           budgeting, and connections to community resources.
         </p>
 
-        <a href="/programs#recovery">
-          Learn More &rarr;
-        </a>
+        <a href="/programs#recovery"> Learn More &rarr; </a>
       </Card>
     </CardsList>
   </PageSection>
 
-  <Spotlight />
-
-  <PageSection title="Hope House Spotlight" subtitle="Celebrating our community, our partners, and hope in action.">
-    <CardsList variant="columns-1">
-    {
-      spotlights.map(({ data: item }, index) => (
-        <Card>
-          <Image
-              src={item.image}
-              alt={item.title}
-              width={1000}
-              format="webp"
-              quality={85}
-              loading="lazy"
-              class="mx-auto w-full object-contain"
-            />
-
-          <h3 class="mt-5 text-center text-lg font-bold text-slate-900">
-            {item.title}
-          </h3>
-        </Card>
-      ))
-    }
-    </CardsList>
-    <!-- todo: add client-side paging with left/right arrows and page numbers, one for each spotlight card; hide spotlight cards that are not selected; advance to the next automatically on 5 second interval -->
+  <PageSection
+    title="Hope House Spotlight"
+    subtitle="Celebrating our community, our partners, and hope in action."
+  >
+    <Spotlight spotlights={spotlights} client:load />
   </PageSection>
 
-  <PageSection title="Our Impact" subtitle="Meals, essential resources, and hope for our community.">
+  <PageSection
+    title="Our Impact"
+    subtitle="Meals, essential resources, and hope for our community."
+  >
     <CardsList variant="columns-2">
       <Card>
-        <figure class="bg-sky-100" aria-hidden="true">
-          🍲
-        </figure>
+        <figure class="bg-sky-100" aria-hidden="true">🍲</figure>
 
-        <h3>
-          Meals Served
-        </h3>
+        <h3>Meals Served</h3>
 
-        <p>
-          Community meal totals coming soon
-        </p>
+        <p>Community meal totals coming soon</p>
       </Card>
       <Card>
-        <figure class="bg-amber-100" aria-hidden="true">
-          📦
-        </figure>
+        <figure class="bg-amber-100" aria-hidden="true">📦</figure>
 
-        <h3>
-          Food Boxes Distributed
-        </h3>
+        <h3>Food Boxes Distributed</h3>
 
-        <p>
-          Food distribution totals coming soon
-        </p>
+        <p>Food distribution totals coming soon</p>
       </Card>
     </CardsList>
   </PageSection>
 
-  <PageSection title="Community Partners & Supporters" subtitle="Working together to connect our community with food, resources, recovery support, and opportunities.">
+  <PageSection
+    title="Community Partners & Supporters"
+    subtitle="Working together to connect our community with food, resources, recovery support, and opportunities."
+  >
     <CardsList variant="columns-3">
-    {
-      partnersAndSupporters.map(item => (
-        <Card>
-          <a
-            class="flex items-center justify-center w-full h-44"
-            href={item.url}
-            target="_blank"
-            aria-label={`${item.name} website (opens in a new tab)`}          
-          >
-            <Image
-              class="max-h-full max-w-full w-auto h-auto object-contain"
-              src={item.logo}
-              alt={item.name}
-              width={320}
-              format={
-                item.logo.format === "svg" ? undefined : "webp"
-              }
-              loading="lazy"
-            />
-          </a>
-        </Card>
-      ))
-    }
+      {
+        partnersAndSupporters.map((item) => (
+          <Card>
+            <a
+              class="flex items-center justify-center w-full h-44"
+              href={item.url}
+              target="_blank"
+              aria-label={`${item.name} website (opens in a new tab)`}
+            >
+              <Image
+                class="max-h-full max-w-full w-auto h-auto object-contain"
+                src={item.logo}
+                alt={item.name}
+                width={320}
+                format={item.logo.format === "svg" ? undefined : "webp"}
+                loading="lazy"
+              />
+            </a>
+          </Card>
+        ))
+      }
     </CardsList>
   </PageSection>
 </Layout>
