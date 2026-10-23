@@ -18,6 +18,7 @@ const optimizedAerialImage = await getImage({
   quality: 60,
 });
 
+const spotlights = await getCollection("spotlights");
 const partners = await getCollection("partners");
 const supporters = await getCollection("supporters");
 
@@ -89,6 +90,31 @@ const partnersAndSupporters = partners
   </PageSection>
 
   <Spotlight />
+
+  <PageSection title="Hope House Spotlight" subtitle="Celebrating our community, our partners, and hope in action.">
+    <CardsList variant="columns-1">
+    {
+      spotlights.map(({ data: item }, index) => (
+        <Card>
+          <Image
+              src={item.image}
+              alt={item.title}
+              width={1000}
+              format="webp"
+              quality={85}
+              loading="lazy"
+              class="mx-auto w-full object-contain"
+            />
+
+          <h3 class="mt-5 text-center text-lg font-bold text-slate-900">
+            {item.title}
+          </h3>
+        </Card>
+      ))
+    }
+    </CardsList>
+    <!-- todo: add client-side paging with left/right arrows and page numbers, one for each spotlight card; hide spotlight cards that are not selected; advance to the next automatically on 5 second interval -->
+  </PageSection>
 
   <PageSection title="Our Impact" subtitle="Meals, essential resources, and hope for our community.">
     <CardsList variant="columns-2">
