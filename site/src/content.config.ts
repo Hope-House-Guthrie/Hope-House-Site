@@ -86,19 +86,6 @@ const partners = defineCollection({
     }),
 });
 
-const supporters = defineCollection({
-  loader: glob({
-    pattern: "**/*.json",
-    base: "./src/content/supporters",
-  }),
-  schema: ({ image }) =>
-    z.object({
-      name: z.string(),
-      logo: image(),
-      url: z.url(),
-    }),
-});
-
 const founders = defineCollection({
   loader: glob({
     pattern: "**/*.json",
@@ -147,7 +134,6 @@ export const collections = {
   partners,
   residentialPrograms,
   spotlights,
-  supporters,
   testimonials,
   volunteerOpportunities,
   walkInServices,

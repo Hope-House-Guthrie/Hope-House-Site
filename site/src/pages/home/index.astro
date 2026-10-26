@@ -19,11 +19,6 @@ const optimizedAerialImage = await getImage({
 });
 
 const partners = await getCollection("partners");
-const supporters = await getCollection("supporters");
-
-const partnersAndSupporters = partners
-  .map((x) => x.data)
-  .concat(supporters.map((x) => x.data));
 
 const spotlights = await Promise.all(
   (await getCollection("spotlights")).map(async ({ id, data }) => {
@@ -121,7 +116,7 @@ const spotlights = await Promise.all(
   >
     <CardsList variant="columns-3">
       {
-        partnersAndSupporters.map((item) => (
+        partners.map(({ data: item }) => (
           <Card>
             <a
               class="flex items-center justify-center w-full h-44"
