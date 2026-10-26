@@ -124,6 +124,7 @@ const spotlights = defineCollection({
       title: z.string(),
       image: image(),
       order: z.number().optional().default(0),
+      url: z.url().optional(),
     }),
 });
 
