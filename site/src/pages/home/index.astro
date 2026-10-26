@@ -94,13 +94,6 @@ const spotlights = await Promise.all(
   </PageSection>
 
   <PageSection
-    title="Hope House Spotlight"
-    subtitle="Celebrating our community, our partners, and hope in action."
-  >
-    <Spotlight spotlights={spotlights} client:load />
-  </PageSection>
-
-  <PageSection
     title="Our Impact"
     subtitle="Meals, essential resources, and hope for our community."
   >
@@ -149,5 +142,12 @@ const spotlights = await Promise.all(
         ))
       }
     </CardsList>
+  </PageSection>
+
+  <PageSection
+    title="Hope House Spotlight"
+    subtitle="Celebrating our community, our partners, and hope in action."
+  >
+    <Spotlight spotlights={spotlights} client:load />
   </PageSection>
 </Layout>
