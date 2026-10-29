@@ -1,13 +1,28 @@
----
-interface Props {
-  accent?: boolean;
-  class?: string;
-  [key: string]: any;
-}
-
-const { accent = false, class: className = "", ...rest } = Astro.props;
-const frameClass = accent ? "hope-frame hope-frame-accent" : "hope-frame";
----
-<div class={`${frameClass} ${className}`} {...rest}>
+<li class="h-full p-6 flex flex-col raised bg-sky-50">
   <slot />
-</div>
+</li>
+<style>
+  @reference "../styles/main.css";
+
+  li {
+    figure {
+      @apply mb-4 flex h-12 w-12 items-center justify-center rounded-lg text-xl;
+    }
+
+    h3 {
+      @apply mb-2 text-xl font-bold text-slate-900;
+    }
+
+    p {
+      @apply mb-6 text-sm leading-relaxed text-slate-800;
+    }
+
+    a {
+      @apply mt-auto self-start text-sm font-semibold text-sky-700 hover:underline;
+    }
+  }
+
+  :global(section.alternate) li {
+    @apply bg-white;
+  }
+</style>

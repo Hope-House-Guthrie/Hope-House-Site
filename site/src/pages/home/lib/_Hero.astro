@@ -1,22 +1,11 @@
 ---
-interface Props {
-  optimizedAerialImage: {
-    src: string;
-    attributes: {
-      width?: number;
-      height?: number;
-    };
-  };
-}
-
-const { optimizedAerialImage } = Astro.props;
+import { Image } from "astro:assets";
+import aerialImage from "@/assets/new-aerial.jpeg";
 ---
 
 <div class="relative overflow-hidden bg-sky-50">
-  <img
-    src={optimizedAerialImage.src}
-    width={optimizedAerialImage.attributes.width}
-    height={optimizedAerialImage.attributes.height}
+  <Image
+    src={aerialImage}
     alt="Aerial view of Hope House Guthrie and its surrounding grounds"
     loading="eager"
     fetchpriority="high"
@@ -24,13 +13,15 @@ const { optimizedAerialImage } = Astro.props;
   />
 
   <div
-    class="pointer-events-none absolute inset-0 z-[1] hidden lg:block"
+    class="pointer-events-none absolute inset-0 z-1 hidden lg:block"
     style="background-color: rgba(32, 32, 34, 0.627);"
     aria-hidden="true"
   >
   </div>
 
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10 py-8 sm:py-10 lg:flex lg:min-h-[calc(100vh-108px)] lg:items-center lg:py-20">
+  <div
+    class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10 py-8 sm:py-10 lg:flex lg:min-h-[calc(100vh-108px)] lg:items-center lg:py-20"
+  >
     <div class="max-w-3xl lg:pl-14">
       <span
         class="mb-4 inline-block rounded-full border border-sky-200 bg-sky-100 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-sky-700 lg:border-sky-700 lg:bg-sky-900/80 lg:text-sky-300"
@@ -47,9 +38,9 @@ const { optimizedAerialImage } = Astro.props;
       <p
         class="mb-6 max-w-xl text-lg leading-relaxed text-slate-700 sm:text-xl lg:text-slate-100"
       >
-        Hope House Guthrie provides shelter, meals, clothing, recovery
-        support, and a path towards stability for people from across Oklahoma
-        who need a place to begin again.
+        Hope House Guthrie provides shelter, meals, clothing, recovery support,
+        and a path towards stability for people from across Oklahoma who need a
+        place to begin again.
       </p>
 
       <div class="flex flex-col gap-4 sm:flex-row">

@@ -1,0 +1,28 @@
+---
+import Card from "@/lib/Card.astro";
+import CardsList from "@/lib/CardsList.astro";
+import PageSection from "@/lib/PageSection.astro";
+---
+
+<PageSection
+  title="Our Impact"
+  subtitle="Meals, essential resources, and hope for our community."
+  variant="alternate"
+>
+  <CardsList variant="columns-2">
+    <Card>
+      <figure class="bg-sky-100" aria-hidden="true">🍲</figure>
+
+      <h3>Meals Served</h3>
+
+      <p>Community meal totals coming soon</p>
+    </Card>
+    <Card>
+      <figure class="bg-amber-100" aria-hidden="true">📦</figure>
+
+      <h3>Food Boxes Distributed</h3>
+
+      <p>Food distribution totals coming soon</p>
+    </Card>
+  </CardsList>
+</PageSection>

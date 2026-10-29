@@ -25,23 +25,15 @@ const {
     <meta name="description" content={description} />
     <title>{title} | Hope House Guthrie</title>
   </head>
-  <body
-    class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen"
-  >
+  <body class="text-slate-800 antialiased flex flex-col min-h-screen">
     <AnnouncementBar />
 
     <Header />
 
-    <!-- Page Content -->
-    <main class="flex-grow">
+    <main class="grow">
       <slot />
     </main>
 
     <Footer />
-
-    <script
-      async
-      src="https://widgets.givebutter.com/latest.umd.cjs?acct=Qbp6xqDwfEboHdnU&p=other"
-    ></script>
   </body>
 </html>
