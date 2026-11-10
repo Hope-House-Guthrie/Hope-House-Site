@@ -1,7 +1,56 @@
 ---
 import Layout from "../layouts/main.astro";
+import PageHeader from "../components/PageHeader.astro";
 ---
 
 <Layout title="Page Not Found">
-  TODO
+  <PageHeader
+    title="Page Not Found"
+    description="We couldn’t find the page you were looking for."
+  />
+
+  <section class="bg-white py-12 sm:py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <div class="hope-frame hope-frame-accent bg-sky-50 p-6 sm:p-8">
+        <p class="text-sm font-bold uppercase tracking-wide text-sky-700">
+          Error 404
+        </p>
+
+        <h2 class="mt-3 text-2xl font-bold text-sky-700">
+          Let’s Help You Find Your Way
+        </h2>
+
+        <p class="mt-4 leading-relaxed text-slate-700">
+          This page may have moved, or the link may be incorrect. Use the links
+          below to continue.
+        </p>
+
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+          <a
+            href="/"
+            class="hope-action inline-flex min-h-11 items-center justify-center rounded-lg bg-sky-700 px-6 py-3 font-bold text-white transition-colors hover:bg-sky-800"
+          >
+            Return Home →
+          </a>
+
+          <a
+            href="/programs"
+            class="hope-action inline-flex min-h-11 items-center justify-center rounded-lg bg-sky-700 px-6 py-3 font-bold text-white transition-colors hover:bg-sky-800"
+          >
+            Programs &amp; Services →
+          </a>
+        </div>
+
+        <p class="mt-6 leading-relaxed text-slate-700">
+          Need help? Call{" "}
+          <a
+            href="tel:4058569058"
+            class="font-semibold text-sky-700 hover:underline"
+          >
+            (405) 856-9058
+          </a>.
+        </p>
+      </div>
+    </div>
+  </section>
 </Layout>

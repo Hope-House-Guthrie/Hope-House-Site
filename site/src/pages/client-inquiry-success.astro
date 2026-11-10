@@ -1,7 +1,46 @@
 ---
 import Layout from "../layouts/main.astro";
+import PageHeader from "../components/PageHeader.astro";
 ---
 
 <Layout title="Client Inquiry Submitted">
-  TODO
+  <PageHeader
+    title="Your Inquiry Has Been Submitted"
+    description="Thank you for reaching out to Hope House Guthrie."
+  />
+
+  <section class="bg-white py-12 sm:py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <div class="hope-frame hope-frame-accent bg-sky-50 p-6 sm:p-8">
+        <h2 class="text-2xl font-bold text-sky-700">What Happens Next</h2>
+
+        <p class="mt-4 leading-relaxed text-slate-700">
+          Our intake team will review your inquiry and use the contact
+          information you provided to discuss your needs and next steps.
+        </p>
+
+        <p class="mt-4 leading-relaxed text-slate-700">
+          Submitting an inquiry does not reserve a bed or confirm admission.
+          Placement depends on availability and a review with our intake team.
+        </p>
+
+        <p class="mt-4 leading-relaxed text-slate-700">
+          To ask about availability or follow up on your inquiry, call{" "}
+          <a
+            href="tel:4058569058"
+            class="font-semibold text-sky-700 hover:underline"
+          >
+            (405) 856-9058
+          </a>.
+        </p>
+
+        <a
+          href="/"
+          class="hope-action mt-6 inline-flex min-h-11 items-center justify-center rounded-lg bg-sky-700 px-6 py-3 font-bold text-white transition-colors hover:bg-sky-800"
+        >
+          Return Home →
+        </a>
+      </div>
+    </div>
+  </section>
 </Layout>

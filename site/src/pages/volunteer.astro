@@ -139,7 +139,11 @@ const opportunities = [
         action="/_form/volunteer-inquiry"
         method="POST"
       >
-        <input type="hidden" name="success_url" value="/volunteer-inquiry-success" />
+        <input
+          type="hidden"
+          name="success_url"
+          value="/volunteer-inquiry-success"
+        />
 
         <p
           id="volunteer-status"
@@ -226,8 +230,33 @@ const opportunities = [
               type="tel"
               autocomplete="tel"
               inputmode="tel"
+              placeholder="(555) 555-5555"
+              maxlength="14"
               class="w-full min-w-0 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500"
             />
+
+            <script>
+              const phoneInput =
+                document.querySelector<HTMLInputElement>("#volunteer-phone");
+
+              phoneInput?.addEventListener("input", () => {
+                let digits = phoneInput.value.replace(/\D/g, "");
+
+                if (digits.length === 11 && digits.startsWith("1")) {
+                  digits = digits.slice(1);
+                }
+
+                digits = digits.slice(0, 10);
+
+                if (digits.length > 6) {
+                  phoneInput.value = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+                } else if (digits.length > 3) {
+                  phoneInput.value = `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+                } else {
+                  phoneInput.value = digits;
+                }
+              });
+            </script>
           </div>
 
           <div class="sm:col-span-2">
@@ -327,7 +356,7 @@ const opportunities = [
         <button
           type="submit"
           aria-describedby="volunteer-status"
-          class="mt-6 w-full rounded-lg bg-emerald-600 px-5 py-3.5 font-bold text-white opacity-50"
+          class="hope-action mt-6 w-full rounded-lg bg-emerald-600 px-5 py-3.5 font-bold text-white transition-colors hover:bg-emerald-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-700"
         >
           Submit Volunteer Interest
         </button>
