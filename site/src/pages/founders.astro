@@ -9,22 +9,55 @@ import maryPhoto from "../assets/board/founders/mary-myers.png";
 
 const founders = [
   {
-    name: "Sue Ducharme",
-    image: suePhoto,
-    isPortrait: true,
-    bio: "",
-  },
-  {
     name: "OJ Myers",
     image: ojPhoto,
-    isPortrait: true,
-    bio: "",
+    subtitle: "Co-Founder | Faith, Compassion, and a Willingness to Serve",
+    paragraphs: [
+      "I did not come into Hope House with a detailed plan or all the answers. My involvement began with a community lunch program called Lou’s, where Michael and Marcus Wyatt were serving meals to people in need. They were doing so much out of their own pockets, and their commitment moved me. I wanted to help bring community support around the work they were already doing.",
+      "When they lost access to their facility, we faced the possibility of losing a place where people could come for a meal. I encouraged Sue to join us in establishing a nonprofit, and we began searching for somewhere to continue serving. Through what I can only describe as God’s guidance, we found the property that became Hope House Guthrie.",
+      "I hesitantly accepted the role of administrator. I had absolutely no idea what I was doing, but my desire and willingness to figure it out were bottomless. There was work to be done and people who needed help, so we began with what we had.",
+      "Our mission was simple: welcome anyone who came through the door and work to meet their needs. Some needed food or shelter. Others were facing addiction, escaping domestic violence, or searching for a safe place to begin again. We were learning how to respond to those needs while building the organization around them.",
+      "We received immeasurable help from existing community agencies. They shared their experience and helped us develop our programs. Without that support, Hope House’s story might have been very short. Their willingness to help gave us knowledge and direction when we needed both.",
+      "Still, those early days brought moments when I could not see how we would make it.",
+      "When we signed our five-year lease, we had about $80 between us and no financial backing. About six weeks after opening, our first utility bill arrived: $1,005. By then, more than twenty people were living on the property. We had promised them a new beginning, and I was looking at a bill we could not afford.",
+      "I thought we were finished. I did the only thing I could think to do. I cried.",
+      "The very next day, a representative from Community Church here in Guthrie showed up with a check for $1,000. I did not know this person and had never spoken with them.",
+      "I didn’t cry. I bawled.",
+      "That was when I told God that from that moment forward, it was up to Him to provide the funds, and we would focus on the people.",
+      "To this day, Hope House Guthrie has NEVER been short of funding. NEVER.",
+      "That experience remains an important part of how I understand this work. There have been challenges along the way, including physical difficulties of my own, but there have also been opportunities to see what can happen when people receive help and have room to grow.",
+      "Today, it is the clients who walk through our doors who make me most proud. The growth of our programs and the opportunities available to them have surprised me. What began with a desire to keep serving community lunch has grown into much more than I could see at the beginning.",
+      "One of the most rewarding parts is watching people who once came here needing help begin helping someone else. Seeing them serve others and step into leadership is stunning. They become part of the work that once supported them, and that is something I am deeply proud to witness.",
+      "As Hope House continues to grow, I believe compassion and consistency must remain at the center of its leadership. My hope is that everyone who enters continues to find peace, safety, and time to move forward. Those are things I want our leaders to carry with them as they guide Hope House into the future.",
+      "That future also includes the new website and Hope House Hub. I see value in tools that help our staff spend less time on paperwork and more time with clients. Anything that makes more room for that personal care is worth its weight in gold.",
+      "We must be thoughtful about keeping technology in its proper place. It can support the work, but it must never become the focus or the end goal. The reason for building these tools is the same reason we opened our doors in the first place: to care for the people who come through them.",
+    ],
+    closing: "",
   },
   {
     name: "Mary Myers",
     image: maryPhoto,
-    isPortrait: true,
-    bio: "",
+    subtitle: "Co-Founder | Hope House Guthrie",
+    paragraphs: [
+      "My journey with Hope House began through my husband. When everything was first getting started, there was a need for someone to help manage the finances and bookkeeping. I had experience working in accounting as a civilian employee with the military, so I decided to put that knowledge to use. I purchased QuickBooks and began helping establish the financial side of the organization, along with sharing what I knew about the requirements and responsibilities involved in running an operation like Hope House.",
+      "Those early days came during COVID, when there was already so much uncertainty in the world. There were challenges, long hours, and plenty of emotional ups and downs. One of the hardest parts for me was watching my husband go through the roller coaster of emotions that came with trying to build something so important. We had to lean on each other, work through those moments together, and keep believing in what we were doing.",
+      "One thing I remember most is making the decision to stop worrying and trust God. We had a vision board filled with everything we hoped Hope House could become. Looking back at that board today, it is amazing to see that everything we envisioned has been accomplished, and even more than we imagined. It reminds me of what can happen when you open yourself up to God's will and trust the path ahead.",
+      "What makes me most proud today is seeing the people who have come through Hope House grow into something they may not have believed was possible for themselves. Frankie is a perfect example. He was one of the first people to walk through our doors, and watching him grow by leaps and bounds into the person and leader he is today means so much to me. That is what I believe Hope House is about, giving people a place where they can grow and become the best they can be.",
+      "I am also amazed by how much the organization itself has grown. Seeing former clients become administrators, help secure grants and funding, and take part in running the very place that once helped them is almost mind-boggling. The programs, resources, and support available today have gone far beyond what we originally started with. It shows what is possible when people are given an opportunity and a place where they belong.",
+      "To me, the mission of Hope House is simple. When someone comes through our doors, we should do our best to meet whatever need they have at that moment. Everyone comes from a different background and has traveled a different road. That is why compassion, understanding, and the ability to relate to others are so important, especially for the people entrusted with leading Hope House.",
+      "As we continue growing, I hope we never lose sight of where we came from or the values that brought us this far. I am excited to see tools like our website and Hope House Hub help us stay organized, communicate our needs to the community, and better serve the people who depend on us. Technology can be a wonderful tool as long as we continue to use it for its intended purpose and never allow it to replace the personal connection that makes Hope House special.",
+      "My hope is that Hope House continues helping people move forward, rebuild their lives, and find opportunities to live meaningful and fruitful lives.",
+      "And if there is one thing I want anyone coming to Hope House for help to know, it is this:",
+    ],
+    closing:
+      "You will be welcomed. You will be accepted. And you will be treated the way every person deserves to be treated.",
+  },
+  {
+    name: "Sue Ducharme",
+    image: suePhoto,
+    subtitle: "Co-Founder | Hope House Guthrie",
+    paragraphs: [],
+    closing: "",
   },
 ];
 ---
@@ -35,10 +68,9 @@ const founders = [
     description="Meet the people who helped bring Hope House Guthrie to life."
   />
 
-  <!-- Founder Cards -->
-  <section class="bg-sky-50 py-10 sm:py-12" aria-labelledby="founders-title">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mb-8 text-center">
+  <section class="bg-sky-50 py-12 sm:py-16" aria-labelledby="founders-title">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 text-center">
         <h2
           id="founders-title"
           class="text-3xl font-bold tracking-tight text-sky-700 sm:text-4xl"
@@ -46,55 +78,53 @@ const founders = [
           The People Behind the Beginning
         </h2>
 
-        <div
-          class="mx-auto mt-4 h-1 w-full rounded-full bg-sky-700"
-          aria-hidden="true"
-        >
+        <div class="mt-4 h-1 w-full rounded-full bg-sky-700" aria-hidden="true">
         </div>
 
         <p class="mx-auto mt-4 max-w-2xl leading-relaxed text-slate-700">
           Recognizing OJ Myers, Mary Myers, and Sue Ducharme and their part in
-          starting
-          <span class="block">Hope House Guthrie.</span>
+          starting Hope House Guthrie.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      <div class="space-y-10 sm:space-y-14">
         {
           founders.map((founder) => (
             <article class="hope-frame hope-frame-accent overflow-hidden bg-white">
-              <div class="flex aspect-square items-center justify-center bg-sky-100">
-                {founder.isPortrait ? (
-                  <Image
-                    src={founder.image}
-                    alt={founder.name}
-                    width={600}
-                    format="webp"
-                    loading="lazy"
-                    class="h-full w-full object-cover object-top"
-                  />
-                ) : (
-                  <Image
-                    src={founder.image}
-                    alt=""
-                    width={320}
-                    loading="lazy"
-                    class="h-auto max-h-64 w-3/4 object-contain"
-                  />
-                )}
-              </div>
+              <div class="px-5 py-8 sm:px-10 sm:py-12">
+                <header class="text-center">
+                  <div class="mx-auto max-w-xs overflow-hidden rounded-xl bg-sky-100">
+                    <Image
+                      src={founder.image}
+                      alt={founder.name}
+                      width={640}
+                      format="webp"
+                      loading="lazy"
+                      class="h-auto w-full"
+                    />
+                  </div>
 
-              <div class="p-6 text-center">
-                <h3 class="text-2xl font-bold text-sky-700">{founder.name}</h3>
+                  <h3 class="mt-6 text-3xl font-bold text-sky-700">
+                    {founder.name}
+                  </h3>
 
-                <p class="mt-2 text-sm font-semibold uppercase tracking-wide text-slate-600">
-                  Co-Founder
-                </p>
-
-                {founder.bio && (
-                  <p class="mt-4 text-left leading-relaxed text-slate-700">
-                    {founder.bio}
+                  <p class="mx-auto mt-3 max-w-xl text-sm font-semibold leading-relaxed text-slate-600">
+                    {founder.subtitle}
                   </p>
+                </header>
+
+                {founder.paragraphs.length > 0 && (
+                  <div class="mx-auto mt-8 max-w-3xl space-y-5 border-t border-sky-200 pt-8 text-base leading-relaxed text-slate-700 sm:text-lg">
+                    {founder.paragraphs.map((paragraph) => (
+                      <p>{paragraph}</p>
+                    ))}
+
+                    {founder.closing && (
+                      <p class="border-l-4 border-sky-700 pl-5 font-bold text-sky-700">
+                        {founder.closing}
+                      </p>
+                    )}
+                  </div>
                 )}
               </div>
             </article>
@@ -102,10 +132,10 @@ const founders = [
         }
       </div>
 
-      <div class="mt-8 text-center">
+      <div class="mt-10 text-center">
         <a
           href="/about"
-          class="hope-action inline-flex w-fit min-h-11 items-center justify-center rounded-lg bg-sky-700 px-6 py-3 font-semibold text-white hover:bg-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700"
+          class="hope-action inline-flex min-h-11 items-center justify-center rounded-lg bg-sky-700 px-6 py-3 font-semibold text-white transition-colors hover:bg-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700"
         >
           ← Explore Our Story
         </a>
