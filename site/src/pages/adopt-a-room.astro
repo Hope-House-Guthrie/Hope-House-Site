@@ -143,7 +143,9 @@ const donationUrl =
           ].map((level) => (
             <a
               href={donationUrl}
-              aria-label={`Choose ${level.name}: $${level.amount} per month`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Choose ${level.name}: $${level.amount} per month (opens in a new tab)`}
               class="hope-frame hope-frame-accent flex flex-col bg-sky-50 p-6 no-underline transition-colors hover:bg-sky-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700"
             >
               <div
@@ -366,6 +368,8 @@ const donationUrl =
 
           <a
             href={donationUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             class="hope-action mt-6 inline-flex min-h-11 items-center justify-center rounded-lg bg-emerald-600 px-6 py-3 text-center font-bold text-white transition-colors hover:bg-emerald-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-700"
           >
             Give Through PayPal →
