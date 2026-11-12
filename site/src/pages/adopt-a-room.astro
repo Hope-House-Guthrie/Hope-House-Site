@@ -201,42 +201,7 @@ const donationUrl =
                         "story-photo-frame relative overflow-hidden rounded-xl",
                         story.videoUrl ? "aspect-[4/3]" : "min-h-72 flex-1",
                       ]}
-                      style={`--story-liquid-filter: url(#room-story-liquid-${index})`}
                     >
-                      {story.beforePhoto && (
-                        <svg
-                          class="pointer-events-none absolute h-0 w-0"
-                          aria-hidden="true"
-                          focusable="false"
-                        >
-                          <defs>
-                            <filter
-                              id={`room-story-liquid-${index}`}
-                              x="-25%"
-                              y="-25%"
-                              width="150%"
-                              height="150%"
-                              color-interpolation-filters="sRGB"
-                            >
-                              <feTurbulence
-                                type="fractalNoise"
-                                baseFrequency="0.012 0.025"
-                                numOctaves="2"
-                                seed={index + 3}
-                                result="liquid-noise"
-                              />
-                              <feDisplacementMap
-                                data-liquid-displacement
-                                in="SourceGraphic"
-                                in2="liquid-noise"
-                                scale="0"
-                                xChannelSelector="R"
-                                yChannelSelector="G"
-                              />
-                            </filter>
-                          </defs>
-                        </svg>
-                      )}
                       {story.beforePhoto && (
                         <div class="story-photo-before absolute inset-0">
                           <Image
@@ -279,6 +244,22 @@ const donationUrl =
                           </span>
                         )}
                       </div>
+                    </div>
+                  ) : story.beforePhoto ? (
+                    <div class="relative min-h-72 flex-1 overflow-hidden rounded-xl bg-sky-50">
+                      <Image
+                        src={story.beforePhoto}
+                        alt={`Intake photo of ${story.name}`}
+                        width={640}
+                        format="webp"
+                        quality={80}
+                        loading="lazy"
+                        class="absolute inset-0 h-full w-full object-cover"
+                        style={{ objectPosition: story.beforePhotoPosition }}
+                      />
+                      <span class="absolute bottom-3 left-3 rounded-md bg-sky-700 px-3 py-1 text-sm font-semibold text-white">
+                        Intake
+                      </span>
                     </div>
                   ) : (
                     <div class="flex min-h-72 flex-1 items-center justify-center rounded-xl bg-sky-50 p-8">
@@ -491,14 +472,6 @@ const donationUrl =
       opacity: 1;
     }
 
-    [data-photo-transition][data-liquid-active]
-      .story-photo-before
-      :global(img),
-    [data-photo-transition][data-liquid-active] .story-photo-now :global(img) {
-      filter: var(--story-liquid-filter);
-      transform: scale(1.06);
-    }
-
     @media (prefers-reduced-motion: reduce) {
       [data-photo-transition] .story-photo-before {
         opacity: 0 !important;
@@ -536,11 +509,10 @@ const donationUrl =
             ".story-photo-before",
           );
           const current = frame.querySelector<HTMLElement>(".story-photo-now");
-          const displacement = frame.querySelector<SVGFEDisplacementMapElement>(
-            "[data-liquid-displacement]",
-          );
+          if (!before || !current) return;
 
-          if (!before || !current || !displacement) return;
+          const beforeImage = before.querySelector("img");
+          const currentImage = current.querySelector("img");
 
           const beforeLabel = before.querySelector("span");
           const currentLabel = current.querySelector("span");
@@ -561,14 +533,12 @@ const donationUrl =
 
           function render() {
             let amount = 0;
-            let strength = 0;
 
             if (elapsed < intakeHold) {
               amount = 0;
             } else if (elapsed < intakeHold + transition) {
               const progress = (elapsed - intakeHold) / transition;
               amount = ease(progress);
-              strength = Math.sin(Math.PI * progress) * 65;
             } else if (elapsed < intakeHold + transition + currentHold) {
               amount = 1;
             } else {
@@ -576,13 +546,17 @@ const donationUrl =
                 (elapsed - intakeHold - transition - currentHold) / transition;
 
               amount = 1 - ease(progress);
-              strength = Math.sin(Math.PI * progress) * 65;
             }
 
             before.style.opacity = "1";
             current.style.opacity = String(amount);
-            displacement.setAttribute("scale", strength.toFixed(2));
-            frame.toggleAttribute("data-liquid-active", strength > 0.1);
+            if (beforeImage) {
+              beforeImage.style.transform = `scale(${1 + amount * 0.025})`;
+            }
+
+            if (currentImage) {
+              currentImage.style.transform = `scale(${1.025 - amount * 0.025})`;
+            }
 
             if (beforeLabel) {
               beforeLabel.style.opacity = amount < 0.5 ? "1" : "0";
@@ -629,7 +603,8 @@ const donationUrl =
               frame.removeAttribute("data-liquid-active");
               before.style.opacity = "0";
               current.style.opacity = "1";
-              displacement.setAttribute("scale", "0");
+              if (beforeImage) beforeImage.style.transform = "none";
+              if (currentImage) currentImage.style.transform = "none";
 
               if (currentLabel) currentLabel.style.opacity = "1";
             } else if (ready) {
