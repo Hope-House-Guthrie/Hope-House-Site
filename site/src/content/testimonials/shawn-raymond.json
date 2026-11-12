@@ -1,0 +1,15 @@
+{
+  "name": "Static",
+  "photo": "",
+  "beforePhoto": "../../assets/testimonials/before-photos/shawn-raymond-before.jpg",
+  "photoPosition": "center",
+  "beforePhotoPosition": "center top",
+  "videoUrl": "",
+  "paragraphs": [
+    "I enjoy helping people and anything involving technology. My interests include video games, movies, TV shows, cars, trucks, and all things mechanical.",
+    "After getting out of jail, I had nowhere to go. I had heard great things about Hope House Guthrie and needed a place to stay while working through drug court toward graduation.",
+    "Hope House has given me a safe, supportive, and structured place that has helped me create a healthy new life."
+  ],
+  "quote": "Have a beautiful day!",
+  "order": 9
+}
